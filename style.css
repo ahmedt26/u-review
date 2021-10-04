@@ -1,3 +1,28 @@
-body {
-  background-color: #eeeeee;
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.mainBC {
+    background-color: #222831!important;
+}
+
+.mainTC {
+    color: #222831!important;
+}
+
+.secondaryBC {
+    background-color: #FFD369!important;
+}
+
+.secondaryTC {
+    color: #FFD369!important;
+    
+}
+
+.navPadding {
+    padding: 0 50px 0 50px!important;
+}
+
+.nav123 {
+    padding: 0 0 0 50px!important;
 }
