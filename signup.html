@@ -77,16 +77,14 @@
 </header>
 
 <!-- Search bar for smaller screens, for when the full one disappears -->
-<section id="main-navbar-small-search" class="d-xl-none">
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container d-flex justify-content-center align-items-center">
-      <form class="form-inline d-flex">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
-  </nav>
-</section>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
+  <div class="container d-flex justify-content-center align-items-center">
+    <form class="form-inline d-flex">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+  </div>
+</nav>
 
 
 <!-- This collection of divs make up the main parts of this page.-->
@@ -111,14 +109,14 @@
         <div class="mt-3 px-3 text-white"> <input id="signup-email" class="form-control" type="email" placeholder="E-mail"> </div>
         <div class="mt-3 px-3 text-white"> <input id="signup-email-confirm" class="form-control" type="email" placeholder="Confirm E-Mail"> </div>
         <div class="mt-3 px-3 text-white"> <input id="signup-pass" class="form-control" type="password" placeholder="Password"> </div>
-        <div class="mt-3 px-3 text-white"> <input id="signup-pass-confirm"class="form-control" type="password" placeholder="Confirm Password">
+        <div class="mt-3 px-3 text-white"> <input id="signup-pass-confirm" class="form-control" type="password" placeholder="Confirm Password">
         </div>
         <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
         <div class="mt-3 d-grid px-3 text-white"> <button id="signup-button" class="btn btn-warning btn-block btn-signup text-uppercase">
             <span>Sign Up</span> </button> </div>
         <div class="px-3">
           <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value=""
-              id="signup-bot-check"> <label class="form-check-label ms-2 py-2 text-white" for="services"> I'm not a Bot.
+              id="signup-bot-check"> <label class="form-check-label ms-2 py-2 text-white"> I'm not a Bot.
             </label> </div>
         </div>
       </div>
@@ -133,9 +131,6 @@
       </div>
     </div>
   </footer>
-
-</div>
-
 
 </div>
 

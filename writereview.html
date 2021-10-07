@@ -77,16 +77,14 @@
 </header>
 
 <!-- Search bar for smaller screens, for when the full one disappears -->
-<section class="d-xl-none">
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container d-flex justify-content-center align-items-center">
-      <form class="form-inline d-flex">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
-  </nav>
-</section>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
+  <div class="container d-flex justify-content-center align-items-center">
+    <form class="form-inline d-flex">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+  </div>
+</nav>
 
 <!-- This is the main part of the page-->
 <div class="main-page">
@@ -114,7 +112,7 @@
         <div class="px-3">
           <!-- When all inputs are added, the user can upload their review. -->
           <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value=""
-              id="services"> <label class="form-check-label ms-2 py-2 text-white" for="services"> I'm not a Bot.
+              id="services"> <label class="form-check-label ms-2 py-2 text-white"> I'm not a Bot.
             </label> </div>
         </div>
       </div>
@@ -129,9 +127,6 @@
       </div>
     </div>
   </footer>
-
-</div>
-
 
 </div>
 
