@@ -1,5 +1,5 @@
 <!--
-  UReview Home/Search Page
+  UReview Add Location Page
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
@@ -27,70 +27,89 @@
   <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
 </head>
 
+<!-- Navbar -->
+<!-- The navbar expands and shrinks according to screen resizing.
+          It is also of a dark theme, and stick to the top of the user's screen-->
+<header>
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+      <a href="./index.html" class="navbar-brand">
+        <!-- The Logo itself is a button to the home page.-->
+        <img src="./assets/images/logo.svg" alt="UReview Logo">
+      </a>
+
+      <!-- This search form is for fuller screens, and disappears when the width gets too small-->
+      <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
+      <form class="form-inline d-xl-flex d-none">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+
+      <!-- These buttons take you to various core features of the website
+                                  These buttons get compressed into a hamburger on smaller screens-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Each button has a link for its respective page.-->
+      <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item px-3">
+            <a href="./index.html" class="nav-link text-white">Home</a>
+          </li>
+          <li class="nav-item px-3">
+            <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
+          </li>
+          <li class="nav-item px-3">
+            <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
+          </li>
+          <li class="nav-item px-3">
+            <a href="./login.html" class="nav-link text-white">Log In</a>
+          </li>
+          <li class="nav-item px-3">
+            <a href="./signup.html" class="btn btn-warning">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Search bar for smaller screens, for when the full one disappears -->
+<section class="d-xl-none">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container d-flex justify-content-center align-items-center">
+      <form class="form-inline d-flex">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  </nav>
+</section>
+
 <!-- These divs make up the main parts of the page.-->
 <div class="main-page">
 
-  <!-- Navbar -->
-  <!-- The navbar expands and shrinks according to screen resizing.
-          It is also of a dark theme, and stick to the top of the user's screen-->
-  <header>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <div class="container">
-        <a href="./index.html" class="navbar-brand">
-          <!-- The Logo itself is a button to the home page.-->
-          <img src="./assets/images/logo.svg" alt="UReview Logo">
-        </a>
-
-        <!-- This search form is for fuller screens, and disappears when the width gets too small-->
-        <form class="form-inline d-xl-flex d-none">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
-        </form>
-
-        <!-- These buttons take you to various core features of the website
-                          These buttons get compressed into a hamburger on smaller screens-->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Each button has a link for its respective page.-->
-        <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item px-3">
-              <a href="./index.html" class="nav-link text-white">Home</a>
-            </li>
-            <li class="nav-item px-3">
-              <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
-            </li>
-            <li class="nav-item px-3">
-              <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
-            </li>
-            <li class="nav-item px-3">
-              <a href="./login.html" class="nav-link text-white">Log In</a>
-            </li>
-            <li class="nav-item px-3">
-              <a href="./signup.html" class="btn btn-warning">Sign Up</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
   <!-- Add Location Card -->
   <div class="mt-auto">
+    <!-- auto-adjust margins -->
     <div class="d-flex justify-content-center">
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
         <h4 class="py-2 text-white">Add a Location</h4>
+        <!-- Link for write review page if user wants to write a review for an existing location-->
         <div> <span class="text-white">Want to write a review instead?</span>
           <a href="./writereview.html" class="text-decoration-none text-warning">Write a Review</a>
         </div>
+        <!-- Series of input forms, these inputs will be checked for correct type of input.-->
         <div class="mt-3 px-3 text-white"> <input class="form-control" type="text" placeholder="Name"> </div>
         <div class="mt-3 px-3 text-white"> <input class="form-control" type="tel" placeholder="Phone Number"> </div>
         <div class="mt-3 px-3 text-white"> <input class="form-control" type="text" placeholder="Latitude"> </div>
         <div class="mt-3 px-3 text-white"> <input class="form-control" type="text" placeholder="Longitude"></div>
+        <!-- User will be able upload a reasonably sized image (~2MB) from their device.-->
         <div class="mt-3 px-3 text-white"> <input class="form-control" type="image" placeholder="Upload Image"
             aria-label="Upload an Image"></div>
+        <!-- When all inputs completed, the user can add the location-->
         <div class="mt-3 d-grid px-3 text-white">
           <button class="btn btn-warning btn-block btn-signup text-uppercase"> <span>Add Location</span></button>
         </div>
@@ -113,7 +132,6 @@
   </footer>
 
 </div>
-
 
 </div>
 

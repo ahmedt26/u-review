@@ -1,5 +1,5 @@
 <!--
-  UReview Home/Search Page
+  UReview Landing Page
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
@@ -7,7 +7,7 @@
 <html lang="en">
 
 <head>
-  <!-- Metadata of Website-->
+  <!-- Metadata of Website -->
   <title>UReview - Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,6 +39,7 @@
       </a>
 
       <!-- This search form is for fuller screens, and disappears when the width gets too small-->
+      <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
       <form class="form-inline d-xl-flex d-none">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
@@ -51,6 +52,7 @@
       </button>
 
       <!-- Each button has a link for its respective page.-->
+      <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
       <div class="collapse navbar-collapse" id="navmenu">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item px-3">
@@ -88,7 +90,7 @@
 
 <!-- The Body of the Page-->
 <div class="main-page">
-  <!-- First top part of Search Page to center the search bar-->
+  <!-- First top part of Search Page to center the title and search bar. -->
   <div class="d-flex flex-column h-100 search-top-padding align-items-center">
     <div class="title-push-center">
       <h1 class="centered-title align-items-center">UReview</h1>
@@ -96,7 +98,8 @@
     </div>
   </div>
 
-  <!-- The Search Bar Itself-->
+  <!-- The Search Bar Itself. It is centered and so are the contents in this div-->
+  <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
   <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
     <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
       <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
@@ -104,22 +107,18 @@
   </div>
 
   <!-- This pushes the footer all the way down as its commanded to grow-->
-  <div class="d-flex flex-column h-100 search-bottom-padding align-items-center text-center">
+  <div class="d-flex flex-column h-100 align-items-center text-center">
   </div>
 
-
-  <!-- Footer -->
-  <footer class="page-footer bg-dark text-warning mt-auto no-shrink">
+  <!-- The footer is stuck to the bottom of the page. -->
+  <footer class="page-footer bg-dark text-warning mt-auto">
     <div class="container">
       <div class="footer-copyright text-center">
         Copyright &copy; 2021 UReview
       </div>
     </div>
   </footer>
-
 </div>
-
-
 
 
 

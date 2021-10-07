@@ -1,5 +1,5 @@
 <!--
-  UReview Home/Search Page
+  UReview Sign Up Page
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
@@ -30,7 +30,7 @@
 <!-- Navbar -->
 <!-- The navbar expands and shrinks according to screen resizing.
           It is also of a dark theme, and stick to the top of the user's screen-->
-<header>
+<header id="main-navbar">
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
       <a href="./index.html" class="navbar-brand">
@@ -39,6 +39,7 @@
       </a>
 
       <!-- This search form is for fuller screens, and disappears when the width gets too small-->
+      <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
       <form class="form-inline d-xl-flex d-none">
         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
@@ -51,6 +52,7 @@
       </button>
 
       <!-- Each button has a link for its respective page.-->
+      <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
       <div class="collapse navbar-collapse" id="navmenu">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item px-3">
@@ -74,6 +76,18 @@
   </nav>
 </header>
 
+<!-- Search bar for smaller screens, for when the full one disappears -->
+<section id="main-navbar-small-search" class="d-xl-none">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container d-flex justify-content-center align-items-center">
+      <form class="form-inline d-flex">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  </nav>
+</section>
+
 
 <!-- This collection of divs make up the main parts of this page.-->
 <div class="main-page">
@@ -81,26 +95,30 @@
   <!-- The Sign Up Page-->
   <div class="mt-auto">
     <div class="d-flex justify-content-center">
+      <!-- A self-sizing card with a dark background -->
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
         <h4 class="py-2 text-white">Create a UReview Account</h4>
+        <!-- Link to log-in page if user has an account-->
         <div> <span class="text-white">Already have an account?</span>
           <a href="./login.html" class="text-decoration-none text-warning">Log In</a>
         </div>
-        <div class="mt-3 px-3 text-white"> <input class="form-control" placeholder="Username"> </div>
+        <!-- These inputs will be used to create new users in the database-->
+        <div class="mt-3 px-3 text-white"> <input id="signup-username" class="form-control" placeholder="Username"> </div>
         <div class="input-group px-3 mt-3 text-white">
-          <input type="text" class="form-control" placeholder="First Name" aria-label="First Name">
-          <span> <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name"></span>
+          <input id="signup-first-name" type="text" class="form-control" placeholder="First Name" aria-label="First Name">
+          <span> <input id="signup-last-name" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name"></span>
         </div>
-        <div class="mt-3 px-3 text-white"> <input class="form-control" type="email" placeholder="E-mail"> </div>
-        <div class="mt-3 px-3 text-white"> <input class="form-control" type="email" placeholder="Confirm E-Mail"> </div>
-        <div class="mt-3 px-3 text-white"> <input class="form-control" type="password" placeholder="Password"> </div>
-        <div class="mt-3 px-3 text-white"> <input class="form-control" type="password" placeholder="Confirm Password">
+        <div class="mt-3 px-3 text-white"> <input id="signup-email" class="form-control" type="email" placeholder="E-mail"> </div>
+        <div class="mt-3 px-3 text-white"> <input id="signup-email-confirm" class="form-control" type="email" placeholder="Confirm E-Mail"> </div>
+        <div class="mt-3 px-3 text-white"> <input id="signup-pass" class="form-control" type="password" placeholder="Password"> </div>
+        <div class="mt-3 px-3 text-white"> <input id="signup-pass-confirm"class="form-control" type="password" placeholder="Confirm Password">
         </div>
-        <div class="mt-3 d-grid px-3 text-white"> <button class="btn btn-warning btn-block btn-signup text-uppercase">
+        <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
+        <div class="mt-3 d-grid px-3 text-white"> <button id="signup-button" class="btn btn-warning btn-block btn-signup text-uppercase">
             <span>Sign Up</span> </button> </div>
         <div class="px-3">
           <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value=""
-              id="services"> <label class="form-check-label ms-2 py-2 text-white" for="services"> I'm not a Bot.
+              id="signup-bot-check"> <label class="form-check-label ms-2 py-2 text-white" for="services"> I'm not a Bot.
             </label> </div>
         </div>
       </div>

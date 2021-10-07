@@ -35,7 +35,7 @@
 }
 
 /*!
-Forcing the 
+The main page expands to the full browser window height
 */
 .main-page {
     display: flex;
@@ -43,6 +43,9 @@ Forcing the
     min-height: 100vh;
 }
 
+/*! This padding is so that the 'main content'
+of the page gets pushed down to the middle
+of the screen */
 .search-top-padding {
     display: flex;
     flex-direction: column;
@@ -53,6 +56,9 @@ Forcing the
     box-sizing: border-box;
 }
 
+/*! This has a similar function to the above,
+just adjusting the vh so that it is more near
+the middle of the webpage.  */
 .sign-up-padding {
     display: flex;
     flex-direction: column;
@@ -63,11 +69,14 @@ Forcing the
     box-sizing: border-box;
 }
 
+/*! This padding should expand all the way down
+to push the footer to the bottom of the page.*/
 .search-bottom-padding {
     flex-grow: 1;
     flex-shrink: 0;
 }
 
+/*! Pushing the title to the center of hte page*/
 .title-push-center {
     max-height: 184px;
     position: relative;
