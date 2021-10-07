@@ -1,4 +1,11 @@
-* {
+@charset "UTF-8";
+/*!
+ * UReview CSS Style Sheet
+ * Abdullah Nafees and Tahseen Ahmed
+ * October 4th, 2021
+ */
+
+*{
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -25,4 +32,61 @@
 
 .nav123 {
     padding: 0 0 0 50px!important;
+}
+
+/*!
+Forcing the 
+*/
+.main-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.search-top-padding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 40vh;
+    max-height: 50vh;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.sign-up-padding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 33vh;
+    max-height: 50vh;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.search-bottom-padding {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.title-push-center {
+    max-height: 184px;
+    position: relative;
+    height: 100%;
+    margin-top: auto;
+}
+.centered-title {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    width: auto;
+}
+
+.no-shrink {
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.card-padding {
+    height: 40vh;
 }

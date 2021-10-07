@@ -8,14 +8,14 @@
 
 <head>
   <!-- Metadata of Website-->
-  <title>UReview - Home</title>
+  <title>UReview - Log In</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="UReview - Things Reviewed by U!">
   <meta name="author"
     content="Tahseen Ahmed and Abdullah Nafees, Mark Otto, Jacob Thornton, and Bootstrap contributors ">
   <meta name="generator" content="Hugo 0.88.1">
-  <!-- Custom Fonts and Icons for Website -->
+  <!-- Custom Fonts for Website -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -45,7 +45,7 @@
       </form>
 
       <!-- These buttons take you to various core features of the website
-                These buttons get compressed into a hamburger on smaller screens-->
+                          These buttons get compressed into a hamburger on smaller screens-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -73,44 +73,33 @@
     </div>
   </nav>
 </header>
-
-<!-- Search bar for smaller screens, for when the full one disappears -->
-<section class="d-xl-none">
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container d-flex justify-content-center align-items-center">
-      <form class="form-inline d-flex">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
-  </nav>
-</section>
-
-<!-- The Body of the Page-->
+<!-- This section is the main part of the page.-->
 <div class="main-page">
-  <!-- First top part of Search Page to center the search bar-->
-  <div class="d-flex flex-column h-100 search-top-padding align-items-center">
-    <div class="title-push-center">
-      <h1 class="centered-title align-items-center">UReview</h1>
-      <small class="text-muted align-self-center">Things reviewed by U</small>
+
+  <!-- The Log In Card -->
+  <div class="mt-auto">
+    <div class="d-flex justify-content-center">
+      <div class="pt-auto card px-3 text-center px-4 bg-dark">
+        <h4 class="py-2 text-white">Log In to UReview</h4>
+        <div> <span class="text-white">Don't have an account?</span>
+          <a href="./signup.html" class="text-decoration-none text-warning">Sign Up</a>
+        </div>
+        <div class="mt-3 px-3 text-white"> <input class="form-control" placeholder="Username"> </div>
+        <div class="mt-3 px-3 text-white"> <input class="form-control" type="password" placeholder="Password"> </div>
+        <div class="mt-3 d-grid px-3 text-white"> <button class="btn btn-warning btn-block btn-signup text-uppercase">
+            <span>Log In</span> </button> </div>
+        <div class="px-3">
+          <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value=""
+              id="services"> <label class="form-check-label ms-2 py-2 text-white" for="services"> I'm not a Bot.
+            </label> </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- The Search Bar Itself-->
-  <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
-    <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
-      <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
-    </div>
-  </div>
-
-  <!-- This pushes the footer all the way down as its commanded to grow-->
-  <div class="d-flex flex-column h-100 search-bottom-padding align-items-center text-center">
-  </div>
-
-
-  <!-- Footer -->
-  <footer class="page-footer bg-dark text-warning mt-auto no-shrink">
-    <div class="container">
+  <!-- Footer, fixed to the end of the browser window -->
+  <footer class="d-flex flex-column page-footer bg-dark text-warning mt-auto">
+    <div class="container align-self-end">
       <div class="footer-copyright text-center">
         Copyright &copy; 2021 UReview
       </div>
@@ -120,7 +109,6 @@
 </div>
 
 
-
-
+</div>
 
 </html>
