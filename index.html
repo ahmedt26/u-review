@@ -12,9 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="UReview - Things Reviewed by U!">
-  <meta name="author"
-    content="Tahseen Ahmed and Abdullah Nafees">
-  <meta name="generator" content="Hugo 0.88.1">
+  <meta name="author" content="Tahseen Ahmed and Abdullah Nafees">
   <!-- Custom Fonts and Icons for Website -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,101 +23,109 @@
   <!-- Locally loading core CSS-->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
 </head>
 
-<!-- Navbar -->
-<!-- The navbar expands and shrinks according to screen resizing.
+<body>
+  <!-- Navbar -->
+  <!-- The navbar expands and shrinks according to screen resizing.
           It is also of a dark theme, and stick to the top of the user's screen-->
-<header>
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <div class="container">
-      <a href="./index.html" class="navbar-brand">
-        <!-- The Logo itself is a button to the home page.-->
-        <img src="./assets/images/logo.svg" alt="UReview Logo">
-      </a>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="./index.html" class="navbar-brand">
+          <!-- The Logo itself is a button to the home page.-->
+          <img src="./assets/images/logo.svg" alt="UReview Logo">
+        </a>
 
-      <!-- This search form is for fuller screens, and disappears when the width gets too small-->
-      <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
-      <form class="form-inline d-xl-flex d-none">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
-      </form>
+        <!-- This search form is for fuller screens, and disappears when the width gets too small-->
+        <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
+        <form class="form-inline d-xl-flex d-none">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+        </form>
 
-      <!-- These buttons take you to various core features of the website
+        <!-- These buttons take you to various core features of the website
                 These buttons get compressed into a hamburger on smaller screens-->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon fas fa-bars"></span>
+        </button>
 
-      <!-- Each button has a link for its respective page.-->
-      <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
-      <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item px-3">
-            <a href="./index.html" class="nav-link text-white">Home</a>
-          </li>
-          <li class="nav-item px-3">
-            <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
-          </li>
-          <li class="nav-item px-3">
-            <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
-          </li>
-          <li class="nav-item px-3">
-            <a href="./login.html" class="nav-link text-white">Log In</a>
-          </li>
-          <li class="nav-item px-3">
-            <a href="./signup.html" class="btn btn-warning">Sign Up</a>
-          </li>
-        </ul>
+        <!-- Each button has a link for its respective page.-->
+        <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-self-end">
+            <li class="nav-item px-3">
+              <a href="./index.html" class="nav-link text-white">Home</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./login.html" class="nav-link text-white">Log In</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./signup.html" class="btn btn-warning">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  </div>
+  </nav>
+  </header>
+
+  <!-- Search bar for smaller screens, for when the full one disappears -->
+  <div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
+      <div class="container d-flex justify-content-center align-items-center">
+        <form class="form-inline d-flex">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <!-- The Body of the Page-->
+  <div class="main-page">
+    <!-- First top part of Search Page to center the title and search bar. -->
+    <div class="d-flex flex-column h-100 search-top-padding align-items-center">
+      <div class="title-push-center">
+        <h1 class="centered-title align-items-center">UReview</h1>
+        <small class="text-muted align-self-center">Things reviewed by U</small>
       </div>
     </div>
-  </nav>
-</header>
 
-<!-- Search bar for smaller screens, for when the full one disappears -->
-<div>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
-    <div class="container d-flex justify-content-center align-items-center">
-      <form class="form-inline d-flex">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
-  </nav>
-</div>
-
-<!-- The Body of the Page-->
-<div class="main-page">
-  <!-- First top part of Search Page to center the title and search bar. -->
-  <div class="d-flex flex-column h-100 search-top-padding align-items-center">
-    <div class="title-push-center">
-      <h1 class="centered-title align-items-center">UReview</h1>
-      <small class="text-muted align-self-center">Things reviewed by U</small>
-    </div>
-  </div>
-
-  <!-- The Search Bar Itself. It is centered and so are the contents in this div-->
-  <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
-  <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
-    <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
-      <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
-    </div>
-  </div>
-
-  <!-- This pushes the footer all the way down as its commanded to grow-->
-  <div class="d-flex flex-column h-100 align-items-center text-center">
-  </div>
-
-  <!-- The footer is stuck to the bottom of the page. -->
-  <footer class="page-footer bg-dark text-warning mt-auto">
-    <div class="container">
-      <div class="footer-copyright text-center">
-        Copyright &copy; 2021 UReview
+    <!-- The Search Bar Itself. It is centered and so are the contents in this div-->
+    <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
+    <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
+      <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
       </div>
     </div>
-  </footer>
-</div>
 
+    <!-- This pushes the footer all the way down as its commanded to grow-->
+    <div class="d-flex flex-column h-100 align-items-center text-center">
+    </div>
+
+    <!-- The footer is stuck to the bottom of the page. -->
+    <footer class="page-footer bg-dark text-warning mt-auto">
+      <div class="container">
+        <div class="footer-copyright text-center">
+          Copyright &copy; 2021 UReview
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 
 
 </html>
