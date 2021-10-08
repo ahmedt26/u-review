@@ -7,32 +7,48 @@
 <html lang="en">
 
 <head>
-  <!-- Metadata of Website-->
+  <!-- Metadata of Website 
+      'viewport' is what screen this page is being accessed by, the scale is set to default size.
+      The 'rel=icon' gives us the Logo image for the browser tabs.
+      The various meta data give tab information  e.g what shows up in the tab text.
+      We load up custom fonts and icons we need using links and Bootstrap, as well as a script
+      to create a working hamburger for responsiveness.
+    -->
   <title>UReview - Log In</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="UReview - Things Reviewed by U!">
   <meta name="author" content="Tahseen Ahmed and Abdullah Nafees">
   <link rel="icon" href="images/logo.svg">
-  <!-- Custom Fonts for Website -->
+  <!-- Custom Fonts and Icons for Website -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
-  <!-- Locally loading core CSS-->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
 </head>
 
-<body>
+<!-- The entire webpage must fill the entire viewport,
+  and columns will stretch to fit-->
+
+<body class="d-flex flex-column min-vh-100">
+
   <!-- Navbar -->
   <!-- The navbar expands and shrinks according to screen resizing.
-          It is also of a dark theme, and stick to the top of the user's screen-->
+          It is also of a dark theme, and stick to the top of the user's screen
+
+        'navbar' denote this is Bootstrap's navbar system which allows creation of navbar headers
+        'container' is Bootstrap's simple layout element with default 15px padding 
+      
+        'navbar-expand-lg' just means the navbar will expand at the given break point (large >=992px)
+        'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
+
   <header>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container">
@@ -41,25 +57,39 @@
           <img src="./assets/images/logo.svg" alt="UReview Logo">
         </a>
 
-        <!-- This search form is for fuller screens, and disappears when the width gets too small-->
-        <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
+        <!-- This search form is for fuller screens, and disappears when the width gets too small
+                  The search is xl (larger size) and disappears when it cannot be its desired length 
+                  'form-inline' places the search bar inline horizontally.
+                  'd-xl-flex' means the search will expand to the xl size and 'd-none' means it disappear 
+                  when it cannot be this size-->
         <form class="form-inline d-xl-flex d-none">
+          <!-- A type of form, the search bar.
+                    The 'btn' indicate button-like styling and the outline will be of the 'warning' color (our site's accent)-->
           <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+          <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i
+              class="bi bi-search"></i></button>
         </form>
 
         <!-- These buttons take you to various core features of the website
-                          These buttons get compressed into a hamburger on smaller screens-->
+                      These buttons get compressed into a hamburger on smaller screens
+                    The actual burger icon is from font-icon as indicated by 'fas' and 'fa-bars'-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon fas fa-bars"></span>
         </button>
 
         <!-- Each button has a link for its respective page.-->
-        <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
+        <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar
+                    This is the navbar's main buttons. 'nav-item' indicates its an option in the navbar (that gets hamburgered)
+                    'ms-auto' automatically sets margins, and 'align-self-end' means the thing it self is getting pushed to the right
+                  -->
         <div class="collapse navbar-collapse" id="navMenu">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto align-self-end">
             <li class="nav-item px-3">
               <a href="./index.html" class="nav-link text-white">Home</a>
+            </li>
+            <!-- Sample Results page will be removed when we create backend. -->
+            <li class="nav-item px-3">
+              <a href="./results.html" class="nav-link text-white">Sample Results</a>
             </li>
             <li class="nav-item px-3">
               <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
@@ -79,7 +109,9 @@
     </nav>
   </header>
 
-  <!-- Search bar for smaller screens, for when the full one disappears -->
+  <!-- Search bar for smaller screens, for when the full one disappears 
+              d-xl-none means the navbar will show when it is smaller than xl size, but not larger
+              we want this because the main navbar search will be shown at xl size-->
   <div>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
       <div class="container d-flex justify-content-center align-items-center">
@@ -92,43 +124,39 @@
   </div>
 
 
-  <!-- This section is the main part of the page.-->
-  <div class="main-page">
-
-    <!-- The Log In Card -->
-    <!-- The username and password will be sent to the server-side for user authentication-->
-    <div class="mt-auto">
-      <div class="d-flex justify-content-center">
-        <div class="pt-auto card px-3 text-center px-4 bg-dark">
-          <h4 class="py-2 text-white">Log In to UReview</h4>
-          <div> <span class="text-white">Don't have an account?</span>
-            <a href="./signup.html" class="text-decoration-none text-warning">Sign Up</a>
-          </div>
-          <div id="login-username" class="mt-3 px-3 text-white"> <input class="form-control" placeholder="Username">
-          </div>
-          <div id="login-password" class="mt-3 px-3 text-white"> <input class="form-control" type="password"
-              placeholder="Password"> </div>
-          <div class="mt-3 d-grid px-3 text-white"> <button class="btn btn-warning btn-block btn-signup text-uppercase">
-              <span>Log In</span> </button> </div>
-          <div class="px-3">
-            <!--- A checkbox to confirm that the user is indeed human.-->
-            <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value=""
-                id="login-bot-check"> <label class="form-check-label ms-2 py-2 text-white"> I'm not a Bot.
-              </label> </div>
-          </div>
+  <!-- The Log In Card -->
+  <!-- The username and password will be sent to the server-side for user authentication-->
+  <div class="mt-auto">
+    <div class="d-flex justify-content-center">
+      <div class="pt-auto card px-3 text-center px-4 bg-dark">
+        <h4 class="py-2 text-white">Log In to UReview</h4>
+        <div> <span class="text-white">Don't have an account?</span>
+          <a href="./signup.html" class="text-decoration-none text-warning">Sign Up</a>
+        </div>
+        <div id="login-username" class="mt-3 px-3 text-white"> <input class="form-control" placeholder="Username">
+        </div>
+        <div id="login-password" class="mt-3 px-3 text-white"> <input class="form-control" type="password"
+            placeholder="Password"> </div>
+        <div class="mt-3 d-grid px-3 text-white"> <button class="btn btn-warning btn-block btn-signup text-uppercase">
+            <span>Log In</span> </button> </div>
+        <div class="px-3">
+          <!--- A checkbox to confirm that the user is indeed human.-->
+          <div class="mt-2 form-check d-flex flex-row"> <input class="form-check-input" type="checkbox" value=""
+              id="login-bot-check"> <label class="form-check-label ms-2 py-2 text-white"> I'm not a Bot.
+            </label> </div>
         </div>
       </div>
     </div>
-
-    <!-- Footer, fixed to the end of the browser window -->
-    <footer class="d-flex flex-column page-footer bg-dark text-warning mt-auto ">
-      <div class="container align-self-end">
-        <div class="footer-copyright text-center">
-          Copyright &copy; 2021 UReview
-        </div>
-      </div>
-    </footer>
   </div>
+
+  <!-- Footer, fixed to the end of the browser window -->
+  <footer class="d-flex flex-column page-footer bg-dark text-warning mt-auto ">
+    <div class="container align-self-end">
+      <div class="footer-copyright text-center">
+        Copyright &copy; 2021 UReview
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

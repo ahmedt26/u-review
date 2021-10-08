@@ -32,9 +32,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
-
 </head>
-<body>
+
+<!-- The entire webpage must fill the entire viewport,
+  and columns will stretch to fit-->
+
+<body class="d-flex flex-column min-vh-100">
+
   <!-- Navbar -->
   <!-- The navbar expands and shrinks according to screen resizing.
           It is also of a dark theme, and stick to the top of the user's screen
@@ -44,7 +48,7 @@
       
         'navbar-expand-lg' just means the navbar will expand at the given break point (large >=992px)
         'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
-        
+
   <header>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container">
@@ -62,21 +66,30 @@
           <!-- A type of form, the search bar.
               The 'btn' indicate button-like styling and the outline will be of the 'warning' color (our site's accent)-->
           <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i class="bi bi-search"></i></button>
+          <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i
+              class="bi bi-search"></i></button>
         </form>
 
         <!-- These buttons take you to various core features of the website
-                These buttons get compressed into a hamburger on smaller screens-->
+                These buttons get compressed into a hamburger on smaller screens
+              The actual burger icon is from font-icon as indicated by 'fas' and 'fa-bars'-->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
           <span class="navbar-toggler-icon fas fa-bars"></span>
         </button>
 
         <!-- Each button has a link for its respective page.-->
-        <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
+        <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar
+              This is the navbar's main buttons. 'nav-item' indicates its an option in the navbar (that gets hamburgered)
+              'ms-auto' automatically sets margins, and 'align-self-end' means the thing it self is getting pushed to the right
+            -->
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto align-self-end">
             <li class="nav-item px-3">
               <a href="./index.html" class="nav-link text-white">Home</a>
+            </li>
+            <!-- Sample Results page will be removed when we create backend. -->
+            <li class="nav-item px-3">
+              <a href="./results.html" class="nav-link text-white">Sample Results</a>
             </li>
             <li class="nav-item px-3">
               <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
@@ -96,7 +109,9 @@
     </nav>
   </header>
 
-  <!-- Search bar for smaller screens, for when the full one disappears -->
+  <!-- Search bar for smaller screens, for when the full one disappears 
+        d-xl-none means the navbar will show when it is smaller than xl size, but not larger
+        we want this because the main navbar search will be shown at xl size-->
   <div>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
       <div class="container d-flex justify-content-center align-items-center">
@@ -108,37 +123,32 @@
     </nav>
   </div>
 
-  <!-- The Body of the Page-->
-  <div class="main-page">
-    <!-- First top part of Search Page to center the title and search bar. -->
-    <div class="d-flex flex-column h-100 search-top-padding align-items-center">
-      <div class="title-push-center">
-        <h1 class="centered-title align-items-center">UReview</h1>
-        <small class="text-muted align-self-center">Things reviewed by U</small>
-      </div>
+  <!-- h-100 means the div will be fully expanded 
+        'search-top-padding' is our CSS which puts the title and search bar near the middle (40vh)-->
+  <div class="d-flex flex-column h-100 search-top-padding align-items-center">
+    <div class="title-push-center">
+      <!-- Push content to center of div -->
+      <h1 class="centered-title align-items-center">UReview</h1>
+      <small class="text-muted align-self-center">Things reviewed by U</small>
     </div>
-
-    <!-- The Search Bar Itself. It is centered and so are the contents in this div-->
-    <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
-    <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
-      <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
-      </div>
-    </div>
-
-    <!-- This pushes the footer all the way down as its commanded to grow-->
-    <div class="d-flex flex-column h-100 align-items-center text-center">
-    </div>
-
-    <!-- The footer is stuck to the bottom of the page. -->
-    <footer class="page-footer bg-dark text-warning mt-auto">
-      <div class="container">
-        <div class="footer-copyright text-center">
-          Copyright &copy; 2021 UReview
-        </div>
-      </div>
-    </footer>
   </div>
+
+  <!-- The Main Search Bar. It is centered and so are the contents in this div-->
+  <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
+  <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
+    <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
+      <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
+    </div>
+  </div>
+
+  <!-- The footer is stuck to the bottom of the page. -->
+  <footer class="page-footer bg-dark text-warning mt-auto">
+    <div class="container">
+      <div class="footer-copyright text-center">
+        Copyright &copy; 2021 UReview
+      </div>
+    </div>
+  </footer>
 </body>
 
 
