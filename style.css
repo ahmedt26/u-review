@@ -5,97 +5,113 @@
  * October 4th, 2021
  */
 
-*{
-    font-family: 'Montserrat', sans-serif;
-}
-
-.mainBC {
-    background-color: #222831!important;
-}
-
-.mainTC {
-    color: #222831!important;
-}
-
-.secondaryBC {
-    background-color: #FFD369!important;
-}
-
-.secondaryTC {
-    color: #FFD369!important;
-    
-}
-
-.navPadding {
-    padding: 0 50px 0 50px!important;
-}
-
-.nav123 {
-    padding: 0 0 0 50px!important;
+* {
+  font-family: "Montserrat", sans-serif;
 }
 
 /*!
 The main page expands to the full browser window height
 */
 .main-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /*! This padding is so that the 'main content'
 of the page gets pushed down to the middle
 of the screen */
 .search-top-padding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 40vh;
-    max-height: 50vh;
-    flex-shrink: 0;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 40vh;
+  max-height: 50vh;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 /*! This has a similar function to the above,
 just adjusting the vh so that it is more near
 the middle of the webpage.  */
 .sign-up-padding {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 33vh;
-    max-height: 50vh;
-    flex-shrink: 0;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 33vh;
+  max-height: 50vh;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 /*! This padding should expand all the way down
 to push the footer to the bottom of the page.*/
 .search-bottom-padding {
-    flex-grow: 1;
-    flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 /*! Pushing the title to the center of hte page*/
 .title-push-center {
-    max-height: 184px;
-    position: relative;
-    height: 100%;
-    margin-top: auto;
+  max-height: 184px;
+  position: relative;
+  height: 100%;
+  margin-top: auto;
 }
 .centered-title {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  width: auto;
 }
 
 .no-shrink {
-    flex-shrink: 0;
-    box-sizing: border-box;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .card-padding {
-    height: 40vh;
+  height: 40vh;
+}
+
+.mainStars > img {
+  width: 32px;
+  height: auto;
+}
+
+.resultStars > img {
+  width: 16px;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .searchWidth {
+    width: 50%;
+  }
+
+  .mainStars > img {
+    width: 16px;
+    height: auto;
+  }
+
+  .commentStars > img {
+    width: 8px;
+    height: auto;
+  }
+
+  .titleFont {
+    font-size: 16px;
+  }
+
+  .textFont {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .stars > img {
+    width: 8px;
+    height: auto;
+  }
 }
