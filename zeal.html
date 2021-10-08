@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata of Website -->
+    <title>UReview</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UReview - Things Reviewed by U!">
+    <meta name="author" content="Tahseen Ahmed and Abdullah Nafees">
+
+    <!-- Links to External CSS, Logo, Icons, Fonts etc -->
+    <link rel="icon" href="./assets/images/logo.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!--
+  'd-flex' makes it a flexbox layou
+  'flex-column' makes it a column
+  'min-vh-100' makes the minimum height of the body 100vh
+
+  the main purpose of this is to properly allow the footer to sit at the bottom of the page
+-->
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="./index.html" class="navbar-brand">
+          <!-- The Logo itself is a button to the home page.-->
+          <img src="./assets/images/logo.svg" alt="UReview Logo">
+        </a>
+
+        <!-- This search form is for fuller screens, and disappears when the width gets too small-->
+        <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
+        <form class="form-inline d-xl-flex d-none">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i class="bi bi-search"></i></button>
+        </form>
+
+        <!-- These buttons take you to various core features of the website
+                These buttons get compressed into a hamburger on smaller screens-->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon fas fa-bars"></span>
+        </button>
+
+        <!-- Each button has a link for its respective page.-->
+        <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-self-end">
+            <li class="nav-item px-3">
+              <a href="./index.html" class="nav-link text-white">Home</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./login.html" class="nav-link text-white">Log In</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./signup.html" class="btn btn-warning">Sign Up</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Search bar for smaller screens, for when the full one disappears -->
+  <div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
+      <div class="container d-flex justify-content-center align-items-center">
+        <form class="form-inline d-flex">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- Main Images -->
+  <!--
+    'd-flex' makes it a flexbox layout
+    'justify-content-center' makes the image centered horizontally
+    'overflow: auto;' makes it so that when the images go off screen, a scrollbar is added
+
+    then hardcoded images are linked
+    'img-fluid' makes it so that the height is adjusted relative to the width, and the ratio is kept the same as original
+    'width: 300px;' makes the width of the images 300px
+  -->
+  <div class="d-flex justify-content-center" style="overflow: auto;">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+  </div>
+
+  <!-- Main Content -->
+  <!--
+    'container' creates a container, and the content is put inside the container
+    'p-5' creates padding around the whole container
+    'pb-0' makes the padding at the bottom of the container 0, so now all sides have padding except the bottom
+
+    'd-flex' makes it a flexbox layout
+    'justify-content-between' makes it so there is an equal amount of space between each element
+
+    'titleFont' is custom css that changes the font-size based on the width of the screen
+    'fw-bold' makes the content bold
+
+    'mainStars' is custom css that changes the size of the stars based on the width of the screen
+
+    'textFont' is custom css that changes the size of the font based on the width of the screen
+    'fw-bold' in the span makes it so just the content wrapped inside of it becomes bold
+  -->
+  <div class="container p-5 pb-0">
+    <div class="d-flex justify-content-between">
+
+      <h1 class="titleFont fw-bold">Zeal Burgers</h1>
+
+      <div class="mainStars">
+        <img src="./assets/images/Star1.svg" alt="5 Star">
+        <img src="./assets/images/Star1.svg" alt="5 Star">
+        <img src="./assets/images/Star1.svg" alt="5 Star">
+        <img src="./assets/images/Star1.svg" alt="5 Star">
+        <img src="./assets/images/Star1.svg" alt="5 Star">
+      </div>
+
+    </div>
+
+    <h4 class="textFont"><span class="fw-bold">Phone Number:</span> (647) 352-3933</h4>
+    <h4 class="textFont"><span class="fw-bold">Latitude:</span> 43.700504427194</h4>              
+    <h4 class="textFont"><span class="fw-bold">Longitude:</span> -79.51754724407695</h4>
+  </div>
+
+  <!-- Main Comments-->
+  <!--
+    'container' creates a container, and the content is put inside the container
+    'px-5' creates padding on the left and right sides of the container
+
+    'card' is a bootstrap class which creates a card
+    'bg-dark' makes the background of the card, black
+    'text-white' makes the text inside the card, white
+    'my-3' creates a margin on the top and bottom of the container
+
+    'row' uses grid layout, which creates a single row
+
+    'col-12' makes it so the content of the card takes up the whole card
+
+    'card-body' is a bootstrap class where the main content of the card is contained
+
+    'd-flex' makes it a flexbox layout
+    'justify-content-between' makes it so there is an equal amount of space between each element
+
+    'card-title' is a bootstrap class that is used for card titles
+    'titleFont' changes the font-size based on the width of the screen
+
+    'commentStars' is custom css changes the size of the stars in comments based on the width of the screen
+
+    'card-text' is a bootstrap class used for the main text in cards
+    'textFont' is custom css that changes the size of the font based on the width of the screen
+  -->
+  <div class="container px-5">
+    <div class="card bg-dark text-white my-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+
+              <h5 class="titleFont">Sidney S.</h5>
+
+              <div class="commentStars">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+              </div>
+            </div>
+
+            <p class="card-text textFont">This spot is the best! Great food and staff! Shout out to Kareem...I'll definitely visit this place again when I'm in town.</p>    
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--
+    Same logic as above
+  -->
+    <div class="card bg-dark text-white my-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title titleFont">Chris W.</h5>
+
+              <div class = "align-middle commentStars">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+              </div>
+
+            </div>
+
+            <p class="card-text textFont">Reason for Visit: Was here in area for a haircut so decided to drop by this famous burger joint. <br>
+            Menu: Get their mushroom melt! It is ridiculously good. Only thing to comment on is it is a bit pricy for a combo but it is worth it. It is very high quality tasty burgers. The owner/chef is very nice and friendly and you can tell he enjoys his work and has lots of pride. <br>
+            Service: Great team. Small but excellent service. Nothing to complain about. <br>
+            Overall:  Support local! Great burgers. Great service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--
+    Same logic as above
+  -->
+    <div class="card bg-dark text-white my-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+
+              <h5 class="card-title titleFont">Tanya S.</h5>
+
+              <div class = "align-middle commentStars" >
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+                <img src="./assets/images/Star1.svg" alt="5 Star">
+              </div>
+
+            </div>
+
+            <p class="card-text textFont">Best burger in Toronto! A bit pricy but so worth it. Canadian AAA Grade beef, juicy and flavourful. Toppings and sauces are so good. It always hits the spot when I'm craving a good burger. Their regular fries, sweet potato fries and poutines are amazing too. Never had a bad experience there. Friendly customer service. Clean establishment. I've even ordered from Uber eats with them multiple times and the food is still good when it arrives. My favourite is the Royal Z burger (double of course ;) ). Give it a try. You won't regret it.</p>                                
+                    
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <!--
+    Creating a footer using footer tag
+
+    'bg-dark' makes the background of the footer dark
+    'text-warning' makes the text a yellow color using bootstrap
+    'mt-auto' makes the top margin of the footer such that the footer always sits at the bottom of the page
+
+    'container' creates a container, and the content is put inside the container
+
+    'text-center' centers the footer content, in this case the text
+  -->
+  <footer class="bg-dark text-warning mt-auto">
+    <div class="container">
+      <div class="text-center">
+         Copyright &copy; 2021 UReview
+      </div>   
+    </div>
+  </footer>
+
+  <!--
+    Script that allows hamburger navbar menu to work properly
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+</html>
