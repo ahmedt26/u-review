@@ -26,7 +26,7 @@
 </head>
 
 <!--
-  'd-flex' makes it a flexbox layou
+  'd-flex' makes it a flexbox layout
   'flex-column' makes it a column
   'min-vh-100' makes the minimum height of the body 100vh
 
@@ -60,6 +60,9 @@
           <ul class="navbar-nav ms-auto align-self-end">
             <li class="nav-item px-3">
               <a href="./index.html" class="nav-link text-white">Home</a>
+            </li>
+            <li class="nav-item px-3">
+              <a href="./results.html" class="nav-link text-white">Sample Results</a>
             </li>
             <li class="nav-item px-3">
               <a href="./addlocation.html" class="nav-link text-white">Add a Location</a>
@@ -102,15 +105,32 @@
     'img-fluid' makes it so that the height is adjusted relative to the width, and the ratio is kept the same as original
     'width: 300px;' makes the width of the images 300px
   -->
-  <div class="d-flex justify-content-center" style="overflow: auto;">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
-    <img src="./assets/images/burger.jpg" class="img-fluid" style="width: 300px;" alt="Burger from Zeal Burgers">
+  <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+  </div>
+
+  <!-- Main Map -->
+  <!--
+    container' creates a container, and the content is put inside the container
+
+    'd-flex' makes it a flexbox layout
+    'justify-content-center' makes the image centered horizontally
+    'mapHeight' is custom css that changes the hieght of the map relative to the width of the screen
+
+    then hardcoded map image is linked, for this part we just used a map of Hamilton, same as we did in the results page.
+    it will be changed to be accurate in the next part of the project
+  -->
+  <div class="container">
+    <div class="d-flex justify-content-center mapHeight">
+      <img src="./assets/images/map.png" alt="Map of Hamilton">
+    </div>
   </div>
 
   <!-- Main Content -->
@@ -130,7 +150,7 @@
     'textFont' is custom css that changes the size of the font based on the width of the screen
     'fw-bold' in the span makes it so just the content wrapped inside of it becomes bold
   -->
-  <div class="container p-5 pb-0">
+  <div class="container p-5 pt-3 pb-0 justify-content-center">
     <div class="d-flex justify-content-between">
 
       <h1 class="titleFont fw-bold">Zeal Burgers</h1>

@@ -85,6 +85,15 @@ to push the footer to the bottom of the page.*/
   height: auto;
 }
 
+.imageWidth > img {
+  width: 300px;
+}
+
+.mapHeight > img {
+  height: 35vh;
+  width: 100%;
+}
+
 @media (max-width: 767px) {
   .searchWidth {
     width: 50%;
@@ -106,6 +115,15 @@ to push the footer to the bottom of the page.*/
 
   .textFont {
     font-size: 12px;
+  }
+
+  .imageWidth > img {
+    width: 150px;
+  }
+
+  .mapHeight > img {
+    height: 25vh;
+    width: 100%;
   }
 }
 
