@@ -9,7 +9,6 @@ We have excess images in some spots and the ratios aren't the same as the origin
 which causes Lighthouse to flag them as issues.
 They'll be fixed once we continue developing the site (proper backend/dynamic system.)
 
-
 ### Resources Used
 Bootstrap 5
 https://getbootstrap.com/docs/5.1/getting-started/introduction/
