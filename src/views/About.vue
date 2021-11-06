@@ -1,5 +1,15 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about">]
+    <TheHeader />
+    <h1> About </h1>
+    <h5> UReview is a CS-4WW3 duo student project to demonstrate knowledge of full-stack web development.</h5>
+    <TheFooter />
   </div>
 </template>
+
+
+<script>
+export default {
+  name: "About",
+}
+</script>
