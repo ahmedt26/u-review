@@ -1,16 +1,24 @@
-# UReview
-### Created Friday, October 1st, 2021
-### Abdullah Nafees and Tahseen Ahmed
+# ureview
 
-UReview is a duo project for CS 4WW3, a website used to review things.
+## Project setup
+```
+npm install
+```
 
-### A1 Notes
-We have excess images in some spots and the ratios aren't the same as the original,
-which causes Lighthouse to flag them as issues.
-They'll be fixed once we continue developing the site (proper backend/dynamic system.)
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-### Resources Used
-Bootstrap 5
-https://getbootstrap.com/docs/5.1/getting-started/introduction/
+### Compiles and minifies for production
+```
+npm run build
+```
 
-We used  the Navbar and Card examples as of now.
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
