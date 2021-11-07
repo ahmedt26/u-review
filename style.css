@@ -89,7 +89,7 @@ to push the footer to the bottom of the page.*/
   width: 300px;
 }
 
-.mapHeight > img {
+.mapHeight {
   height: 35vh;
   width: 100%;
 }
@@ -121,7 +121,7 @@ to push the footer to the bottom of the page.*/
     width: 150px;
   }
 
-  .mapHeight > img {
+  .mapHeight {
     height: 25vh;
     width: 100%;
   }

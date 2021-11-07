@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
 </head>
 
 <!--
@@ -120,6 +121,8 @@
   <!--
     container' creates a container, and the content is put inside the container
 
+    'individualMap' id is used to place the map there
+
     'd-flex' makes it a flexbox layout
     'justify-content-center' makes the image centered horizontally
     'mapHeight' is custom css that changes the hieght of the map relative to the width of the screen
@@ -128,9 +131,7 @@
     it will be changed to be accurate in the next part of the project
   -->
   <div class="container">
-    <div class="d-flex justify-content-center mapHeight">
-      <img src="./assets/images/map.png" alt="Map of Hamilton">
-    </div>
+    <div id="individualMap" class="d-flex justify-content-center mapHeight"></div>
   </div>
 
   <!-- Main Content -->
@@ -302,9 +303,12 @@
   </footer>
 
   <!--
-    Script that allows hamburger navbar menu to work properly
+    Script that allows hamburger navbar menu to work properly and the google map
   -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initIndividualMap&libraries=&v=weekly"
+  async>
+  </script>
 </body>
 </html>

@@ -23,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
 </head>
 
 <!--
@@ -102,7 +103,7 @@
 
     'col-md-4' makes it so that when the md breakpoint (768px) is hit, the left column takes up 4 column slots out of 12
     'col-12' makes it so that whenever the screen is smaller than 768px, the left column takes up 12 column slots, negating the other column, making it essentially only 1 column
-    'height:92.5vh' makes the height of the left container 92.5vh, this is done so 'overflow: auto;' works properly (vh-92.5 was not working properly, so I had to do inline)
+    'height:89.65vh' makes the height of the left container 89.65vh, this is done so 'overflow: auto;' works properly (vh-92.5 was not working properly, so I had to do inline)
     'overflow: auto;' makes it so that when the images go off screen, a scrollbar is added
 
     '<a>' tag is used here to make the card a link, so it takes the user to an individual site
@@ -134,13 +135,14 @@
 
     The above card process is repeated a number of times
 
-    'col-md-8' makes the image take up 8 column slots out of 12, when md breakpoint is hit
+    'map' id is used to place the map there
+    'col-md-8' makes the map take up 8 column slots out of 12, when md breakpoint is hit
     'd-md-flex' makes it a flexbox layout when md breakpoint is hit
     'd-none' makes it so that the image does not appear when the width is less than the md breakpoint, 768px
-    'height:92.5vh' makes the height of the right container 92.5vh
+    'height:89.65vh' makes the height of the right container 89.65vh
   -->
   <div class="row row-cols-2 g-0">
-    <div class="col-md-4 col-12" style="height:92.5vh; overflow: auto;">
+    <div class="col-md-4 col-12" style="height:89.65vh; overflow: auto;">
       <a href="individual_sample.html" class="text-decoration-none"> 
         <div class="card bg-dark text-white rounded-0">
           <div class="row g-0">
@@ -353,7 +355,8 @@
 
     </div>
 
-    <img class="col-md-8 d-md-flex d-none" style="height: 92.5vh;" src="./assets/images/map.png" alt="Map of Hamilton">
+    <div id="map" class="col-md-8 d-md-flex d-none" style="height: auto;"></div>
+    <!--<img id= map class="col-md-8 d-md-flex d-none" style="height: 92.5vh;" src="./assets/images/map.png" alt="Map of Hamilton">-->
 
   </div>
 
@@ -381,6 +384,10 @@
     Script that allows hamburger navbar menu to work properly
   -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initMap&libraries=&v=weekly"
+  async>
+  </script>
 
 </body>
 </html>
