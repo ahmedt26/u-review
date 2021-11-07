@@ -20,6 +20,6 @@ We used  the Navbar and Card examples as of now.
 ### A2 Notes
 
 ### Resources Used
-Add a map to our website: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript
-Add a info window when a marker is clicked: https://developers.google.com/maps/documentation/javascript/infowindows#maps_infowindow_simple-javascript
-Use Geolocation API to get user location: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API/Using_the_Geolocation_API
+Add a map to our website: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript \
+Add a info window when a marker is clicked: https://developers.google.com/maps/documentation/javascript/infowindows#maps_infowindow_simple-javascript \
+Use Geolocation API to get user location: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API/Using_the_Geolocation_API \
