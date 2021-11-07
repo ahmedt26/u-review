@@ -34,6 +34,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+  <script src="index.js"></script>
 </head>
 
 <!-- The entire webpage must fill the entire viewport,
@@ -137,10 +138,13 @@
 
   <!-- The Main Search Bar. It is centered and so are the contents in this div-->
   <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
+  <!-- A simple button that retrieves the users location when clicked and displays it in the search bar-->
   <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
     <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
-      <input type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
+      <input id="search" type="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
     </div>
+
+    <button type="button" class="btn btn-warning mt-2" onclick="getUserLocation()">Get My Location</button>
   </div>
 
   <!-- Footer -->

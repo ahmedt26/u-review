@@ -67,3 +67,22 @@ function initIndividualMap() {
       map: individualMap,
     });
   }
+
+function getUserLocation() {
+    // Get element with id 'search' and store it in result
+    let result = document.getElementById("search")
+
+    // Check if geolocation is supported by the browser
+    // If it is supported, get the users location
+    // Update the placeholder to display the users location
+    // If not supported, update placeholder to display that it is not supported
+    if('geolocation' in navigator){
+        // If it is supported, get the users location
+        //
+        navigator.geolocation.getCurrentPosition((position) => {
+            result.placeholder = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+          });
+    } else {
+        result.placeholder = "Geolocation API not supported"
+    }
+}
