@@ -4,6 +4,7 @@
 
 UReview is a duo project for CS 4WW3, a website used to review things.
 
+## A1
 ### A1 Notes
 We have excess images in some spots and the ratios aren't the same as the original,
 which causes Lighthouse to flag them as issues.
@@ -15,6 +16,7 @@ https://getbootstrap.com/docs/5.1/getting-started/introduction/
 
 We used  the Navbar and Card examples as of now.
 
+## A2
 ### A2 Notes
 
 ### Resources Used
