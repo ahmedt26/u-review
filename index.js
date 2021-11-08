@@ -68,19 +68,21 @@ function initIndividualMap() {
     });
   }
 
-function getUserLocation() {
-    // Get element with id 'search' and store it in result
-    let result = document.getElementById("search")
+  function getUserLocation() {
+    // Get element with id 'latitude' and 'longitude' and store it in result
+    let lat = document.getElementById("latitude")
+    let long = document.getElementById("longitude")
 
     // Check if geolocation is supported by the browser
     // If it is supported, get the users location
-    // Update the placeholder to display the users location
+    // Update the values of latitude and longitude to display the users location
     // If not supported, update placeholder to display that it is not supported
     if('geolocation' in navigator){
         // If it is supported, get the users location
         //
         navigator.geolocation.getCurrentPosition((position) => {
-            result.placeholder = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+            lat.value = position.coords.latitude;
+            long.value = position.coords.longitude;
           });
     } else {
         result.placeholder = "Geolocation API not supported"

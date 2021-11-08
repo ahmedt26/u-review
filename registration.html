@@ -162,17 +162,10 @@
               placeholder="Confirm Password">
           </div>
           <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
-          <div class="mt-3 d-grid px-3 text-white">
+          <div class="my-3 d-grid px-3 text-white">
             <input type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Sign Up Button"
               value="Sign Up">
             </input>
-          </div>
-          <div class="px-3">
-            <div class="mt-2 form-check d-flex flex-row">
-              <input class="form-check-input" name="notBotCheck" type="checkbox" value="" id="signup-bot-check"
-                aria-label="Checkbox to check if you are human.">
-              <label class="form-check-label ms-2 py-2 text-white"> I'm not a Bot. </label>
-            </div>
           </div>
         </form>
       </div>
@@ -246,11 +239,6 @@
       document.registrationForm.passwordConfirm.style.borderWidth = "3px";
       document.registrationForm.passwordConfirm.placeholder = "Passwords do not match!";
       document.registrationForm.passwordConfirm.focus();
-      isInvalid = true;
-    }
-    if (!document.registrationForm.notBotCheck.checked) {
-      alert("Prove that you are not a robot!");
-      document.registrationForm.notBotCheck.focus();
       isInvalid = true;
     }
     if (isInvalid) {
