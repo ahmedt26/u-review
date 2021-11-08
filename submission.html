@@ -237,6 +237,7 @@
     }
     if (document.submissionForm.locationImage.files.length == 0) {
       document.submissionForm.locationImage.style.borderColor = "#dc3545";
+      document.submissionForm.locationImage.style.background = "#dc3545";
       document.submissionForm.locationImage.style.borderWidth = "3px";
       document.submissionForm.locationImage.placeholder = "Upload an Image!";
       document.submissionForm.locationImage.focus();
@@ -248,7 +249,7 @@
       isInvalid = true;
     }
     if (isInvalid){
-      isInvalid = true;
+      return false;
     }
     return (true);
   }
