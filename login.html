@@ -199,14 +199,14 @@
   function validateLogin() {
 
     if (document.loginForm.username.value == "") {
-      document.loginForm.username.style.border = "#dc3545";
+      document.loginForm.username.style.background = "#dc3545";
       document.loginForm.username.placeholder = "Please provide your username!";
       // alert("Please provide your Username!");
       document.loginForm.username.focus();
       return false;
     }
     if (document.loginForm.password.value == "") {
-      document.loginForm.password.style.border = "#dc3545";
+      document.loginForm.password.style.background = "#dc3545";
       document.loginForm.password.placeholder = "Please provide your Password!";
       // alert("Please provide your Password!");
       document.loginForm.password.focus();
@@ -217,9 +217,9 @@
       document.loginForm.loginCheck.focus();
       return false;
     }
-    document.loginForm.username.style.border = "#black";
+    document.loginForm.username.style.background = "#black";
     document.loginForm.username.placeholder = "Enter Username...";
-    document.loginForm.password.style.border = "black";
+    document.loginForm.password.style.background = "black";
     document.loginForm.password.placeholder = "Enter Password...";
     return (true);
   }

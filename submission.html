@@ -163,7 +163,7 @@
           <!-- When all inputs completed, the user can add the location-->
           <div class="mt-3 d-grid px-3 text-white">
             <input type="submit" name="Add Location" class="btn btn-warning btn-block btn-signup text-uppercase"
-              aria-label="Button for Add Location"></input>
+              aria-label="Button for Add Location" value="Add Location"></input>
           </div>
           <div class="px-3">
             <div class="mt-2 form-check d-flex flex-row">
@@ -205,33 +205,33 @@
 <script type="text/javascript">
   function validateSubmission() {
     if (document.submissionForm.locationName.value == "") {
-      document.submissionForm.locationName.style.border = "#dc3545";
+      document.submissionForm.locationName.style.background = "#dc3545";
       document.submissionForm.locationName.placeholder = "Provide Location Name!";
       // alert("Please provide your Username!");
       document.submissionForm.locationName.focus();
       return false;
     }
     if (document.submissionForm.phoneNumber.value == "") {
-      document.submissionForm.phoneNumber.style.border = "#dc3545";
+      document.submissionForm.phoneNumber.style.background = "#dc3545";
       document.submissionForm.phoneNumber.placeholder = "Enter a valid Phone Number!";
       // alert("Please provide your number!");
       document.submissionForm.phoneNumber.focus();
       return false;
     }
     if (document.submissionForm.latitude.value == "") {
-      document.submissionForm.latitude.style.border = "#dc3545";
+      document.submissionForm.latitude.style.background = "#dc3545";
       document.submissionForm.latitude.placeholder = "Provide Longitude";
       document.submissionForm.latitude.focus();
       return false;
     }
     if (document.submissionForm.longitude.value == "") {
-      document.submissionForm.longitude.style.border = "#dc3545";
+      document.submissionForm.longitude.style.background = "#dc3545";
       document.submissionForm.longitude.placeholder = "Provide valid Longitude";
       document.submissionForm.longitude.focus();
       return false;
     }
     if (document.submissionForm.locationImage.files.length == 0) {
-      document.submissionForm.locationImage.style.border = "#dc3545";
+      document.submissionForm.locationImage.style.background = "#dc3545";
       document.submissionForm.locationImage.placeholder = "Upload an Image!";
       document.submissionForm.locationImage.focus();
       return false;

@@ -206,37 +206,37 @@
 <script type="text/javascript">
   function validateRegistration() {
     if (document.registrationForm.username.value == "") {
-      document.registrationForm.username.style.border = "#dc3545";
+      document.registrationForm.username.style.background = "#dc3545";
       document.registrationForm.username.placeholder = "Please provide your username!";
       document.registrationForm.username.focus();
       return false;
     }
     if (document.registrationForm.firstName.value == "") {
-      document.registrationForm.firstName.style.border = "#dc3545";
+      document.registrationForm.firstName.style.background = "#dc3545";
       document.registrationForm.firstName.placeholder = "Please provide your first name!";
       document.registrationForm.firstName.focus();
       return false;
     }
     if (document.registrationForm.lastName.value == "") {
-      document.registrationForm.lastName.style.border = "#dc3545";
+      document.registrationForm.lastName.style.background = "#dc3545";
       document.registrationForm.lastName.placeholder = "Please provide your last name!";
       document.registrationForm.lastName.focus();
       return false;
     }
     if (document.registrationForm.email.value == "") {
-      document.registrationForm.email.style.border = "#dc3545";
+      document.registrationForm.email.style.background = "#dc3545";
       document.registrationForm.email.placeholder = "Please provide your email!";
       document.registrationForm.email.focus();
       return false;
     }
     if (document.registrationForm.password.value == "") {
-      document.registrationForm.password.style.border = "#dc3545";
+      document.registrationForm.password.style.background = "#dc3545";
       document.registrationForm.password.placeholder = "Please provide your password!";
       document.registrationForm.password.focus();
       return false;
     }
     if (document.registrationForm.passwordConfirm.value != document.registrationForm.password.value) {
-      document.registrationForm.passwordConfirm.style.border = "#dc3545";
+      document.registrationForm.passwordConfirm.style.background = "#dc3545";
       document.registrationForm.passwordConfirm.placeholder = "Passwords do not match!";
       document.registrationForm.passwordConfirm.focus();
       return false;
@@ -246,9 +246,9 @@
       document.registrationForm.notBotCheck.focus();
       return false;
     }
-    document.registrationForm.username.style.border = "#black";
+    document.registrationForm.username.style.background = "#black";
     document.registrationForm.username.placeholder = "Enter Username...";
-    document.registrationForm.password.style.border = "black";
+    document.registrationForm.password.style.background = "black";
     document.registrationForm.password.placeholder = "Enter Password...";
     return (true);
   }
