@@ -22,6 +22,7 @@ The repo is at
 https://github.com/ahmedt26/ureview
 The site is hosted by ahmedt26 (Tahseen) on https://ahmedt26.github.io/ureview/
 
+Essentially every page was changed, and the javascript components are in the index.js file.
 
 ### Resources Used
 Add a map to our website: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript \
