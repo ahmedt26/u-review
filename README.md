@@ -18,6 +18,8 @@ We used  the Navbar and Card examples as of now.
 
 ## A2
 ### A2 Notes
+The site is hosted by ahmedt26 (Tahseen) on https://ahmedt26.github.io/ureview/
+
 
 ### Resources Used
 Add a map to our website: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript \
