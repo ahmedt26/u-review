@@ -27,3 +27,6 @@ The site is hosted by ahmedt26 (Tahseen) on https://ahmedt26.github.io/ureview/
 Add a map to our website: https://developers.google.com/maps/documentation/javascript/adding-a-google-map#maps_add_map-javascript \
 Add a info window when a marker is clicked: https://developers.google.com/maps/documentation/javascript/infowindows#maps_infowindow_simple-javascript \
 Use Geolocation API to get user location: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API/Using_the_Geolocation_API \
+
+JavaScript Form Validation Tutorial:
+https://www.w3schools.com/js/js_validation.asp#:~:text=JavaScript%20Forms%201%20JavaScript%20Form%20Validation.%20HTML%20form,...%207%20Constraint%20Validation%20CSS%20Pseudo%20Selectors.%20
