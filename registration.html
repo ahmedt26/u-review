@@ -33,6 +33,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </head>
 
 <!-- The entire webpage must fill the entire viewport,
@@ -195,55 +196,3 @@
 </body>
 
 </html>
-
-<script type="text/javascript">
-  function validateRegistration() {
-    var isInvalid = false;
-    if (document.registrationForm.username.value == "") {
-      document.registrationForm.username.style.borderColor = "#dc3545";
-      document.registrationForm.username.style.borderWidth = "3px";
-      document.registrationForm.username.placeholder = "Please provide your username!";
-      document.registrationForm.username.focus();
-      isInvalid = true;
-    }
-    if (document.registrationForm.firstName.value == "") {
-      document.registrationForm.firstName.style.borderColor = "#dc3545";
-      document.registrationForm.firstName.style.borderWidth = "3px";
-      document.registrationForm.firstName.placeholder = "Please provide your first name!";
-      document.registrationForm.firstName.focus();
-      isInvalid = true;
-    }
-    if (document.registrationForm.lastName.value == "") {
-      document.registrationForm.lastName.style.borderColor = "#dc3545";
-      document.registrationForm.lastName.style.borderWidth = "3px";
-      document.registrationForm.lastName.placeholder = "Please provide your last name!";
-      document.registrationForm.lastName.focus();
-      isInvalid = true;
-    }
-    if (document.registrationForm.email.value == "") {
-      document.registrationForm.email.style.borderColor = "#dc3545";
-      document.registrationForm.email.style.borderWidth = "3px";
-      document.registrationForm.email.placeholder = "Please provide your email!";
-      document.registrationForm.email.focus();
-      isInvalid = true;
-    }
-    if (document.registrationForm.password.value == "") {
-      document.registrationForm.password.style.borderColor = "#dc3545";
-      document.registrationForm.password.style.borderWidth = "3px";
-      document.registrationForm.password.placeholder = "Please provide your password!";
-      document.registrationForm.password.focus();
-      isInvalid = true;
-    }
-    if (document.registrationForm.passwordConfirm.value != document.registrationForm.password.value) {
-      document.registrationForm.passwordConfirm.style.borderColor = "#dc3545";
-      document.registrationForm.passwordConfirm.style.borderWidth = "3px";
-      document.registrationForm.passwordConfirm.placeholder = "Passwords do not match!";
-      document.registrationForm.passwordConfirm.focus();
-      isInvalid = true;
-    }
-    if (isInvalid) {
-      return false;
-    }
-    return (true);
-  }
-</script>

@@ -33,6 +33,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
+  <script src="index.js"></script>
 </head>
 
 <!-- The entire webpage must fill the entire viewport,
@@ -186,45 +187,3 @@
 </body>
 
 </html>
-
-<script type="text/javascript">
-  function validateAddLocation() {
-    var isInvalid = false;
-    if (document.addLocationForm.locationName.value == "") {
-      document.addLocationForm.locationName.style.borderColor = "#dc3545";
-      document.addLocationForm.locationName.style.borderWidth = "3px";
-      document.addLocationForm.locationName.placeholder = "Provide Location Name!";
-      // alert("Please provide your Username!");
-      document.addLocationForm.locationName.focus();
-      isInvalid = true;
-    }
-    if (document.addLocationForm.rating.value == "") {
-      document.addLocationForm.rating.style.borderColor = "#dc3545";
-      document.addLocationForm.rating.style.borderWidth = "3px";
-      document.addLocationForm.rating.placeholder = "Provide a Rating!!";
-      // alert("Please provide your number!");
-      document.addLocationForm.rating.focus();
-      isInvalid = true;
-    }
-    if (document.addLocationForm.reviewTitle.value == "") {
-      document.addLocationForm.reviewTitle.style.borderColor = "#dc3545";
-      document.addLocationForm.reviewTitle.style.borderWidth = "3px";
-      document.addLocationForm.reviewTitle.placeholder = "Provide a review Title!";
-      // alert("Please provide a Review Title!");
-      document.addLocationForm.reviewTitle.focus();
-      isInvalid = true;
-    }
-    if (document.addLocationForm.reviewDetails.value == "") {
-      document.addLocationForm.reviewDetails.style.borderColor = "#dc3545";
-      document.addLocationForm.reviewDetails.style.borderWidth = "3px";
-      document.addLocationForm.reviewDetails.placeholder = "Provide some details about the review!";
-      // alert("Please provide some Review Details!");
-      document.addLocationForm.reviewDetails.focus();
-      isInvalid = true;
-    }
-    if (isInvalid) {
-      return false;
-    }
-    return (true);
-  }
-</script>
