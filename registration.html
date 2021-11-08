@@ -205,51 +205,57 @@
 
 <script type="text/javascript">
   function validateRegistration() {
+    var isInvalid = false;
     if (document.registrationForm.username.value == "") {
-      document.registrationForm.username.style.background = "#dc3545";
+      document.registrationForm.username.style.borderColor = "#dc3545";
+      document.registrationForm.username.style.borderWidth = "3px";
       document.registrationForm.username.placeholder = "Please provide your username!";
       document.registrationForm.username.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.registrationForm.firstName.value == "") {
-      document.registrationForm.firstName.style.background = "#dc3545";
+      document.registrationForm.firstName.style.borderColor = "#dc3545";
+      document.registrationForm.firstName.style.borderWidth = "3px";
       document.registrationForm.firstName.placeholder = "Please provide your first name!";
       document.registrationForm.firstName.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.registrationForm.lastName.value == "") {
-      document.registrationForm.lastName.style.background = "#dc3545";
+      document.registrationForm.lastName.style.borderColor = "#dc3545";
+      document.registrationForm.lastName.style.borderWidth = "3px";
       document.registrationForm.lastName.placeholder = "Please provide your last name!";
       document.registrationForm.lastName.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.registrationForm.email.value == "") {
-      document.registrationForm.email.style.background = "#dc3545";
+      document.registrationForm.email.style.borderColor = "#dc3545";
+      document.registrationForm.email.style.borderWidth = "3px";
       document.registrationForm.email.placeholder = "Please provide your email!";
       document.registrationForm.email.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.registrationForm.password.value == "") {
-      document.registrationForm.password.style.background = "#dc3545";
+      document.registrationForm.password.style.borderColor = "#dc3545";
+      document.registrationForm.password.style.borderWidth = "3px";
       document.registrationForm.password.placeholder = "Please provide your password!";
       document.registrationForm.password.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.registrationForm.passwordConfirm.value != document.registrationForm.password.value) {
-      document.registrationForm.passwordConfirm.style.background = "#dc3545";
+      document.registrationForm.passwordConfirm.style.borderColor = "#dc3545";
+      document.registrationForm.passwordConfirm.style.borderWidth = "3px";
       document.registrationForm.passwordConfirm.placeholder = "Passwords do not match!";
       document.registrationForm.passwordConfirm.focus();
-      return false;
+      isInvalid = true;
     }
     if (!document.registrationForm.notBotCheck.checked) {
       alert("Prove that you are not a robot!");
       document.registrationForm.notBotCheck.focus();
+      isInvalid = true;
+    }
+    if (isInvalid) {
       return false;
     }
-    document.registrationForm.username.style.background = "#black";
-    document.registrationForm.username.placeholder = "Enter Username...";
-    document.registrationForm.password.style.background = "black";
-    document.registrationForm.password.placeholder = "Enter Password...";
     return (true);
   }
 </script>

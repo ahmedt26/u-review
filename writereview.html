@@ -198,37 +198,45 @@
 
 <script type="text/javascript">
   function validateAddLocation() {
+    var isInvalid = false;
     if (document.addLocationForm.locationName.value == "") {
-      document.addLocationForm.locationName.style.background = "#dc3545";
+      document.addLocationForm.locationName.style.borderColor = "#dc3545";
+      document.addLocationForm.locationName.style.borderWidth = "3px";
       document.addLocationForm.locationName.placeholder = "Provide Location Name!";
       // alert("Please provide your Username!");
       document.addLocationForm.locationName.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.addLocationForm.rating.value == "") {
-      document.addLocationForm.rating.style.background = "#dc3545";
+      document.addLocationForm.rating.style.borderColor = "#dc3545";
+      document.addLocationForm.rating.style.borderWidth = "3px";
       document.addLocationForm.rating.placeholder = "Provide a Rating!!";
       // alert("Please provide your number!");
       document.addLocationForm.rating.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.addLocationForm.reviewTitle.value == "") {
-      document.addLocationForm.reviewTitle.style.background = "#dc3545";
+      document.addLocationForm.reviewTitle.style.borderColor = "#dc3545";
+      document.addLocationForm.reviewTitle.style.borderWidth = "3px";
       document.addLocationForm.reviewTitle.placeholder = "Provide a review Title!";
       // alert("Please provide a Review Title!");
       document.addLocationForm.reviewTitle.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.addLocationForm.reviewDetails.value == "") {
-      document.addLocationForm.reviewDetails.style.background = "#dc3545";
+      document.addLocationForm.reviewDetails.style.borderColor = "#dc3545";
+      document.addLocationForm.reviewDetails.style.borderWidth = "3px";
       document.addLocationForm.reviewDetails.placeholder = "Provide some details about the review!";
       // alert("Please provide some Review Details!");
       document.addLocationForm.reviewDetails.focus();
-      return false;
+      isInvalid = true;
     }
     if (!document.addLocationForm.notBotCheck.checked) {
       alert("Prove that you are not a robot!");
       document.loginForm.notBotCheck.focus();
+      isInvalid = true;
+    }
+    if (isInvalid) {
       return false;
     }
     return (true);

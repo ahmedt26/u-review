@@ -198,28 +198,34 @@
 <script type="text/javascript">
   function validateLogin() {
 
+    var isInvalid = false;
     if (document.loginForm.username.value == "") {
-      document.loginForm.username.style.background = "#dc3545";
+      document.loginForm.username.style.borderColor = "#dc3545";
+      document.loginForm.username.style.borderWidth = "3px";
       document.loginForm.username.placeholder = "Please provide your username!";
       // alert("Please provide your Username!");
       document.loginForm.username.focus();
-      return false;
+      isInvalid = true;
     }
     if (document.loginForm.password.value == "") {
-      document.loginForm.password.style.background = "#dc3545";
+      document.loginForm.password.style.borderColor = "#dc3545";
+      document.loginForm.password.style.borderWidth = "3px";
       document.loginForm.password.placeholder = "Please provide your Password!";
       // alert("Please provide your Password!");
       document.loginForm.password.focus();
-      return false;
+      isInvalid = true;
     }
     if (!document.loginForm.loginCheck.checked) {
       alert("Prove that you are not a robot!");
       document.loginForm.loginCheck.focus();
+      isInvalid = true;
+    }
+    if (isInvalid){
       return false;
     }
-    document.loginForm.username.style.background = "#black";
+    document.loginForm.username.style.borderColor = "black";
     document.loginForm.username.placeholder = "Enter Username...";
-    document.loginForm.password.style.background = "black";
+    document.loginForm.password.style.borderColor = "black";
     document.loginForm.password.placeholder = "Enter Password...";
     return (true);
   }
