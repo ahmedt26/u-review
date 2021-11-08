@@ -18,6 +18,8 @@ We used  the Navbar and Card examples as of now.
 
 ## A2
 ### A2 Notes
+The repo is at 
+https://github.com/ahmedt26/ureview
 The site is hosted by ahmedt26 (Tahseen) on https://ahmedt26.github.io/ureview/
 
 
