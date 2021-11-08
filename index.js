@@ -76,7 +76,7 @@ function getUserLocation() {
   // Check if geolocation is supported by the browser
   // If it is supported, get the users location
   // Update the values of latitude and longitude to display the users location
-  // If not supported, update placeholder to display that it is not supported
+  // If not supported, change value of latitude and longitude to 0
   if ('geolocation' in navigator) {
     // If it is supported, get the users location
     //
@@ -85,7 +85,8 @@ function getUserLocation() {
       long.value = position.coords.longitude;
     });
   } else {
-    result.placeholder = "Geolocation API not supported"
+    lat.value = 0;
+    long.value = 0;
   }
 }
 
