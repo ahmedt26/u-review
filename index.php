@@ -49,6 +49,7 @@
         'navbar-expand-lg' just means the navbar will expand at the given break point (large >=992px)
         'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
 
+  <!-- the php include() function takes template HTML code from another .html file and puts it in the .php file. Allows for code reuse -->
   <?php include('header.html'); ?>
 
   <!-- h-100 means the div will be fully expanded 
