@@ -49,18 +49,30 @@
     <div class="d-flex justify-content-center">
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
         <!-- The Form -->
-        <form name="loginForm" onsubmit="return validateLogin()">
+        <form name="loginForm" class="needs-validation" onsubmit="return validateLogin()" novadliate>
           <h4 class="py-2 text-white">Log In to UReview</h4>
           <div> <span class="text-white">Don't have an account?</span>
             <a href="./registration.html" class="text-decoration-none text-warning">Sign Up</a>
           </div>
           <!-- Username Input -->
           <div class="mt-3 px-3 text-white">
-            <input id="login-username" name="username" class="form-control" placeholder="Username" aria-label="Input Username">
+            <input id="login-username" name="username" class="form-control" placeholder="Username" aria-label="Input Username" required >
+            <div class="valid-feedback">
+              Looks good
+            </div>
+            <div class="invalid-feedback">
+              Please provide a username!
+            </div>
           </div>
           <!-- Password Input -->
           <div class="mt-3 px-3 text-white">
-            <input id="login-password" name="password" class="form-control" type="password" placeholder="Password" aria-label="Input Password">
+            <input id="login-password" name="password" class="form-control" type="password" placeholder="Password" aria-label="Input Password" required >
+            <div class="valid-feedback">
+              Looks good
+            </div>
+            <div class="invalid-feedback">
+              Please provide a password!
+            </div>
           </div>
           <!--  Log in Button -->
           <div class="my-3 d-grid px-3 text-white">
