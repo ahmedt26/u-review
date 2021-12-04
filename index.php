@@ -8,7 +8,7 @@
 <html prefix="og: https://ogp.me/ns#" lang="en">
 
 <head>
-  <!-- Metadata of Website 
+  <!-- Metadata of Website
     'viewport' is what screen this page is being accessed by, the scale is set to default size.
     The 'rel=icon' gives us the Logo image for the browser tabs.
     The various meta data give tab information  e.g what shows up in the tab text.
@@ -44,15 +44,15 @@
           It is also of a dark theme, and stick to the top of the user's screen
 
         'navbar' denote this is Bootstrap's navbar system which allows creation of navbar headers
-        'container' is Bootstrap's simple layout element with default 15px padding 
-      
+        'container' is Bootstrap's simple layout element with default 15px padding
+
         'navbar-expand-lg' just means the navbar will expand at the given break point (large >=992px)
         'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
 
   <!-- the php include() function takes template HTML code from another .html file and puts it in the .php file. Allows for code reuse -->
   <?php include('header.html'); ?>
 
-  <!-- h-100 means the div will be fully expanded 
+  <!-- h-100 means the div will be fully expanded
         'search-top-padding' is our CSS which puts the title and search bar near the middle (40vh)-->
   <div class="d-flex flex-column h-100 search-top-padding align-items-center">
     <div class="title-push-center">

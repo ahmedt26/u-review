@@ -1,65 +1,63 @@
-<template>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container">
-                <a href="./index.html" class="navbar-brand">
-                    <!-- The Logo itself is a button to the home page.-->
-                    <img src="./assets/images/logo.svg" alt="UReview Logo">
-                </a>
+<header>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="./index.html" class="navbar-brand">
+                <!-- The Logo itself is a button to the home page.-->
+                <img src="./assets/images/logo.svg" alt="UReview Logo">
+            </a>
 
-                <!-- This search form is for fuller screens, and disappears when the width gets too small-->
-                <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
-                <form class="form-inline d-xl-flex d-none">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-warning" type="submit" aria-label="Navbar Search Button"><i
-                            class="bi bi-search"></i></button>
-                </form>
+            <!-- This search form is for fuller screens, and disappears when the width gets too small-->
+            <!-- The search is xl (larger size) and disappears when it cannot be its desired length-->
+            <form class="form-inline d-xl-flex d-none">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning" type="submit" aria-label="Navbar Search Button"><i
+                        class="bi bi-search"></i></button>
+            </form>
 
-                <!-- These buttons take you to various core features of the website
+            <!-- These buttons take you to various core features of the website
                     These buttons get compressed into a hamburger on smaller screens-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-                    aria-label="Hamburger for Navbar Menu">
-                    <span class="navbar-toggler-icon fas fa-bars"></span>
-                </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-label="Hamburger for Navbar Menu">
+                <span class="navbar-toggler-icon fas fa-bars"></span>
+            </button>
 
-                <!-- Each button has a link for its respective page.-->
-                <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
-                <div class="collapse navbar-collapse" id="navMenu">
-                    <ul class="navbar-nav ms-auto align-self-end">
-                        <li class="nav-item px-3">
-                            <a href="./index.html" class="nav-link text-white">Home</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a href="./results_sample.html" class="nav-link text-white">Sample Results</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a href="./submission.html" class="nav-link text-white">Add a Location</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a href="./login.html" class="nav-link text-white">Log In</a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a href="./registration.html" class="btn btn-warning">Sign Up</a>
-                        </li>
-                    </ul>
-                </div>
+            <!-- Each button has a link for its respective page.-->
+            <!-- m and p classes determine margin and padding, while navbar-nav class has CSS pertaining to navbar-->
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-self-end">
+                    <li class="nav-item px-3">
+                        <a href="./index.html" class="nav-link text-white">Home</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="./results_sample.html" class="nav-link text-white">Sample Results</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="./submission.html" class="nav-link text-white">Add a Location</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="./writereview.html" class="nav-link text-white">Write a Review</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="./login.html" class="nav-link text-white">Log In</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a href="./registration.html" class="btn btn-warning">Sign Up</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
-    <!-- Search bar for smaller screens, for when the full one disappears -->
-    <div>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
-            <div class="container d-flex justify-content-center align-items-center">
-                <form class="form-inline d-flex">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i
-                            class="bi bi-search"></i></button>
-                </form>
-            </div>
-        </nav>
-    </div>
-</template>
+<!-- Search bar for smaller screens, for when the full one disappears -->
+<div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
+        <div class="container d-flex justify-content-center align-items-center">
+            <form class="form-inline d-flex">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning" type="submit" aria-label="Search Button"><i
+                        class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </nav>
+</div>
