@@ -37,7 +37,7 @@
 -->
 
 <body class="d-flex flex-column min-vh-100">
-  <?php include('header_search.html'); ?>
+  <?php include('header.html'); ?>
 
   <!-- Main -->
   <!--
