@@ -4,7 +4,7 @@
   Monday, October 4th, 2021
 -->
 <?php
-include('connection.php');
+include('database.php');
 $conn = mysqli_connect($servername, $username, $password, $db);
 ?>
 
@@ -52,7 +52,7 @@ $conn = mysqli_connect($servername, $username, $password, $db);
     <h2> Welcome to UReview, <?php echo $_POST['username']; ?> ! </h2>
 
     <p>You have been registered as
-      <?php echo $_POST['firstName'] . ' ' . $_POST['lastName'] . ', email: ' . $_POST['userEmail']; ?>
+      <?php echo $_POST['firstName'] . ' ' . $_POST['lastName'] . ', email: ' . $_POST['email']; ?>
     </p>
 
     <?php

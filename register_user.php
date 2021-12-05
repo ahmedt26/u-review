@@ -1,7 +1,7 @@
 <?php
 
 //  A function which registers the user into the database.
-include('connection.php');
+include('database.php');
 $conn = mysqli_connect($servername, $username, $password, $db);
 $sql = "SELECT user_name FROM users";
 $result = $conn->query($sql);
