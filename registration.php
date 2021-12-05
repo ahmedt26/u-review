@@ -66,7 +66,7 @@ $conn = mysqli_connect($servername, $username, $password, $db);
     $lastName = $_POST['lastName'];
     $userPassword = $_POST['userPassword'];
 
-    $email = $_POST['userEmail'];
+    $email = $_POST['email'];
     // Query to INSERT into database.
 
     $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
