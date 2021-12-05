@@ -50,7 +50,7 @@
           <h4 class="py-2 text-white">Write a Review</h4>
           <div> <span class="text-white">Want to add a location instead?</span>
             <!-- Link for add-location page -->
-            <a href="./submission.html" class="text-decoration-none text-warning">Add a Location</a>
+            <a href="./submission.php" class="text-decoration-none text-warning">Add a Location</a>
           </div>
           <!-- Name of location is a text-->
           <div class="mt-3 px-3 text-white">

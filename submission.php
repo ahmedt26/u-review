@@ -51,7 +51,7 @@
           <h4 class="py-2 text-white">Add a Location</h4>
           <!-- Link for write review page if user wants to write a review for an existing location-->
           <div> <span class="text-white">Want to write a review instead?</span>
-            <a href="./writereview.html" class="text-decoration-none text-warning">Write a Review</a>
+            <a href="./writereview.php" class="text-decoration-none text-warning">Write a Review</a>
           </div>
           <!-- Series of input forms, these inputs will be checked for correct type of input.-->
           <div class="mt-3 px-3 text-white">
