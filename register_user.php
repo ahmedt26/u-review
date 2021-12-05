@@ -39,6 +39,10 @@ $dbconn = new Database();
 // Establish connection using server
 $dbconn->getConnection();
 
+if($dbconn['status'] == '0'): {
+    die("Connection failed while INSERTing Data: " . $dbconn['mesage']);
+}
+
 // POST the form inputs into variables to inserted
 $username = filter_input(INPUT_POST, 'username');
 $firstName = filter_input(INPUT_POST, 'firstName');
