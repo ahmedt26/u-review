@@ -5,10 +5,6 @@
 -->
 <?php
 include('database.php');
-$conn = mysqli_connect($servername, $username, $password, $db);
-if (mysqli_connect_errno()) {
-  echo "Connection to the database failed with the following error: " . mysqli_connect_error();
-}
 ?>
 
 <!DOCTYPE html>
@@ -47,88 +43,50 @@ if (mysqli_connect_errno()) {
 <body class="d-flex flex-column min-vh-100">
 
   <?php include('header.html'); ?>
-  <?php
-  // Check if form is submitted with filled values, then POST data.
-  if (isset($_POST['form_submitted'])) :
-    echo "<script type='text/JavaScript'> validateRegistration(); </script>";
-  ?>
-    <h2> Welcome to UReview, <?php echo $_POST['username']; ?> ! </h2>
 
-    <p>You have been registered as
-      <?php echo $_POST['firstName'] . ' ' . $_POST['lastName'] . ', email: ' . $_POST['email']; ?>
-    </p>
-
-    <?php
-    // POST the rest of the credentials
-    $_POST['userEmail'];
-    $_POST['userPassword'];
-
-    // Load data to be INSERTed into the MySQL Table.
-    $username = $_POST['username'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $userPassword = $_POST['userPassword'];
-
-    $email = $_POST['email'];
-    // Query to INSERT into database.
-
-    $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
-
-    if (mysqli_query($conn, $sql)) {
-      echo "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
-    } else {
-      echo "Registration Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-    mysqli_close($conn);
-    ?>
-    <p>Go <a href="/index.php">back</a> to the homepage</p>
-
-  <?php else : ?>
-    <!-- The Sign Up Page-->
-    <div class="mt-auto">
-      <div class="d-flex justify-content-center">
-        <!-- A self-sizing card with a dark background -->
-        <div class="pt-auto card px-3 text-center px-4 bg-dark">
-          <form name="registrationForm" onsubmit="return validateRegistration()" action="registration.php" method="POST">
-            <h4 class="py-2 text-white">Create a UReview Account</h4>
-            <!-- Link to log-in page if user has an account-->
-            <div> <span class="text-white">Already have an account?</span>
-              <a href="./login.php" class="text-decoration-none text-warning">Log In</a>
-            </div>
-            <!-- These inputs will be used to create new users in the database
+  <!-- The Sign Up Page-->
+  <div class="mt-auto">
+    <div class="d-flex justify-content-center">
+      <!-- A self-sizing card with a dark background -->
+      <div class="pt-auto card px-3 text-center px-4 bg-dark">
+        <form name="registrationForm" action="register_user.php" method="POST">
+          <h4 class="py-2 text-white">Create a UReview Account</h4>
+          <!-- Link to log-in page if user has an account-->
+          <div> <span class="text-white">Already have an account?</span>
+            <a href="./login.php" class="text-decoration-none text-warning">Log In</a>
+          </div>
+          <!-- These inputs will be used to create new users in the database
             The various form controls are inputs which indicate they can be typed in-->
-            <div class="mt-3 px-3 text-white">
-              <input id="signup-username" name="username" class="form-control" placeholder="Username">
-            </div>
-            <!-- First and Last Name -->
-            <div class="input-group px-3 mt-3 text-white justify-content-center">
-              <input id="signup-first-name" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name">
-              <input id="signup-last-name" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name">
-            </div>
-            <!-- E-Mail -->
-            <div class="mt-3 px-3 text-white">
-              <input id="userEmail" name="email" class="form-control" type="email" placeholder="E-mail">
-            </div>
-            <!-- Password -->
-            <div class="mt-3 px-3 text-white">
-              <input name="userPassword" id="signUpPass" class="form-control" type="password" placeholder="Password">
-            </div>
-            <!-- Confirm the Password -->
-            <div class="mt-3 px-3 text-white">
-              <input name="passwordConfirm" id="signup-pass-confirm" class="form-control" type="password" placeholder="Confirm Password">
-            </div>
-            <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
-            <div class="my-3 d-grid px-3 text-white">
-              <input type="hidden" name="form_submitted" value="1">
-              <input type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Sign Up Button" value="Sign Up">
-              </input>
-            </div>
-          </form>
-        </div>
+          <div class="mt-3 px-3 text-white">
+            <input id="username" name="username" class="form-control" placeholder="Username">
+          </div>
+          <!-- First and Last Name -->
+          <div class="input-group px-3 mt-3 text-white justify-content-center">
+            <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name">
+            <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name">
+          </div>
+          <!-- E-Mail -->
+          <div class="mt-3 px-3 text-white">
+            <input id="email" name="email" class="form-control" type="email" placeholder="E-mail">
+          </div>
+          <!-- Password -->
+          <div class="mt-3 px-3 text-white">
+            <input id="userPassword" name="userPassword" class="form-control" type="password" placeholder="Password">
+          </div>
+          <!-- Confirm the Password -->
+          <div class="mt-3 px-3 text-white">
+            <input id="passwordConfirm" name="passwordConfirm" class="form-control" type="password" placeholder="Confirm Password">
+          </div>
+          <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
+          <div class="my-3 d-grid px-3 text-white">
+            <input type="hidden" name="form_submitted" value="1">
+            <input type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Sign Up Button" value="Sign Up">
+            </input>
+          </div>
+        </form>
       </div>
     </div>
-
-  <?php endif; ?>
+  </div>
 
   <?php include('footer.html'); ?>
 
