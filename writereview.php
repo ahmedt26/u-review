@@ -44,7 +44,7 @@
   <div class="mt-auto">
     <div class="d-flex justify-content-center">
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
-        <form name="addLocationForm" action="upload_review.php">
+        <form name="addLocationForm" action="upload_review.php" method="POST">
           <h4 class="py-2 text-white">Write a Review</h4>
           <div> <span class="text-white">Want to add a location instead?</span>
             <!-- Link for add-location page -->
