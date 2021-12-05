@@ -4,7 +4,7 @@ class Database
 {
 
     // Database Credentials
-    private $host = "localhost";
+    private $host = "localhost:3306";
     private $db = "ureview";
     private $username = "root";
     private $password = "TestPa*ss21";

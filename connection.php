@@ -5,7 +5,7 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 class Connection {
     public function getConnection(){
-        $host = "localhost";
+        $host = "localhost:3306";
         $db = "ureview";
         $user = "root";
         $pass = "TestPa*ss21";
