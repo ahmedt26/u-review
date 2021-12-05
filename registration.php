@@ -3,7 +3,10 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
-<?php include('connection.php'); ?>
+<?php
+include('connection.php');
+$conn = mysqli_connect($servername, $username, $password, $db);
+?>
 
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
@@ -66,7 +69,7 @@
     $email = $_POST['userEmail'];
     // Query to INSERT into database.
 
-    $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$userPassword', '$email')";
+    $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
 
     if (mysqli_query($conn, $sql)) {
       echo "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
