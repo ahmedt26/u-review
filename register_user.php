@@ -35,12 +35,14 @@ include('header.html');
 ?>
 
 <?php
-$dbconn = new Database();
+$database = new Database();
 // Establish connection using server
 $dbconn->getConnection();
 
-if($dbconn['status'] == '0'): {
+if ($dbconn['status'] == '0') {
     die("Connection failed while INSERTing Data: " . $dbconn['mesage']);
+} else {
+    $conne = $dbconn['conection'];
 }
 
 // POST the form inputs into variables to inserted
