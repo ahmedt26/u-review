@@ -60,7 +60,7 @@
           </div>
           <!-- The Rating out of five-->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="rating" type="number" min="1" max="5" placeholder="Star Rating (out of five)" aria-label="Select a star rating">
+            <input class="form-control" name="rating" type="number" min="0" max="5" placeholder="Star Rating (out of five)" aria-label="Select a star rating">
           </div>
           <!-- The title for the review-->
           <div class="mt-3 px-3 text-white">
