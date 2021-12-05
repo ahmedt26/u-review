@@ -45,9 +45,6 @@
   // Check if form is submitted with filled values, then POST data.
   if (isset($_POST['form_submitted'])) :
   ?>
-    <script type="text/JavaScript">
-      validateRegistration();
-      <script>
     <h2> Welcome to UReview, <?php echo $_POST['username']; ?> ! </h2>
 
     <p>You have been registered as
