@@ -6,6 +6,9 @@
 <?php
 include('database.php');
 $conn = mysqli_connect($servername, $username, $password, $db);
+if (mysqli_connect_errno()) {
+  echo "Connection to the database failed with the following error: " . mysqli_connect_error();
+}
 ?>
 
 <!DOCTYPE html>
