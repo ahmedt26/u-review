@@ -40,9 +40,9 @@ $database = new Database();
 $dbconn->getConnection();
 
 if ($dbconn['status'] == '0') {
-    die("Connection failed while INSERTing Data: " . $dbconn['mesage']);
+    die("Connection failed while INSERTing Data: " . $dbconn['message']);
 } else {
-    $conne = $dbconn['conection'];
+    $connection = $dbconn['connection'];
 }
 
 // POST the form inputs into variables to inserted
@@ -54,11 +54,11 @@ $userPassword = filter_input(INPUT_POST, "userPassword");
 
 // Query to INSERT into database.
 $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
-if (mysqli_query($conn, $sql)) {
+if (mysqli_query($connection, $sql)) {
     echo "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
 } else {
-    echo "Registration Error: " . $sql . "<br>" . mysqli_error($conn);
+    echo "Registration Error: " . $sql . "<br>" . mysqli_error($connection);
 }
-mysqli_close($conn);
+mysqli_close($connection);
 
 include('footer.html');
