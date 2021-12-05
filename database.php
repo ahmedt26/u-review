@@ -4,7 +4,8 @@ class Database
 {
 
     // Database Credentials
-    private $host = "localhost:3306";
+    private $host = "localhost";
+    private $port = "3306";
     private $db = "ureview";
     private $username = "root";
     private $password = "TestPa*ss21";
@@ -12,7 +13,7 @@ class Database
     // Establish Database Connection
     public function getConnection()
     {
-        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db);
+        $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db, $this->port);
         if ($this->conn->connect_error) {
             $response['status'] = '0';
             $response['message'] = "ERROR: Connection Status 0";
