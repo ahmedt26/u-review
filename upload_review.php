@@ -45,18 +45,18 @@ if ($db['status'] == '0') {
     $connection = $db['connection'];
 }
 // POST the form inputs into variables to inserted
-$locationName = filter_input(INPUT_POST, 'locationName');
-$reviewer = filter_input(INPUT_POST, 'reviewer');
-$rating = filter_input(INPUT_POST, 'rating');
-$reviewTitle = filter_input(INPUT_POST, 'reviewTitle');
+$locationName  = filter_input(INPUT_POST, 'locationName');
+$reviewTitle   = filter_input(INPUT_POST, 'reviewTitle');
+$reviewer      = filter_input(INPUT_POST, 'reviewer');
+$rating        = filter_input(INPUT_POST, 'rating');
 $reviewDetails = filter_input(INPUT_POST, "reviewDetails");
 
 // Query to INSERT into database.
 $sql = "INSERT INTO reviews (location_name, review_title, reviewer, rating, review_details) VALUES ('$locationName', '$reviewTitle', '$reviewer', '$rating', '$reviewDetails')";
 if (mysqli_query($connection, $sql)) {
-    echo "You have successfully uploaded a review of " . $locationName . "! Rating: " . $rating . "<br>" . "Thank you for your review :)";
+    echo "You have successfully uploaded a review of " . $locationName . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
 } else {
-    echo "REview Error: " . $sql . "<br>" . mysqli_error($connection);
+    echo "Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
 

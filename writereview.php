@@ -52,23 +52,23 @@
           </div>
           <!-- Name of location is a text-->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="locationName" type="text" placeholder="Name" aria-label="Input name">
+            <input class="form-control" id="locationName" name="locationName" type="text" placeholder="Name" aria-label="Input name">
           </div>
           <!-- The Reviewer-->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="reviewer" type="text" placeholder="Reviewer Name" aria-label="Input Reviewer Name">
+            <input class="form-control" id="reviewer" name="reviewer" type="text" placeholder="Reviewer Name" aria-label="Input Reviewer Name">
           </div>
           <!-- The Rating out of five-->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="rating" type="number" min="0" max="5" placeholder="Star Rating (out of five)" aria-label="Select a star rating">
+            <input class="form-control" id="rating" name="rating" type="number" min="0" max="5" placeholder="Star Rating (out of five)" aria-label="Select a star rating">
           </div>
           <!-- The title for the review-->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="reviewTitle" type="text" placeholder="Review Title" aria-label="Title of Review">
+            <input class="form-control" id="reviewTitle" name="reviewTitle" type="text" placeholder="Review Title" aria-label="Title of Review">
           </div>
           <!-- The review details -->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="reviewDetails" type="text" placeholder="Review Details" aria-label="Details of Review">
+            <input class="form-control" id="reviewDetails" name="reviewDetails" type="text" placeholder="Review Details" aria-label="Details of Review">
           </div>
           <div class="my-3 d-grid px-3 text-white">
             <input name="uploadButton" type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Button to Upload Review" value="Write Review">
