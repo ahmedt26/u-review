@@ -37,13 +37,13 @@ include('header.html');
 <?php
 $db = new Connection();
 // Establish connection using server
-$conn->getConnection();
+$connection = $db->getConnection()['connection'];
 
-if ($conn['status'] == '0') {
-    die("Connection failed while INSERTing Data: " . $conn['message']);
-} else {
-    $connection = $conn['connection'];
-}
+// if ($conn['status'] == '0') {
+//     die("Connection failed while INSERTing Data: " . $conn['message']);
+// } else {
+//     $connection = $conn['connection'];
+// }
 
 // POST the form inputs into variables to inserted
 $username = filter_input(INPUT_POST, 'username');
