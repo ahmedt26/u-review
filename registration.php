@@ -43,7 +43,7 @@
   <?php include('header.html'); ?>
   <?php
   // Check if form is submitted with filled values, then POST data.
-  if (isset($_POST['form_submitted'])) :
+  if (isset($_POST['form_submitted']) && isset($_POST['username']) && isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['userEmail']) && isset($_POST['userPassword'])) :
   ?>
     <h2> Welcome to UReview, <?php echo $_POST['username']; ?> ! </h2>
 
