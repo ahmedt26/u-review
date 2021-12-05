@@ -28,10 +28,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
   <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-  integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   <script src="index.js"></script>
 </head>
 
@@ -46,7 +44,7 @@
   <div class="mt-auto">
     <div class="d-flex justify-content-center">
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
-        <form name="addLocationForm" onsubmit="return validateAddLocation()">
+        <form name="addLocationForm" action="upload_review.php">
           <h4 class="py-2 text-white">Write a Review</h4>
           <div> <span class="text-white">Want to add a location instead?</span>
             <!-- Link for add-location page -->
@@ -55,6 +53,10 @@
           <!-- Name of location is a text-->
           <div class="mt-3 px-3 text-white">
             <input class="form-control" name="locationName" type="text" placeholder="Name" aria-label="Input name">
+          </div>
+          <!-- The Reviewer-->
+          <div class="mt-3 px-3 text-white">
+            <input class="form-control" name="reviewer" type="text" placeholder="Reviewer Name" aria-label="Input Reviewer Name">
           </div>
           <!-- The Rating out of five-->
           <div class="mt-3 px-3 text-white">

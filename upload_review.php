@@ -9,8 +9,8 @@
       We load up custom fonts and icons we need using links and Bootstrap, as well as a script
       to create a working hamburger for responsiveness.
     -->
-    <title>UReview - Sign Up Confirmation </title>
-    <meta property="og:title" content="UReview - Sign Up Confirmation">
+    <title>UReview - Review Upload Confirmation </title>
+    <meta property="og:title" content="UReview - Review Upload Confirmation ">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="UReview - Things Reviewed by U!">
@@ -45,18 +45,18 @@ if ($db['status'] == '0') {
     $connection = $db['connection'];
 }
 // POST the form inputs into variables to inserted
-$username = filter_input(INPUT_POST, 'username');
-$firstName = filter_input(INPUT_POST, 'firstName');
-$lastName = filter_input(INPUT_POST, 'lastName');
-$email = filter_input(INPUT_POST, 'email');
-$userPassword = filter_input(INPUT_POST, "userPassword");
+$locationName = filter_input(INPUT_POST, 'locationName');
+$reviewer = filter_input(INPUT_POST, 'reviewer');
+$rating = filter_input(INPUT_POST, 'rating');
+$reviewTitle = filter_input(INPUT_POST, 'reviewTitle');
+$reviewDetails = filter_input(INPUT_POST, "reviewDetails");
 
 // Query to INSERT into database.
-$sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
+$sql = "INSERT INTO reviews (location_name, review_title, reviewer, rating, review_details) VALUES ('$locationName', '$reviewTitle', '$reviewer', '$rating', '$reviewDetails')";
 if (mysqli_query($connection, $sql)) {
-    echo "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
+    echo "You have successfully uploaded a review of " . $locationName . "! Rating: " . $rating . "<br>" . "Thank you for your review :)";
 } else {
-    echo "Registration Error: " . $sql . "<br>" . mysqli_error($connection);
+    echo "REview Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
 
