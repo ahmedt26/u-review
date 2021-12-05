@@ -30,20 +30,14 @@
 
 <?php
 //  A function which registers the user into the database.
-include('connection.php');
+include('database.php');
 include('header.html');
 ?>
 
 <?php
-$db = new Connection();
+$dbconn = new Database();
 // Establish connection using server
-$connection = $db->getConnection()['connection'];
-
-// if ($conn['status'] == '0') {
-//     die("Connection failed while INSERTing Data: " . $conn['message']);
-// } else {
-//     $connection = $conn['connection'];
-// }
+$dbconn->getConnection();
 
 // POST the form inputs into variables to inserted
 $username = filter_input(INPUT_POST, 'username');
@@ -54,11 +48,11 @@ $userPassword = filter_input(INPUT_POST, "userPassword");
 
 // Query to INSERT into database.
 $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
-if (mysqli_query($connection, $sql)) {
+if (mysqli_query($conn, $sql)) {
     echo "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
 } else {
-    echo "Registration Error: " . $sql . "<br>" . mysqli_error($connection);
+    echo "Registration Error: " . $sql . "<br>" . mysqli_error($conn);
 }
-mysqli_close($connection);
+mysqli_close($conn);
 
 include('footer.html');
