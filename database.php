@@ -15,7 +15,7 @@ class Database
         $this->conn = new mysqli($this->host, $this->username, $this->password, $this->db);
         if ($this->conn->connect_error) {
             $response['status'] = '0';
-            // $response['message'] = $exception->getMessage();
+            $response['message'] = $exception->getMessage();
             return $response;
         } else {
             $response['status'] = '1';

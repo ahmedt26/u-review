@@ -30,19 +30,19 @@
 
 <?php
 //  A function which registers the user into the database.
-include('database.php');
+include('connection.php');
 include('header.html');
 ?>
 
 <?php
-$database = new Database();
+$db = new Connection();
 // Establish connection using server
-$dbconn->getConnection();
+$conn->getConnection();
 
-if ($dbconn['status'] == '0') {
-    die("Connection failed while INSERTing Data: " . $dbconn['message']);
+if ($conn['status'] == '0') {
+    die("Connection failed while INSERTing Data: " . $conn['message']);
 } else {
-    $connection = $dbconn['connection'];
+    $connection = $conn['connection'];
 }
 
 // POST the form inputs into variables to inserted
