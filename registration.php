@@ -3,9 +3,6 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
-<?php
-include('database.php');
-?>
 
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
