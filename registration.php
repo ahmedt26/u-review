@@ -46,7 +46,7 @@
     <div class="d-flex justify-content-center">
       <!-- A self-sizing card with a dark background -->
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
-        <form name="registrationForm" action="register_user.php" method="POST">
+        <form name="registrationForm" class="needs-validation" action="register_user.php" method="POST">
           <h4 class="py-2 text-white">Create a UReview Account</h4>
           <!-- Link to log-in page if user has an account-->
           <div> <span class="text-white">Already have an account?</span>
@@ -55,29 +55,29 @@
           <!-- These inputs will be used to create new users in the database
             The various form controls are inputs which indicate they can be typed in-->
           <div class="mt-3 px-3 text-white">
-            <input id="username" name="username" class="form-control" placeholder="Username">
+            <input id="username" name="username" class="form-control" placeholder="Username" required>
           </div>
           <!-- First and Last Name -->
           <div class="input-group px-3 mt-3 text-white justify-content-center">
-            <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name">
-            <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name">
+            <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name" required>
+            <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" required>
           </div>
           <!-- E-Mail -->
           <div class="mt-3 px-3 text-white">
-            <input id="email" name="email" class="form-control" type="email" placeholder="E-mail">
+            <input id="email" name="email" class="form-control" type="email" placeholder="E-mail" required>
           </div>
           <!-- Password -->
           <div class="mt-3 px-3 text-white">
-            <input id="userPassword" name="userPassword" class="form-control" type="password" placeholder="Password">
+            <input id="userPassword" name="userPassword" class="form-control" type="password" placeholder="Password" required>
           </div>
           <!-- Confirm the Password -->
           <div class="mt-3 px-3 text-white">
-            <input id="passwordConfirm" name="passwordConfirm" class="form-control" type="password" placeholder="Confirm Password">
+            <input id="passwordConfirm" name="passwordConfirm" class="form-control" type="password" placeholder="Confirm Password" required>
           </div>
           <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
           <div class="my-3 d-grid px-3 text-white">
             <input type="hidden" name="form_submitted" value="1">
-            <input type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Sign Up Button" value="Sign Up">
+            <input type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Sign Up Button" value="Sign Up" required>
             </input>
           </div>
         </form>

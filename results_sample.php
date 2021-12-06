@@ -104,7 +104,7 @@
 
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) { ?>
-          <a href="individual_sample.html" class="text-decoration-none">
+          <a href="individual_page.php?id=<?php echo $row['id']?>" class="text-decoration-none">
             <div class="card bg-dark text-white rounded-0">
               <div class="row g-0">
                 <div class="col-4">
