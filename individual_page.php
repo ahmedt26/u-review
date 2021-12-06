@@ -16,7 +16,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $id";
     $result = $connection->query($sql);
 
-    $sql2 = "SELECT id, location_name, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
+    $sql2 = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
     $result2 = $connection->query($sql2);
 
     if ($result->num_rows > 0) {
@@ -29,7 +29,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 
     if ($result2->num_rows > 0) {
         while ($row = $result2->fetch_assoc()) {
-            echo "id: " . $row["id"] . " " . $row["location_name"] . " " . $row["review_title"] . " " . $row["reviewer"] . " " . $row["rating"] . " " . $row["review_details"] . "<br>";
+            echo "id: " . $row["id"] . " " . $row["review_title"] . " " . $row["reviewer"] . " " . $row["rating"] . " " . $row["review_details"] . "<br>";
         }
     } else {
         echo "No results";
