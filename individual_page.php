@@ -12,10 +12,11 @@ if ($db['status'] == '0') {
 }
 
 if (isset($_GET['id']) && $_GET['id'] != '') {
-    $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = 'id'";
+    $id = $_GET['id'];
+    $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $id";
     $result = $connection->query($sql);
 
-    $sql2 = "SELECT id, location_name, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = 'id'";
+    $sql2 = "SELECT id, location_name, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
     $result2 = $connection->query($sql2);
 
     if ($result->num_rows > 0) {
