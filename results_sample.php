@@ -86,215 +86,61 @@
   -->
   <div class="row row-cols-2 g-0">
     <div class="col-md-4 col-12" style="height:89.65vh; overflow: auto;">
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
+      <?php
+      include('database.php');
 
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
+      $dbconn = new Database();
+      // Establish connection using server
+      $db = $dbconn->getConnection();
 
-                  <h5 class="titleFont">Zeal Burgers</h5>
+      if ($db['status'] == '0') {
+        die("Connection failed while getting data: " . $db['message']);
+      } else {
+        $connection = $db['connection'];
+      }
 
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                  </div>
+      $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations";
+      $result = $connection->query($sql);
 
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) { ?>
+          <a href="individual_sample.html" class="text-decoration-none">
+            <div class="card bg-dark text-white rounded-0">
+              <div class="row g-0">
+                <div class="col-4">
+                  <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
                 </div>
 
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
+                <div class="col-8">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
 
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
+                      <h5 class="titleFont"> <?php echo $row["name"] ?> </h5>
 
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
+                      <div class="resultStars">
+                        <?php
+                        $i = 0;
+                        while ($i < $row["rating"]) { ?>
+                          <img src="./assets/images/Star1.svg" alt="5/5 Star">
+                        <?php } ?>
+                      </div>
+                    </div>
 
-                  <h5 class="titleFont">Zeal Burgers</h5>
-
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
+                    <p class="textFont"> <?php echo $row["phone_number"] ?> </p>
                   </div>
-
                 </div>
 
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
               </div>
             </div>
-          </div>
-        </div>
-      </a>
+          </a>
 
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
+      <?php }
+      } else {
+        echo "No results";
+      }
 
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-
-                  <h5 class="titleFont">Zeal Burgers</h5>
-
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                  </div>
-
-                </div>
-
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
-
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-
-                  <h5 class="titleFont">Zeal Burgers</h5>
-
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                  </div>
-
-                </div>
-
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
-
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-
-                  <h5 class="titleFont">Zeal Burgers</h5>
-
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                  </div>
-
-                </div>
-
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
-
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-
-                  <h5 class="titleFont">Zeal Burgers</h5>
-
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                  </div>
-
-                </div>
-
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="individual_sample.html" class="text-decoration-none">
-        <div class="card bg-dark text-white rounded-0">
-          <div class="row g-0">
-            <div class="col-4">
-              <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            </div>
-
-            <div class="col-8">
-              <div class="card-body">
-                <div class="d-flex justify-content-between">
-
-                  <h5 class="titleFont">Zeal Burgers</h5>
-
-                  <div class="resultStars">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                    <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                  </div>
-
-                </div>
-
-                <p class="textFont">Zeal Burgers is a place that sells burgers.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
+      $connection->close();
+      ?>
 
     </div>
 
