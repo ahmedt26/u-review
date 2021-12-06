@@ -39,7 +39,9 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-  <?php include('header.html'); ?>
+
+  <?php include('header.html');
+        include('validate_data.php'); ?>
 
   <!-- The Sign Up Page-->
   <div class="mt-auto">
