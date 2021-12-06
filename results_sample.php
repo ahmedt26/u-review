@@ -114,19 +114,12 @@
                 <div class="col-8">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
-
                       <h5 class="titleFont"> <?php echo $row["name"] ?> </h5>
-
-                      <div class="resultStars">
-                        <?php
-                        $i = 0;
-                        while ($i < $row["rating"]) { ?>
-                          <img src="./assets/images/Star1.svg" alt="5/5 Star">
-                        <?php } ?>
-                      </div>
                     </div>
 
-                    <p class="textFont"> <?php echo $row["phone_number"] ?> </p>
+                    <p class="textFont"> Phone Number: <?php echo $row["phone_number"] ?> </p>
+                    <p class="textFont"> Longitude: <?php echo $row["longitude"] ?> </p>
+                    <p class="textFont"> Latitude: <?php echo $row["latitude"] ?> </p>
                   </div>
                 </div>
 
