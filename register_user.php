@@ -32,6 +32,7 @@
 //  A function which registers the user into the database.
 include('database.php');
 include('header.html');
+include('validate_data.php');
 ?>
 
 <?php
@@ -44,20 +45,45 @@ if ($db['status'] == '0') {
 } else {
     $connection = $db['connection'];
 }
+
 // POST the form inputs into variables to inserted
 $username = filter_input(INPUT_POST, 'username');
 $firstName = filter_input(INPUT_POST, 'firstName');
 $lastName = filter_input(INPUT_POST, 'lastName');
 $email = filter_input(INPUT_POST, 'email');
 $userPassword = filter_input(INPUT_POST, "userPassword");
+$userPasswordConfirm = filter_input(INPUT_POST, "passwordConfirm");
+// Check if each input is valid
 
-// Query to INSERT into database.
-$sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
-if (mysqli_query($connection, $sql)) {
-    echo "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
+if (isLegal($username)) {
+    if (isLegal($firstName)) {
+        if (isLegal($lastName)) {
+            if (isLegal($email)) {
+                if (isLegal($userPassword)) {
+
+                    // Query to INSERT into database.
+                    $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
+                    if (mysqli_query($connection, $sql)) {
+                        echo "<br>" . "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
+                    } else {
+                        echo "Server-side Registration Error: " . $sql . "<br>" . mysqli_error($connection);
+                    }
+                    mysqli_close($conn);
+                } else {
+                    echo "Passwords either do not match or are not Valid!";
+                }
+            } else {
+                echo "Email  input is not valid!";
+            }
+        } else {
+            echo "Last Name input is not valid!";
+        }
+    } else {
+        echo "First Name input is not valid!";
+    }
 } else {
-    echo "Registration Error: " . $sql . "<br>" . mysqli_error($connection);
+    echo "Username input is not valid!";
 }
-mysqli_close($conn);
+
 
 include('footer.html');
