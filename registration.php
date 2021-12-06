@@ -57,35 +57,33 @@
             The various form controls are inputs which indicate they can be typed in-->
           <div class="mt-3 px-3 text-white">
             <input id="username" name="username" class="form-control" placeholder="Username" required>
-            <div class="valid-feedback">Valid.</div>
+            <div class="valid-feedback"> Nice username!</div>
             <div class="invalid-feedback">Please fill out this field.</div>
           </div>
           <!-- First and Last Name -->
           <div class="input-group px-3 mt-3 text-white justify-content-center">
             <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
             <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="valid-feedback"> Good to go.</div>
+            <div class="invalid-feedback">Please fill out These fields.</div>
           </div>
           <!-- E-Mail -->
           <div class="mt-3 px-3 text-white">
             <input id="email" name="email" class="form-control" type="email" placeholder="E-mail" required>
             <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="invalid-feedback">Enter a valid e-mai address</div>
           </div>
           <!-- Password -->
           <div class="mt-3 px-3 text-white">
             <input id="userPassword" name="userPassword" class="form-control" type="password" placeholder="Password" required>
             <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="invalid-feedback">Choose a strong password</div>
           </div>
           <!-- Confirm the Password -->
           <div class="mt-3 px-3 text-white">
             <input id="passwordConfirm" name="passwordConfirm" class="form-control" type="password" placeholder="Confirm Password" required>
             <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <div class="invalid-feedback">Confirm your strong password.</div>
           </div>
           <!-- After all the inputs are checked for valid inputs, the user will be able to sign up.-->
           <div class="my-3 d-grid px-3 text-white">

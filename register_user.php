@@ -66,23 +66,23 @@ if (isLegal($username)) {
                     if (mysqli_query($connection, $sql)) {
                         echo "<br>" . "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
                     } else {
-                        echo "Server-side Registration Error: " . $sql . "<br>" . mysqli_error($connection);
+                        echo "<br> Server-side Registration Error: " . $sql . "<br>" . mysqli_error($connection);
                     }
                     mysqli_close($conn);
                 } else {
-                    echo "Passwords either do not match or are not Valid!";
+                    echo "<br> Passwords either do not match or are not Valid!";
                 }
             } else {
-                echo "Email  input is not valid!";
+                echo "<br> Email input is not valid!";
             }
         } else {
-            echo "Last Name input is not valid!";
+            echo "<br> Last Name input is not valid!";
         }
     } else {
-        echo "First Name input is not valid!";
+        echo "<br> First Name input is not valid!";
     }
 } else {
-    echo "Username input is not valid!";
+    echo "<br> Username input is not valid!";
 }
 
 
