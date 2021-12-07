@@ -66,9 +66,9 @@ session_start();
 
         $sql = "SELECT user_name, first_name FROM users WHERE username = $username AND password = $password";
         $result = $connection->query($sql, MYSQLI_STORE_RESULT);
-        $numUsers = $result-> mysqli_num_rows; // Since User/Pass Combination is unique, this should equal 1.
+        $numUsers = mysqli_num_rows($result);
         $msg = 'Attempting Login...';
-        echo '<br>'. $result . '<br>';
+        echo '<br>' . $result . '<br>';
         echo '<br> Attempting Login... <br>';
         if (
             isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
@@ -78,7 +78,7 @@ session_start();
             echo '<br> Given Password (hashed): ' . $password . '<br>';
             echo '<br> numUsers: ' . $numUsers . '<br>';
 
-            if ($numUsers == 1) {
+            if ($numUsers > 0) {
                 $_SESSION["logged_in"] = true;
                 $_SESSION["username"] = $name;
                 // Get the user's first name from the fetched row.

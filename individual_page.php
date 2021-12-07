@@ -111,7 +111,7 @@
         $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $id";
         $location = $connection->query($getLocation);
 
-        $row = $location->fetch_assoc();
+        $rowInfo = $location->fetch_assoc();
 
 
         $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
@@ -134,7 +134,7 @@
         <div class="container p-5 pt-3 pb-0 justify-content-center">
             <div class="d-flex justify-content-between">
 
-                <h1 class="titleFont fw-bold"> <?php echo $row['name']; ?> </h1>
+                <h1 class="titleFont fw-bold"> <?php echo $rowInfo['name']; ?> </h1>
 
                 <div class="mainStars">
                     <?php
@@ -154,9 +154,9 @@
             </div>
 
             <div id="individualLocationInfo">
-                <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $row['phone_number']; ?></h4>
-                <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $row['latitude']; ?></h4>
-                <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $row['longitude']; ?></h4>
+                <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $rowInfo['phone_number']; ?></h4>
+                <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $rowInfo['latitude']; ?></h4>
+                <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $rowInfo['longitude']; ?></h4>
             </div>
 
         </div>
