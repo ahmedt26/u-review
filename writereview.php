@@ -38,7 +38,11 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-  <?php include('header.html'); ?>
+  <?php if ($_SESSION['logged_in']) {
+    include('login_header.html');
+  } else {
+    include('header.html');
+  } ?>
 
   <!-- Write a Review Card -->
   <div class="mt-auto">

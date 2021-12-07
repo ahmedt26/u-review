@@ -3,6 +3,11 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
+<?php
+ob_start();
+session_start();
+?>
+
 <!DOCTYPE html>
 <!-- Open Graph Protocol Metadata Added to this page-->
 <html prefix="og: https://ogp.me/ns#" lang="en">
@@ -50,7 +55,11 @@
         'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
 
   <!-- the php include() function takes template HTML code from another .html file and puts it in the .php file. Allows for code reuse -->
-  <?php include('header.html'); ?>
+  <?php if ($_SESSION['logged_in']) {
+    include('login_header.html');
+  } else {
+    include('header.html');
+  } ?>
 
   <!-- h-100 means the div will be fully expanded
         'search-top-padding' is our CSS which puts the title and search bar near the middle (40vh)-->

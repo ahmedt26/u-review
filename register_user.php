@@ -1,6 +1,11 @@
+<?php
+ob_start();
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
-
 <head>
     <!-- Metadata of Website 
       'viewport' is what screen this page is being accessed by, the scale is set to default size.

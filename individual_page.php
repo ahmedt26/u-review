@@ -3,6 +3,11 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
+<?php
+ob_start();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
 
@@ -36,7 +41,13 @@
 -->
 
 <body class="d-flex flex-column min-vh-100">
-    <?php include('header.html'); ?>
+    <?php
+
+    if ($_SESSION['logged_in']) {
+        include('login_header.html');
+    } else {
+        include('header.html');
+    } ?>
 
     <!-- Main Images -->
     <!--

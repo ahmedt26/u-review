@@ -31,8 +31,12 @@
 <?php
 //  A function which registers the user into the database.
 include('database.php');
-include('header.html');
-include('connection.php')
+include('connection.php');
+if ($_SESSION['logged_in']) {
+    include('login_header.html');
+  } else {
+    include('header.html');
+  }
 ?>
 
 <?php
