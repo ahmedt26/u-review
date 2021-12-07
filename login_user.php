@@ -73,9 +73,10 @@ session_start();
             isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
             && !empty($_POST['loginPassword'])
         ) {
+            echo '<br> Given Username: ' . $username . '<br>';
+            echo '<br> Given Password (hashed): ' . $password . '<br>';
 
-
-            if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
+            if (mysqli_num_rows($result) > 0) {
                 $_SESSION["logged_in"] = true;
                 $_SESSION["username"] = $name;
                 // Get the user's first name from the fetched row.
