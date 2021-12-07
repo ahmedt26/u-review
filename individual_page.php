@@ -116,19 +116,6 @@
 
         $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
         $reviewsList = $connection->query($getReviews);
-
-        $sumRatings = 0;
-        $numRatings = 0;
-        $avgRatings = 0;
-        if ($reviewsList->num_rows > 0) {
-            while ($row = $reviewsList->fetch_assoc()) {
-                $sumRatings += $row["rating"];
-                $numRatings += 1;
-            }
-        }
-
-        $avgRatings = $sumRatings / $numRatings;
-
     ?>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">
@@ -137,18 +124,6 @@
                 <h1 class="titleFont fw-bold"> <?php echo $row['name']; ?> </h1>
 
                 <div class="mainStars">
-                    <?php
-                    $i = 0;
-                    while ($i < intval($avgRatings)) { ?>
-                        <img src="./assets/images/Star1.svg" alt="Star">
-                    <?php $i++;
-                    } ?>
-                    <?php
-                    $i = 0;
-                    while ($i < 5 - intval($avgRatings)) { ?>
-                        <img src="./assets/images/Star2.svg" alt="No Star">
-                    <?php $i++;
-                    } ?>
                 </div>
 
             </div>
