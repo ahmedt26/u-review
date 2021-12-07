@@ -48,25 +48,27 @@ session_start();
   include('connection.php'); ?>
 
   <?php
-  $msg = '';
-  $username   = $_POST["loginUsername"];
-  $password   = password_hash(filter_input(INPUT_POST, 'loginPassword'), PASSWORD_DEFAULT);
-  $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
-  $result = $connection->query($sql);
-
-  if (
-    isset($_POST['username']) && !empty($_POST['username'])
-    && !empty($_POST['password'])
-  ) {
-    $msg = 'Attempting Login...';
-    if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
-      $_SESSION["logged_in"] = true;
-      $_SESSION["username"] = $name;
-      // Get the user's first name from the fetched row.
-      $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
-      $msg = 'You are now logged in as ' . $username;
-    } else {
-      $msg = 'Invalid Username or Password';
+  // When the form iS POSTed, we perform the login checks.
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $msg = '';
+    if (
+      isset($_POST['username']) && !empty($_POST['username'])
+      && !empty($_POST['password'])
+    ) { // We only POST and pull from DB if there's actually stuff in the login form.
+      $username   = $_POST["loginUsername"];
+      $password   = password_hash(filter_input(INPUT_POST, 'loginPassword'), PASSWORD_DEFAULT);
+      $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
+      $result = $connection->query($sql);
+      $msg = 'Attempting Login...';
+      if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
+        $_SESSION["logged_in"] = true;
+        $_SESSION["username"] = $name;
+        // Get the user's first name from the fetched row.
+        $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
+        $msg = 'You are now logged in as ' . $username;
+      } else {
+        $msg = 'Invalid Username or Password';
+      }
     }
   }
 
@@ -86,7 +88,7 @@ session_start();
     <div class="d-flex justify-content-center">
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
         <!-- The Form onsubmit="return validateLogin()" -->
-        <form name="loginForm" class="was-validated needs-validation" action="login.php">
+        <form name="loginForm" class="was-validated needs-validation" action="login.php" method="POST">
           <h4 class="py-2 text-white">Log In to UReview</h4>
           <div> <span class="text-white">Don't have an account?</span>
             <a href="./registration.php" class="text-decoration-none text-warning">Sign Up</a>

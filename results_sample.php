@@ -36,7 +36,12 @@
 -->
 
 <body class="d-flex flex-column min-vh-100">
-  <?php include('header.html'); ?>
+  <?php
+  if ($_SESSION['logged_in']) {
+    include('login_header.html');
+  } else {
+    include('header.html');
+  } ?>
 
   <!-- Main -->
   <!--
@@ -86,55 +91,57 @@
   -->
   <div class="row row-cols-2 g-0">
     <div class="col-md-4 col-12" style="height:89.65vh; overflow: auto;">
-      <?php
-      include('database.php');
+      <div id="locationInfo">
+        <?php
+        include('database.php');
 
-      $dbconn = new Database();
-      // Establish connection using server
-      $db = $dbconn->getConnection();
+        $dbconn = new Database();
+        // Establish connection using server
+        $db = $dbconn->getConnection();
 
-      if ($db['status'] == '0') {
-        die("Connection failed while getting data: " . $db['message']);
-      } else {
-        $connection = $db['connection'];
-      }
+        if ($db['status'] == '0') {
+          die("Connection failed while getting data: " . $db['message']);
+        } else {
+          $connection = $db['connection'];
+        }
 
-      $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations";
-      $result = $connection->query($sql);
+        $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations";
+        $result = $connection->query($sql);
 
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) { ?>
-          <a href="individual_page.php?id=<?php echo $row['id']?>" class="text-decoration-none">
-            <div class="card bg-dark text-white rounded-0">
-              <div class="row g-0">
-                <div class="col-4">
-                  <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-                </div>
-
-                <div class="col-8">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <h5 class="titleFont"> <?php echo $row["name"] ?> </h5>
-                    </div>
-
-                    <p class="textFont"> Phone Number: <?php echo $row["phone_number"] ?> </p>
-                    <p class="textFont"> Longitude: <?php echo $row["longitude"] ?> </p>
-                    <p class="textFont"> Latitude: <?php echo $row["latitude"] ?> </p>
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) { ?>
+            <a href="individual_page.php?id=<?php echo $row['id'] ?>" class="text-decoration-none">
+              <div class="card bg-dark text-white rounded-0">
+                <div class="row g-0">
+                  <div class="col-4">
+                    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
                   </div>
+
+                  <div class="col-8">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <h5 class="titleFont"><?php echo $row["name"] ?></h5>
+                      </div>
+
+                      <p class="textFont">Phone-Number: <?php echo $row["phone_number"] ?></p>
+                      <p class="textFont" hidden>Id: <?php echo $row["id"] ?></p>
+                      <p class="textFont">Longitude: <?php echo $row["longitude"] ?></p>
+                      <p class="textFont">Latitude: <?php echo $row["latitude"] ?></p>
+                    </div>
+                  </div>
+
                 </div>
-
               </div>
-            </div>
-          </a>
+            </a>
 
-      <?php }
-      } else {
-        echo "No results";
-      }
+        <?php }
+        } else {
+          echo "No results";
+        }
 
-      $connection->close();
-      ?>
-
+        $connection->close();
+        ?>
+      </div>
     </div>
 
     <div id="map" class="col-md-8 d-md-flex d-none" style="height: auto;"></div>

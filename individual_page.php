@@ -3,15 +3,8 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
-
-<?php
-ob_start();
-session_start();
-?>
-
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
-
 <head>
     <!-- Metadata of Website -->
     <title>UReview of Zeal Hamburgers</title>
@@ -40,19 +33,11 @@ session_start();
 
   the main purpose of this is to properly allow the footer to sit at the bottom of the page
 -->
-
 <body class="d-flex flex-column min-vh-100">
-    <?php
+    <?php include('header.html'); ?>
 
-    // All headers will be replaced with the login header if the user is logged in.
-    if ($_SESSION['logged_in']) {
-        include('login_header.html');
-    } else {
-        include('header.html');
-    } ?>
-
-    <!-- Main Images -->
-    <!--
+  <!-- Main Images -->
+  <!--
     'd-flex' makes it a flexbox layout
     'justify-content-center' makes the image centered horizontally
     'overflow: auto;' makes it so that when the images go off screen, a scrollbar is added
@@ -61,19 +46,19 @@ session_start();
     'img-fluid' makes it so that the height is adjusted relative to the width, and the ratio is kept the same as original
     'width: 300px;' makes the width of the images 300px
   -->
-    <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-    </div>
+  <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+  </div>
 
-    <!-- Main Map -->
-    <!--
+  <!-- Main Map -->
+  <!--
     container' creates a container, and the content is put inside the container
 
     'individualMap' id is used to place the map there
@@ -85,12 +70,12 @@ session_start();
     then hardcoded map image is linked, for this part we just used a map of Hamilton, same as we did in the results page.
     it will be changed to be accurate in the next part of the project
   -->
-    <div class="container">
-        <div id="individualMap" class="d-flex justify-content-center mapHeight"></div>
-    </div>
+  <div class="container">
+    <div id="individualMap" class="d-flex justify-content-center mapHeight"></div>
+  </div>
 
-    <!-- Main Content -->
-    <!--
+  <!-- Main Content -->
+  <!--
     'container' creates a container, and the content is put inside the container
     'p-5' creates padding around the whole container
     'pb-0' makes the padding at the bottom of the container 0, so now all sides have padding except the bottom
@@ -106,41 +91,74 @@ session_start();
     'textFont' is custom css that changes the size of the font based on the width of the screen
     'fw-bold' in the span makes it so just the content wrapped inside of it becomes bold
   -->
-    <?php
+  <?php
     include('database.php');
-    include('connection.php');
 
-    if (isset($_GET['id']) && $_GET['id'] != '') {
+    $dbconn = new Database();
+    // Establish connection using server
+    $db = $dbconn->getConnection();
+
+    if ($db['status'] == '0') {
+        die("Connection failed while getting data: " . $db['message']);
+    } else {
+        $connection = $db['connection'];
+    }
+
+    if(isset($_GET['id']) && $_GET['id'] != ''){
         $id = $_GET['id'];
         $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $id";
         $location = $connection->query($getLocation);
 
         $row = $location->fetch_assoc();
     }
-    ?>
 
-    <div class="container p-5 pt-3 pb-0 justify-content-center">
-        <div class="d-flex justify-content-between">
+    $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
+    $reviewsList = $connection->query($getReviews);
 
-            <h1 class="titleFont fw-bold"> <?php echo $row['name'] ?> </h1>
+    $sumRatings = 0;
+    $numRatings = 0;
+    $avgRatings = 0;
+    if($reviewsList->num_rows > 0){
+        while($row = $reviewsList->fetch_assoc()) {
+            $sumRatings += $row["rating"];
+            $numRatings += 1;
+        }
+    }
 
-            <div class="mainStars">
-                <img src="./assets/images/Star1.svg" alt="5 Star">
-                <img src="./assets/images/Star1.svg" alt="5 Star">
-                <img src="./assets/images/Star1.svg" alt="5 Star">
-                <img src="./assets/images/Star1.svg" alt="5 Star">
-                <img src="./assets/images/Star1.svg" alt="5 Star">
-            </div>
+    $avgRatings = $sumRatings / $numRatings;
 
-        </div>
+    ?>    
 
-        <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $row['name'] ?> </h4>
-        <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $row['latitude'] ?> </h4>
-        <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $row['longitude'] ?> </h4>
+  <div class="container p-5 pt-3 pb-0 justify-content-center">
+    <div class="d-flex justify-content-between">
+
+      <h1 class="titleFont fw-bold"> <?php echo $row['name']; ?> </h1>
+
+      <div class="mainStars">
+        <?php
+            $i = 0;
+            while($i < intval($avgRatings)){ ?>
+                <img src="./assets/images/Star1.svg" alt="Star">
+        <?php $i++;} ?>
+        <?php
+            $i = 0;
+            while($i < 5 - intval($avgRatings)){ ?>
+                <img src="./assets/images/Star2.svg" alt="No Star">
+        <?php $i++;} ?>
+      </div>
+
     </div>
 
-    <!-- Main Comments-->
-    <!--
+    <div id="individualLocationInfo">
+      <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $row['phone_number']; ?></h4>
+      <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $row['latitude']; ?></h4>              
+      <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $row['longitude']; ?></h4>
+    </div>
+
+  </div>
+
+  <!-- Main Comments-->
+  <!--
     'container' creates a container, and the content is put inside the container
     'px-5' creates padding on the left and right sides of the container
 
@@ -166,71 +184,67 @@ session_start();
     'card-text' is a bootstrap class used for the main text in cards
     'textFont' is custom css that changes the size of the font based on the width of the screen
   -->
-    <div class="container px-5">
-        <?php
-        $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
-        $reviewsList = $connection->query($getReviews);
-
-        if ($reviewsList->num_rows > 0) {
-            while ($row = $reviewsList->fetch_assoc()) { ?>
+  <div class="container px-5">
+    <?php
+        if($reviewsList->num_rows > 0){
+            while($row = $reviewsList->fetch_assoc()) { ?>
                 <div class="card bg-dark text-white my-3">
                     <div class="row">
                         <div class="col-12">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
 
-                                    <h3 class="titleFont"> <?php echo $row["review_title"] ?> </h3>
+                                    <h5 class="titleFont"> <?php echo $row["review_title"]; ?> </h5>
 
                                     <div class="commentStars">
                                         <?php
-                                        $i = 0;
-                                        while ($i < $row["rating"]) { ?>
-                                            <img src="./assets/images/Star1.svg" alt="Star">
-                                        <?php $i++;
-                                        } ?>
+                                            $i = 0;
+                                            while($i < $row["rating"]){ ?>
+                                                <img src="./assets/images/Star1.svg" alt="Star">
+                                        <?php $i++;} ?>
                                         <?php
-                                        $i = 0;
-                                        while ($i < 5 - $row["rating"]) { ?>
-                                            <img src="./assets/images/Star2.svg" alt="No Star">
-                                        <?php $i++;
-                                        } ?>
+                                            $i = 0;
+                                            while($i < 5 - $row["rating"]){ ?>
+                                                <img src="./assets/images/Star2.svg" alt="No Star">
+                                        <?php $i++;} ?>
                                     </div>
                                 </div>
 
-                                <p class="card-text textFont"> <?php echo $row["review_details"] ?> </p>
-                                <p class="card-text textFont"> <?php echo "-" . $row["reviewer"] ?> </p>
+                                <p class="card-text textFont"> <?php echo $row["review_details"]; ?> </p>
+
+                                <p class="card-text textFont"> 
+                                    <?php
+                                        $id = $row['reviewer'];
+                                        $getReviewer = "SELECT first_name, last_name FROM users WHERE id = $id";
+                                        $reviewerData = $connection->query($getReviewer);
+                                        $reviewerName = $reviewerData->fetch_assoc();
+                                    
+                                    echo $reviewerName["first_name"] . " " . $reviewerName["last_name"];
+                                    
+                                    ?> 
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-        <?php }
+    <?php } 
         } else {
             echo "No results";
         }
-        ?>
+        
+        $connection->close();
+    ?>
 
-    </div>
+  </div>
 
-    <!-- Footer -->
-    <!--
-    Creating a footer using footer tag
-
-    'bg-dark' makes the background of the footer dark
-    'text-warning' makes the text a yellow color using bootstrap
-    'mt-auto' makes the top margin of the footer such that the footer always sits at the bottom of the page
-
-    'container' creates a container, and the content is put inside the container
-
-    'text-center' centers the footer content, in this case the text
-  -->
-    <?php include('footer.html'); ?>
-
-    <!--
+<?php include('footer.html');?>
+  <!--
     Script that allows hamburger navbar menu to work properly and the google map
   -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initIndividualMap&libraries=&v=weekly" async>
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initIndividualMap&libraries=&v=weekly"
+  async>
+  </script>
 </body>
-
 </html>

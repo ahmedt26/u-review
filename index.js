@@ -1,70 +1,95 @@
 // Initialize and add the map
 function initMap() {
-  // Location of Zeal Burgers
-  const zeal = { lat: 43.700504427194, lng: -79.51754724407695 };
+  if ('geolocation' in navigator) {
+    const currentLocation = { lat: 0, lng: 0 };
+    // If it is supported, get the users location
+    navigator.geolocation.getCurrentPosition((position) => {
+      currentLocation.lat = position.coords.latitude;
+      currentLocation.lng = position.coords.longitude;
+    });
+  }
 
   // Create a google maps map, and place it in the div with id 'map'
-  // Zoom in and center the map at Zeal Burgers
+  // Zoom in and center the map at Current Location
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
-    center: zeal,
+    center: currentLocation,
   });
 
+  const locations = document.getElementById("locationInfo");
+  const info = locations.getElementsByTagName("p");
+
+  for (let i = 0; i < info.length; i += 4) {
+    let name = locations.getElementsByTagName("h5").innerHTML.split(" ")[0];
+    let locationID = info[i + 1].innerHTML.split(" ")[1]
+    let lng = info[i + 2].innerHTML.split(" ")[1]
+    let lat = info[i + 3].innerHTML.split(" ")[1]
+
+    const contentString =
+      '<div id="content>' +
+      '<div id="contentTitle">' +
+      `<h6>${name}</h6>` +
+      '</div>' +
+      '<div id="contentBody">' +
+      `<p>Latitude: ${lat} <br> Longitude: ${lng} </p>` +
+      `<a href="individual_page.php?id=${locationID}">Go to Zeal Burgers</a>` +
+      '</div>' +
+      '</div>';
+
+    addMarker({ coords: { lat, lng }, content: contentString })
+  }
+}
+
+function addMarker(param) {
   // Create a google maps marker
-  // Place it on the map at the location of Zeal Burgers.
+  // Place it on the map at the location of entered coordinates.
   const marker = new google.maps.Marker({
-    position: zeal,
+    position: param.coords,
     map: map,
   });
 
-  // Content displayed when marker is clicked (on results page)
-  // Displays the title of the location (Zeal Burgers)
-  // Displays the latitude and longitude
-  // Link to the individual page
-  const contentString =
-    '<div id="content>' +
-    '<div id="contentTitle">' +
-    '<h6>Zeal Burgers</h6>' +
-    '</div>' +
-    '<div id="contentBody">' +
-    '<p>Latitude: 43.700504427194 <br> Longitude: -79.51754724407695 </p>' +
-    '<a href="individual_sample.html">Go to Zeal Burgers</a>' +
-    '</div>' +
-    '</div>';
+  if (param.content) {
+    // Create a google maps info window
+    // Set the content to what we stored in 'contentString'
+    const infoWindow = new google.maps.InfoWindow({
+      content: param.content,
+    });
 
-  // Create a google maps info window
-  // Set the content to what we stored in 'contentString'
-  const infoWindow = new google.maps.InfoWindow({
-    content: contentString,
-  });
+    // Add a listener to the marker
+    // If the marker is clicked, open up the info window
+    marker.addListener("click", () => {
+      infoWindow.open(
+        map,
+        marker
+      );
+    });
+  }
 
-  // Add a listener to the marker
-  // If the marker is clicked, open up the info window
-  marker.addListener("click", () => {
-    infoWindow.open(
-      map,
-      marker
-    );
-  });
 }
 
 // Initialize and add the map
 function initIndividualMap() {
   // Location of Zeal Burgers
-  const zeal = { lat: 43.700504427194, lng: -79.51754724407695 };
+  const location = document.getElementById("individualLocationInfo");
+  const info = location.getElementsByTagName("h4");
+
+  let lat = info[1].innerHTML.split(" ")[3]
+  let lng = info[2].innerHTML.split(" ")[3]
+
+  const locationSpot = { lat: lat, lng: lng };
 
   // Create a google maps map, and place it in the div with id 'individualMap'
   // Zoom in and center the map at Zeal Burgers
   const individualMap = new google.maps.Map(document.getElementById("individualMap"), {
     zoom: 14,
-    center: zeal,
+    center: locationSpot,
   });
 
   // Create a google maps marker
   // Place it on the map at the location of Zeal Burgers.
   const marker = new google.maps.Marker({
     position: zeal,
-    map: individualMap,
+    map: locationSpot,
   });
 }
 
