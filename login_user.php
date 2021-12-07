@@ -48,7 +48,7 @@ session_start();
     include('connection.php');
 
     // Most headers will be replaced with the login header if the user is logged in.
-    if ($_SESSION['logged_in']) {
+    if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
         include('login_header.html');
     } else {
         include('header.html');

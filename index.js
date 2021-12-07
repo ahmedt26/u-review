@@ -24,8 +24,8 @@ function initMap() {
     let locationID = info[i + 1].innerHTML.split(" ")[1]
     let lng = info[i + 2].innerHTML.split(" ")[1]
     let lat = info[i + 3].innerHTML.split(" ")[1]
-    lng = parseFloat(lng);
-    lat = parseFloat(lat);
+    lng = (lng);
+    lat = (lat);
     console.log("lng: " + lng);
     console.log("lat: " + lat);
 
@@ -79,8 +79,8 @@ function initIndividualMap() {
 
   let lat = info[1].innerHTML.split(" ")[3]
   let lng = info[2].innerHTML.split(" ")[3]
-  lat = parseFloat(lat);
-  lng = parseFloat(lng);
+  lat = (lat);
+  lng = (lng);
   console.log("lng: " + lng);
   console.log("lat: " + lat);
 

@@ -43,7 +43,6 @@ session_start();
   and columns will stretch to fit-->
 
 <body class="d-flex flex-column min-vh-100">
-
   <!-- Navbar -->
   <!-- The navbar expands and shrinks according to screen resizing.
           It is also of a dark theme, and stick to the top of the user's screen
@@ -55,11 +54,15 @@ session_start();
         'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
 
   <!-- the php include() function takes template HTML code from another .html file and puts it in the .php file. Allows for code reuse -->
-  <?php if ($_SESSION['logged_in']) {
+  <?php
+
+  // Most headers will be replaced with the login header if the user is logged in.
+  if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
     include('login_header.html');
   } else {
     include('header.html');
-  } ?>
+  }
+  ?>
 
   <!-- h-100 means the div will be fully expanded
         'search-top-padding' is our CSS which puts the title and search bar near the middle (40vh)-->
@@ -82,6 +85,7 @@ session_start();
       </form>
     </div>
   </div>
+
   <?php include('footer.html'); ?>
 </body>
 
