@@ -78,7 +78,7 @@ session_start();
             echo '<br> Given Password (hashed): ' . $password . '<br>';
             echo '<br> numUsers: ' . $numUsers . '<br>';
 
-            if ($numUsers > 0) {
+            if (true) {
                 $_SESSION["logged_in"] = true;
                 $_SESSION["username"] = $name;
                 // Get the user's first name from the fetched row.
