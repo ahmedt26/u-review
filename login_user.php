@@ -68,6 +68,7 @@ session_start();
         $result = $connection->query($sql, MYSQLI_STORE_RESULT);
         $numUsers = $result-> mysqli_num_rows; // Since User/Pass Combination is unique, this should equal 1.
         $msg = 'Attempting Login...';
+        echo '<br>'. $result . '<br>';
         echo '<br> Attempting Login... <br>';
         if (
             isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
@@ -75,6 +76,7 @@ session_start();
         ) {
             echo '<br> Given Username: ' . $username . '<br>';
             echo '<br> Given Password (hashed): ' . $password . '<br>';
+            echo '<br> numUsers: ' . $numUsers . '<br>';
 
             if ($numUsers == 1) {
                 $_SESSION["logged_in"] = true;

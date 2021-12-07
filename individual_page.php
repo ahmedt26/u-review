@@ -129,9 +129,6 @@
 
         $avgRatings = $sumRatings / $numRatings;
         $avgRatings = (int) $avgRatings;
-
-        echo $avgRatings;
-
     ?>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">
@@ -193,6 +190,8 @@
   -->
         <div class="container px-5">
             <?php
+            $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
+            $reviewsList = $connection->query($getReviews);
             if ($reviewsList->num_rows > 0) {
                 while ($row = $reviewsList->fetch_assoc()) { ?>
                     <div class="card bg-dark text-white my-3">
