@@ -1,24 +1,8 @@
 <!--
-  UReview Header Template
+  UReview Header Template for Login
   Abdullah Nafees and Tahseen Ahmed
-  Monday, October 4th, 2021
+  Tuesday, December 7th, 2021
 -->
-<!-- <!DOCTYPE html>
-<html prefix="og: https://ogp.me/ns#" lang="en"> -->
-
-<!-- <head>
-  <link rel="icon" href="./assets/images/logo.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-    crossorigin="anonymous"></script>
-</head> -->
 
 <!-- Navbar -->
 <!-- The navbar expands and shrinks according to screen resizing.
@@ -30,7 +14,7 @@
         'navbar-expand-lg' just means the navbar will expand at the given break point (large >=992px)
         'bg-dark' and 'navbar-dark' just means the fill color will be the dark color-->
 
-  <header id="uReviewHeader">
+  <header id="uReviewHeaderLogin">
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container">
         <a href="./index.php" class="navbar-brand">
@@ -78,12 +62,12 @@
             </li>
             <li class="nav-item px-3">
               <a href="./writereview.php" class="nav-link text-white">Write a Review</a>
-            </li> -->
-            <li class="nav-item px-3">
-              <a href="./login.php" class="nav-link text-white">Log In</a>
             </li>
             <li class="nav-item px-3">
-              <a href="./registration.php" class="btn btn-warning">Sign Up</a>
+              <a href="./login.php" class="nav-link text-white">Log In</a>
+            </li> -->
+            <li class="nav-item px-3">
+              <a href="./logout.php" class="btn btn-warning">Log Out</a>
             </li>
           </ul>
         </div>
