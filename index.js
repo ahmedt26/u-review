@@ -18,6 +18,8 @@ function initMap() {
 
   const locations = document.getElementById("locationInfo");
   const info = locations.getElementsByTagName("p");
+  console.log("locations: " + locations);
+  console.log("info: " + info);
 
   for (let i = 0; i < info.length; i += 4) {
     let name = locations.getElementsByTagName("h5").innerHTML.split(" ")[0];
