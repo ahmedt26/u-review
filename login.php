@@ -43,7 +43,7 @@ session_start();
 
 <body class="d-flex flex-column min-vh-100">
 
-  <?php include('header.html');
+  <?php
   include('database.php');
   include('connection.php'); ?>
 
@@ -54,23 +54,28 @@ session_start();
   $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
   $result = $connection->query($sql);
 
-  if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
-    $_SESSION["logged_in"] = true;
-    $_SESSION["username"] = $name;
-    // Get the user's first name from the fetched row.
-    $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
-    $msg = 'You are now logged in as ' . $username;
-  } else {
-    $msg = 'Invalid Username or Password';
-  }
-
   if (
     isset($_POST['username']) && !empty($_POST['username'])
     && !empty($_POST['password'])
   ) {
+
+    if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
+      $_SESSION["logged_in"] = true;
+      $_SESSION["username"] = $name;
+      // Get the user's first name from the fetched row.
+      $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
+      $msg = 'You are now logged in as ' . $username;
+    } else {
+      $msg = 'Invalid Username or Password';
+    }
   }
 
-
+  // All headers will be replaced with the login header if the user is logged in.
+  if ($_SESSION['logged_in']) {
+    include('login_header.html');
+  } else {
+    include('header.html');
+  }
   ?>
 
   <!-- The Log In Card -->
@@ -102,6 +107,8 @@ session_start();
             </input>
           </div>
         </form>
+
+        <?php $msg ?>
       </div>
     </div>
   </div>
