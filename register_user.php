@@ -43,8 +43,9 @@ $username = filter_input(INPUT_POST, 'username');
 $firstName = filter_input(INPUT_POST, 'firstName');
 $lastName = filter_input(INPUT_POST, 'lastName');
 $email = filter_input(INPUT_POST, 'email');
-$userPassword = filter_input(INPUT_POST, "userPassword");
-$userPasswordConfirm = filter_input(INPUT_POST, "passwordConfirm");
+// Hash the passwords for the database
+$userPassword = password_hash(filter_input(INPUT_POST, "userPassword"), PASSWORD_DEFAULT);
+$userPasswordConfirm = password_hash(filter_input(INPUT_POST, "passwordConfirm"), PASSWORD_DEFAULT);
 // Check if each input is valid
 
 // Checks if each form input is valid, and notifies th user

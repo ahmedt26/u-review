@@ -50,7 +50,7 @@ session_start();
   <?php
   $msg = '';
   $username   = $_POST["loginUsername"];
-  $password   = $_POST["loginPassword"];
+  $password   = password_hash(filter_input(INPUT_POST, 'loginPassword'), PASSWORD_DEFAULT);
   $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
   $result = $connection->query($sql);
 
@@ -58,7 +58,7 @@ session_start();
     isset($_POST['username']) && !empty($_POST['username'])
     && !empty($_POST['password'])
   ) {
-
+    $msg = 'Attempting Login...';
     if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
       $_SESSION["logged_in"] = true;
       $_SESSION["username"] = $name;
@@ -93,12 +93,12 @@ session_start();
           </div>
           <!-- Username Input -->
           <div class="mt-3 px-3 text-white">
-            <input id="login-username" name="username" class="form-control" placeholder="Username" aria-label="Input Username" required>
+            <input id="loginUsername" name="loginUsername" class="form-control" placeholder="Username" aria-label="Input Username" required>
             <div class="invalid-feedback"> Give yourself a username.</div>
           </div>
           <!-- Password Input -->
           <div class="mt-3 px-3 text-white">
-            <input id="login-password" name="password" class="form-control" type="password" placeholder="Password" aria-label="Input Password" required>
+            <input id="loginPassword" name="loginPassword" class="form-control" type="password" placeholder="Password" aria-label="Input Password" required>
             <div class="invalid-feedback"> Provide a password. </div>
           </div>
           <!--  Log in Button -->
