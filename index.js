@@ -28,6 +28,10 @@ function initMap() {
     lat = (lat);
     console.log("lng: " + lng);
     console.log("lat: " + lat);
+    console.log("name: " + name);
+    console.log("locationID: " + locationID);
+    console.log("lng: " + lng);
+    console.log("lat: " + lat);
 
     const contentString =
       '<div id="content>' +
@@ -83,6 +87,7 @@ function initIndividualMap() {
   lng = (lng);
   console.log("lng: " + lng);
   console.log("lat: " + lat);
+
 
   const locationSpot = { lat: lat, lng: lng };
 
