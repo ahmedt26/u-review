@@ -175,13 +175,19 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
 
-                                    <h5 class="titleFont"> <?php echo $row["review"] ?> </h5>
+                                    <h5 class="titleFont"> <?php echo $row["reviewer"] ?> </h5>
 
                                     <div class="commentStars">
                                         <?php
                                         $i = 0;
                                         while ($i < $row["rating"]) { ?>
                                             <img src="./assets/images/Star1.svg" alt="Star">
+                                        <?php $i++;
+                                        } ?>
+                                        <?php
+                                        $i = 0;
+                                        while ($i < 5 - $row["rating"]) { ?>
+                                            <img src="./assets/images/Star2.svg" alt="No Star">
                                         <?php $i++;
                                         } ?>
                                     </div>
