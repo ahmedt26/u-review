@@ -58,7 +58,7 @@ session_start();
 
       // We only POST and pull from DB if there's actually stuff in the login form.
       $username   = $_POST["loginUsername"];
-      $password   = password_hash(filter_input(INPUT_POST, 'loginPassword'), PASSWORD_DEFAULT);
+      $password   = hash('sha256' ,filter_input(INPUT_POST, 'loginPassword'));
 
       $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
       $result = $connection->query($sql);
