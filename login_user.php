@@ -51,6 +51,7 @@ session_start();
   // When the form iS POSTed, we perform the login checks.
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $msg = 'POST METHOD RECEIVED';
+    echo 'POST METHOD RECEIVED';
     if (
       isset($_POST['username']) && !empty($_POST['username'])
       && !empty($_POST['password'])
@@ -64,6 +65,7 @@ session_start();
       $result = $connection->query($sql);
 
       $msg = 'Attempting Login...';
+      echo 'Attempting Login...';
 
       if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
         $_SESSION["logged_in"] = true;
@@ -71,8 +73,10 @@ session_start();
         // Get the user's first name from the fetched row.
         $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
         $msg = 'You are now logged in as ' . $username;
+        echo 'You are now logged in as: ' . $username;
       } else {
         $msg = 'Invalid Username or Password';
+        echo 'Invalid Username or Password';
       }
     }
   }
