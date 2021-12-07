@@ -227,7 +227,7 @@
                                         $reviewerData = $connection->query($getReviewer);
                                         $reviewerName = $reviewerData->fetch_assoc();
 
-                                        echo $reviewerName["first_name"] . " " . $reviewerName["last_name"];
+                                        echo '-' . $reviewerName["first_name"] . " " . $reviewerName["last_name"];
 
                                         ?>
                                     </p>

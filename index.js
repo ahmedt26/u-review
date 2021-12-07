@@ -1,7 +1,7 @@
 // Initialize and add the map
 function initMap() {
   if ('geolocation' in navigator) {
-    const currentLocation = { lat: 0, lng: 0 };
+    const currentLocation = { lat: 0, lng: 0};
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition((position) => {
       currentLocation.lat = position.coords.latitude;
@@ -13,19 +13,19 @@ function initMap() {
   // Zoom in and center the map at Current Location
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
-    center: { lat: 43.2557, lng: 79.8711 },
+    center: {lat:43.2557, lng:79.8711},
   });
 
   const locations = document.getElementById("locationInfo");
   const info = locations.getElementsByTagName("p");
 
-  for (let i = 0; i < info.length; i += 4) {
+  for(let i = 0; i < info.length; i += 4){
     let name = locations.getElementsByTagName("h5").innerHTML.split(" ")[0];
-    let locationID = info[i + 1].innerHTML.split(" ")[1]
-    let lng = info[i + 2].innerHTML.split(" ")[1]
-    let lat = info[i + 3].innerHTML.split(" ")[1]
-    lng = parseInt(lng);
-    lat = parseInt(lat);
+    let locationID = info[i+1].innerHTML.split(" ")[1]
+    let lng = info[i+2].innerHTML.split(" ")[1]
+    let lat = info[i+3].innerHTML.split(" ")[1]
+    lng = parseFloat(lng);
+    lat = parseFloat(lat);
 
     const contentString =
       '<div id="content>' +
@@ -38,11 +38,11 @@ function initMap() {
       '</div>' +
       '</div>';
 
-    addMarker({ coords: { lat, lng }, content: contentString })
+    addMarker({coords:{lat,lng}, content: contentString})
   }
 }
 
-function addMarker(param) {
+function addMarker(param){
   // Create a google maps marker
   // Place it on the map at the location of entered coordinates.
   const marker = new google.maps.Marker({
@@ -50,13 +50,13 @@ function addMarker(param) {
     map: map,
   });
 
-  if (param.content) {
+  if(param.content){
     // Create a google maps info window
     // Set the content to what we stored in 'contentString'
     const infoWindow = new google.maps.InfoWindow({
       content: param.content,
     });
-
+  
     // Add a listener to the marker
     // If the marker is clicked, open up the info window
     marker.addListener("click", () => {
@@ -77,8 +77,8 @@ function initIndividualMap() {
 
   let lat = info[1].innerHTML.split(" ")[3]
   let lng = info[2].innerHTML.split(" ")[3]
-  lat = parseInt(lat);
-  lng = parseInt(lng);
+  lat = parseFloat(lat);
+  lng = parseFloat(lng);
 
   const locationSpot = { lat: lat, lng: lng };
 
