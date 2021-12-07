@@ -112,57 +112,57 @@
         $location = $connection->query($getLocation);
 
         $row = $location->fetch_assoc();
-    }
 
-    $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
-    $reviewsList = $connection->query($getReviews);
 
-    $sumRatings = 0;
-    $numRatings = 0;
-    $avgRatings = 0;
-    if ($reviewsList->num_rows > 0) {
-        while ($row = $reviewsList->fetch_assoc()) {
-            $sumRatings += $row["rating"];
-            $numRatings += 1;
+        $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
+        $reviewsList = $connection->query($getReviews);
+
+        $sumRatings = 0;
+        $numRatings = 0;
+        $avgRatings = 0;
+        if ($reviewsList->num_rows > 0) {
+            while ($row = $reviewsList->fetch_assoc()) {
+                $sumRatings += $row["rating"];
+                $numRatings += 1;
+            }
         }
-    }
 
-    $avgRatings = $sumRatings / $numRatings;
+        $avgRatings = $sumRatings / $numRatings;
 
     ?>
 
-    <div class="container p-5 pt-3 pb-0 justify-content-center">
-        <div class="d-flex justify-content-between">
+        <div class="container p-5 pt-3 pb-0 justify-content-center">
+            <div class="d-flex justify-content-between">
 
-            <h1 class="titleFont fw-bold"> <?php echo $row['name']; ?> </h1>
+                <h1 class="titleFont fw-bold"> <?php echo $row['name']; ?> </h1>
 
-            <div class="mainStars">
-                <?php
-                $i = 0;
-                while ($i < intval($avgRatings)) { ?>
-                    <img src="./assets/images/Star1.svg" alt="Star">
-                <?php $i++;
-                } ?>
-                <?php
-                $i = 0;
-                while ($i < 5 - intval($avgRatings)) { ?>
-                    <img src="./assets/images/Star2.svg" alt="No Star">
-                <?php $i++;
-                } ?>
+                <div class="mainStars">
+                    <?php
+                    $i = 0;
+                    while ($i < intval($avgRatings)) { ?>
+                        <img src="./assets/images/Star1.svg" alt="Star">
+                    <?php $i++;
+                    } ?>
+                    <?php
+                    $i = 0;
+                    while ($i < 5 - intval($avgRatings)) { ?>
+                        <img src="./assets/images/Star2.svg" alt="No Star">
+                    <?php $i++;
+                    } ?>
+                </div>
+
+            </div>
+
+            <div id="individualLocationInfo">
+                <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $row['phone_number']; ?></h4>
+                <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $row['latitude']; ?></h4>
+                <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $row['longitude']; ?></h4>
             </div>
 
         </div>
 
-        <div id="individualLocationInfo">
-            <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $row['phone_number']; ?></h4>
-            <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $row['latitude']; ?></h4>
-            <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $row['longitude']; ?></h4>
-        </div>
-
-    </div>
-
-    <!-- Main Comments-->
-    <!--
+        <!-- Main Comments-->
+        <!--
     'container' creates a container, and the content is put inside the container
     'px-5' creates padding on the left and right sides of the container
 
@@ -188,52 +188,53 @@
     'card-text' is a bootstrap class used for the main text in cards
     'textFont' is custom css that changes the size of the font based on the width of the screen
   -->
-    <div class="container px-5">
-        <?php
-        if ($reviewsList->num_rows > 0) {
-            while ($row = $reviewsList->fetch_assoc()) { ?>
-                <div class="card bg-dark text-white my-3">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between">
+        <div class="container px-5">
+            <?php
+            if ($reviewsList->num_rows > 0) {
+                while ($row = $reviewsList->fetch_assoc()) { ?>
+                    <div class="card bg-dark text-white my-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
 
-                                    <h5 class="titleFont"> <?php echo $row["review_title"]; ?> </h5>
+                                        <h5 class="titleFont"> <?php echo $row["review_title"]; ?> </h5>
 
-                                    <div class="commentStars">
-                                        <?php
-                                        $i = 0;
-                                        while ($i < $row["rating"]) { ?>
-                                            <img src="./assets/images/Star1.svg" alt="Star">
-                                        <?php $i++;
-                                        } ?>
-                                        <?php
-                                        $i = 0;
-                                        while ($i < 5 - $row["rating"]) { ?>
-                                            <img src="./assets/images/Star2.svg" alt="No Star">
-                                        <?php $i++;
-                                        } ?>
+                                        <div class="commentStars">
+                                            <?php
+                                            $i = 0;
+                                            while ($i < $row["rating"]) { ?>
+                                                <img src="./assets/images/Star1.svg" alt="Star">
+                                            <?php $i++;
+                                            } ?>
+                                            <?php
+                                            $i = 0;
+                                            while ($i < 5 - $row["rating"]) { ?>
+                                                <img src="./assets/images/Star2.svg" alt="No Star">
+                                            <?php $i++;
+                                            } ?>
+                                        </div>
                                     </div>
+
+                                    <p class="card-text textFont"> <?php echo $row["review_details"]; ?> </p>
+
+                                    <p class="card-text textFont">
+                                        <?php
+                                        $id = $row['reviewer'];
+                                        $getReviewer = "SELECT first_name, last_name FROM users WHERE id = $id";
+                                        $reviewerData = $connection->query($getReviewer);
+                                        $reviewerName = $reviewerData->fetch_assoc();
+
+                                        echo $reviewerName["first_name"] . " " . $reviewerName["last_name"];
+
+                                        ?>
+                                    </p>
                                 </div>
-
-                                <p class="card-text textFont"> <?php echo $row["review_details"]; ?> </p>
-
-                                <p class="card-text textFont">
-                                    <?php
-                                    $id = $row['reviewer'];
-                                    $getReviewer = "SELECT first_name, last_name FROM users WHERE id = $id";
-                                    $reviewerData = $connection->query($getReviewer);
-                                    $reviewerName = $reviewerData->fetch_assoc();
-
-                                    echo $reviewerName["first_name"] . " " . $reviewerName["last_name"];
-
-                                    ?>
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
         <?php }
+            }
         } else {
             echo "No results";
         }
@@ -241,15 +242,15 @@
         $connection->close();
         ?>
 
-    </div>
+        </div>
 
-    <?php include('footer.html'); ?>
-    <!--
+        <?php include('footer.html'); ?>
+        <!--
     Script that allows hamburger navbar menu to work properly and the google map
   -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initIndividualMap&libraries=&v=weekly" async>
-    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initIndividualMap&libraries=&v=weekly" async>
+        </script>
 </body>
 
 </html>
