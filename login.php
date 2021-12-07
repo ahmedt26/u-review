@@ -110,7 +110,7 @@ session_start();
           </div>
         </form>
 
-        <?php $msg ?>
+        <?php echo $msg; ?>
       </div>
     </div>
   </div>

@@ -13,7 +13,7 @@ function initMap() {
   // Zoom in and center the map at Current Location
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
-    center: currentLocation,
+    center: {lat:43.2557, lng:79.8711},
   });
 
   const locations = document.getElementById("locationInfo");
