@@ -65,13 +65,13 @@
             <input id="firstName" name="firstName" type="text" class="form-control" placeholder="First Name" aria-label="First Name" required>
             <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" required>
             <div class="valid-feedback"> Good to go.</div>
-            <div class="invalid-feedback">Please fill out These fields.</div>
+            <div class="invalid-feedback">Please fill out these fields.</div>
           </div>
           <!-- E-Mail -->
           <div class="mt-3 px-3 text-white">
             <input id="email" name="email" class="form-control" type="email" placeholder="E-mail" required>
             <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Enter a valid e-mai address</div>
+            <div class="invalid-feedback">Enter a valid e-mail address</div>
           </div>
           <!-- Password -->
           <div class="mt-3 px-3 text-white">

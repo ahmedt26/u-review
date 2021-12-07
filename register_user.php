@@ -70,7 +70,11 @@ if (isLegal($username)) {
                     }
                     mysqli_close($conn);
                 } else {
-                    echo "<br> Passwords either do not match or are not Valid!";
+                    echo "<br> Passwords are not valid! ";
+
+                    if ($userPassword != $userPasswordConfirm) {
+                        echo "<br> Passwords also do not match!";
+                    }
                 }
             } else {
                 echo "<br> Email input is not valid!";
