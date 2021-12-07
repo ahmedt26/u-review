@@ -50,16 +50,21 @@ session_start();
   <?php
   // When the form iS POSTed, we perform the login checks.
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $msg = '';
+    $msg = 'POST METHOD RECEIVED';
     if (
       isset($_POST['username']) && !empty($_POST['username'])
       && !empty($_POST['password'])
-    ) { // We only POST and pull from DB if there's actually stuff in the login form.
+    ) {
+
+      // We only POST and pull from DB if there's actually stuff in the login form.
       $username   = $_POST["loginUsername"];
       $password   = password_hash(filter_input(INPUT_POST, 'loginPassword'), PASSWORD_DEFAULT);
+
       $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
       $result = $connection->query($sql);
+
       $msg = 'Attempting Login...';
+
       if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
         $_SESSION["logged_in"] = true;
         $_SESSION["username"] = $name;
@@ -72,7 +77,7 @@ session_start();
     }
   }
 
-  // All headers will be replaced with the login header if the user is logged in.
+  // Most headers will be replaced with the login header if the user is logged in.
   if ($_SESSION['logged_in']) {
     include('login_header.html');
   } else {

@@ -88,7 +88,7 @@ function initIndividualMap() {
   // Create a google maps marker
   // Place it on the map at the location of Zeal Burgers.
   const marker = new google.maps.Marker({
-    position: zeal,
+    position: locationSpot,
     map: locationSpot,
   });
 }
