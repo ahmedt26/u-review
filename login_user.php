@@ -58,7 +58,7 @@ session_start();
     // When the form iS POSTed, we perform the login checks.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $msg = 'POST METHOD RECEIVED';
-        echo 'POST METHOD RECEIVED';
+        echo '<br> POST METHOD RECEIVED <br>';
 
         // We only POST and pull from DB if there's actually stuff in the login form.
         $username   = $_POST["loginUsername"];
@@ -68,10 +68,10 @@ session_start();
         $result = $connection->query($sql);
 
         $msg = 'Attempting Login...';
-        echo 'Attempting Login...';
+        echo '<br> Attempting Login... <br>';
         if (
-            isset($_POST['username']) && !empty($_POST['username'])
-            && !empty($_POST['password'])
+            isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
+            && !empty($_POST['loginPassword'])
         ) {
 
 
@@ -84,10 +84,10 @@ session_start();
                 echo 'You are now logged in as: ' . $username;
             } else {
                 $msg = 'Invalid Username or Password';
-                echo 'Invalid Username or Password';
+                echo '<br> Invalid Username or Password <br>';
             }
         } else {
-            echo 'USERNAME AND PASSWORD IS NOT SET';
+            echo ' <br> USERNAME AND PASSWORD IS NOT SET <br>';
         }
     }
 
