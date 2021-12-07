@@ -175,7 +175,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
 
-                                    <h5 class="titleFont"> <?php echo $row["reviewer"] ?> </h5>
+                                    <h3 class="titleFont"> <?php echo $row["review_title"] ?> </h3>
 
                                     <div class="commentStars">
                                         <?php
@@ -194,6 +194,7 @@
                                 </div>
 
                                 <p class="card-text textFont"> <?php echo $row["review_details"] ?> </p>
+                                <p class="card-text textFont"> <?php echo $row["reviewer"] ?> </p>
                             </div>
                         </div>
                     </div>
