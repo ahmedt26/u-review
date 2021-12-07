@@ -182,7 +182,8 @@
                                         $i = 0;
                                         while ($i < $row["rating"]) { ?>
                                             <img src="./assets/images/Star1.svg" alt="Star">
-                                        <?php } ?>
+                                        <?php $i++;
+                                        } ?>
                                     </div>
                                 </div>
 
