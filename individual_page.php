@@ -128,6 +128,9 @@
         }
 
         $avgRatings = $sumRatings / $numRatings;
+        $avgRatings = (int) $avgRatings;
+
+        echo $avgRatings;
 
     ?>
 
@@ -139,13 +142,13 @@
                 <div class="mainStars">
                     <?php
                     $i = 0;
-                    while ($i < (int) ($avgRatings)) { ?>
+                    while ($i < $avgRatings) { ?>
                         <img src="./assets/images/Star1.svg" alt="Star">
                     <?php $i++;
                     } ?>
                     <?php
                     $i = 0;
-                    while ($i < 5 - (int) ($avgRatings)) { ?>
+                    while ($i < 5 - $avgRatings) { ?>
                         <img src="./assets/images/Star2.svg" alt="No Star">
                     <?php $i++;
                     } ?>
