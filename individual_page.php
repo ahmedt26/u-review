@@ -95,16 +95,7 @@
   -->
     <?php
     include('database.php');
-
-    $dbconn = new Database();
-    // Establish connection using server
-    $db = $dbconn->getConnection();
-
-    if ($db['status'] == '0') {
-        die("Connection failed while getting data: " . $db['message']);
-    } else {
-        $connection = $db['connection'];
-    }
+    include('connection.php');
 
     if (isset($_GET['id']) && $_GET['id'] != '') {
         $id = $_GET['id'];
@@ -194,7 +185,7 @@
                                 </div>
 
                                 <p class="card-text textFont"> <?php echo $row["review_details"] ?> </p>
-                                <p class="card-text textFont"> <?php echo $row["reviewer"] ?> </p>
+                                <p class="card-text textFont"> <?php echo "-" . $row["reviewer"] ?> </p>
                             </div>
                         </div>
                     </div>

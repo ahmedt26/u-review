@@ -33,20 +33,12 @@
 include('database.php');
 include('header.html');
 include('validate_data.php');
+include('connection.php');
 ?>
 
 <?php
-$dbconn = new Database();
-// Establish connection using server
-$db = $dbconn->getConnection();
-
-if ($db['status'] == '0') {
-    die("Connection failed while inserting data: " . $db['message']);
-} else {
-    $connection = $db['connection'];
-}
-
 // POST the form inputs into variables to inserted
+// Filters input for POSTing
 $username = filter_input(INPUT_POST, 'username');
 $firstName = filter_input(INPUT_POST, 'firstName');
 $lastName = filter_input(INPUT_POST, 'lastName');
@@ -55,6 +47,7 @@ $userPassword = filter_input(INPUT_POST, "userPassword");
 $userPasswordConfirm = filter_input(INPUT_POST, "passwordConfirm");
 // Check if each input is valid
 
+// Checks if each form input is valid, and notifies th user
 if (isLegal($username)) {
     if (isLegal($firstName)) {
         if (isLegal($lastName)) {

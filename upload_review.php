@@ -32,18 +32,10 @@
 //  A function which registers the user into the database.
 include('database.php');
 include('header.html');
+include('connection.php')
 ?>
 
 <?php
-$dbconn = new Database();
-// Establish connection using server
-$db = $dbconn->getConnection();
-
-if ($db['status'] == '0') {
-    die("Connection failed while inserting data: " . $db['message']);
-} else {
-    $connection = $db['connection'];
-}
 // POST the form inputs into variables to inserted
 $locationName  = filter_input(INPUT_POST, 'locationName');
 $reviewTitle   = filter_input(INPUT_POST, 'reviewTitle');
@@ -56,7 +48,7 @@ $sql = "INSERT INTO reviews (location_name, review_title, reviewer, rating, revi
 if (mysqli_query($connection, $sql)) {
     echo "You have successfully uploaded a review of " . $locationName . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
 } else {
-    echo "Review Error: " . $sql . "<br>" . mysqli_error($connection);
+    echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
 

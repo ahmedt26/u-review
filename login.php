@@ -33,13 +33,45 @@
   <script src="index.js"></script>
 </head>
 
+<?php
+ob_start();
+session_start();
+?>
+
 <!-- The entire webpage must fill the entire viewport,
   and columns will stretch to fit-->
 
 <body class="d-flex flex-column min-vh-100">
 
-  <?php include('header.html'); ?>
+  <?php include('header.html');
+  include('database.php');
+  include('connection.php'); ?>
 
+  <?php
+  $msg = '';
+  $username   = $_POST["loginUsername"];
+  $password   = $_POST["loginPassword"];
+  $sql = "SELECT id, user_name, first_name FROM users WHERE username = $username AND password = $password";
+  $result = $connection->query($sql);
+
+  if (mysqli_num_rows($result) == 1) { // Since User/Pass Combo SHOULD be unique, there should only be one row.
+    $_SESSION["logged_in"] = true;
+    $_SESSION["username"] = $name;
+    // Get the user's first name from the fetched row.
+    $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
+    $msg = 'You are now logged in as ' . $username;
+  } else {
+    $msg = 'Invalid Username or Password';
+  }
+
+  if (
+    isset($_POST['username']) && !empty($_POST['username'])
+    && !empty($_POST['password'])
+  ) {
+  }
+
+
+  ?>
 
   <!-- The Log In Card -->
   <!-- The username and password will be sent to the server-side for user authentication
@@ -48,8 +80,8 @@
   <div class="mt-auto">
     <div class="d-flex justify-content-center">
       <div class="pt-auto card px-3 text-center px-4 bg-dark">
-        <!-- The Form -->
-        <form name="loginForm" class="needs-validation" onsubmit="return validateLogin()">
+        <!-- The Form onsubmit="return validateLogin()" -->
+        <form name="loginForm" class="was-validated needs-validation" action="$_SERVER['PHP_SELF']">
           <h4 class="py-2 text-white">Log In to UReview</h4>
           <div> <span class="text-white">Don't have an account?</span>
             <a href="./registration.php" class="text-decoration-none text-warning">Sign Up</a>
@@ -57,10 +89,12 @@
           <!-- Username Input -->
           <div class="mt-3 px-3 text-white">
             <input id="login-username" name="username" class="form-control" placeholder="Username" aria-label="Input Username" required>
+            <div class="invalid-feedback"> Give yourself a username.</div>
           </div>
           <!-- Password Input -->
           <div class="mt-3 px-3 text-white">
             <input id="login-password" name="password" class="form-control" type="password" placeholder="Password" aria-label="Input Password" required>
+            <div class="invalid-feedback"> Provide a password. </div>
           </div>
           <!--  Log in Button -->
           <div class="my-3 d-grid px-3 text-white">
