@@ -139,7 +139,7 @@ session_start();
         $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
         $reviewsList = $connection->query($getReviews);
 
-        $getAverage = "SELECT AVG(rating) FROM reviews";
+        $getAverage = "SELECT AVG(rating) FROM reviews WHERE location_id = $id";
         $average = $connection->query($getReviews);
         $averageRow = $average->fetch_assoc();
         // This code is basically just calculating the average ratings for the location
