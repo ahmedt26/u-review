@@ -57,7 +57,7 @@ $longitude    = filter_input(INPUT_POST, 'longitude');
 // Query to INSERT into database.
 $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (?, ?, ?, ?)";
 $stmt = $connection->prepare($sql);
-$stmt->bind_param('s', $name, $phone_number, $latitude, $longitude);
+$stmt->bind_param('ssdd', $name, $phone_number, $latitude, $longitude);
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();

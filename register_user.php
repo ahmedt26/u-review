@@ -68,7 +68,7 @@ if (isLegal($username)) {
                     // Prepare Query to INSERT into database.
                     $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES (?, ? ,? ,?, ?)";
                     $stmt = $connection->prepare($sql);
-                    $stmt->bind_param('s', $username, $firstName, $lastName, $email, $userPassword);
+                    $stmt->bind_param('sssss', $username, $firstName, $lastName, $email, $userPassword);
                     $stmt->execute();
                     $result = $stmt->get_result();
                     $stmt->close(); // Close the statement

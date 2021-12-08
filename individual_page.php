@@ -295,7 +295,7 @@ session_start();
                     </div>
         <?php }
             }
-        // If there are no locations in the result after the SQL query, then it just displays "No Results"
+            // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
             echo "No results";
         }

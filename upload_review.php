@@ -58,7 +58,7 @@ $review_details = (filter_input(INPUT_POST, "reviewDetails"));
 // Prepare Query to INSERT into database.
 $sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES (?, ? ,? ,? ,?)";
 $stmt = $connection->prepare($sql);
-$stmt->bind_param('s', $location_id, $review_title, $reviewer_id, $rating, $review_details);
+$stmt->bind_param('isiis', $location_id, $review_title, $reviewer_id, $rating, $review_details);
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();

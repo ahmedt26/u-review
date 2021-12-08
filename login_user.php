@@ -69,7 +69,7 @@ session_start();
         // Prepare the SQL Statement for Login
         $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = ? AND pass_word = ?";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param('s', $username, $password);
+        $stmt->bind_param('ss', $username, $password);
         // Execute the statement
         $stmt->execute();
         $result = $stmt->get_result();
