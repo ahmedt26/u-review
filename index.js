@@ -4,22 +4,22 @@ function initMap() {
   const map;
   if ('geolocation' in navigator) {
     // If it is supported, get the users location
-    navigator.geolocation.getCurrentPosition((position) => {
-      currentLocation.lat = position.coords.latitude;
-      currentLocation.lng = position.coords.longitude;
-      // Create a google maps map, and place it in the div with id 'map'
-      // Zoom in and center the map at Current Location
-      map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 14,
-        center: currentLocation,
-      });
-    });
+    navigator.geolocation.getCurrentPosition(onFinish);
   } else {
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 14,
-      center: { lat: 43.255203, lng: -79.843826 },
-    });
+    console.log("No geolocation")
+
   }
+}
+
+function onFinish(position) {
+  currentLocation.lat = position.coords.latitude;
+  currentLocation.lng = position.coords.longitude;
+  // Create a google maps map, and place it in the div with id 'map'
+  // Zoom in and center the map at Current Location
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 12,
+    center: currentLocation,
+  });
 
   // This portion of the code is used to set the markers and labels
   // Get the all the locations by getting elements by id "locationInfo" into locations
