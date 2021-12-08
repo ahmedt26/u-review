@@ -92,9 +92,6 @@ function initIndividualMap() {
 
   const locationSpot = { lat: latitude, lng: longitude };
 
-
-  const locationSpot = { lat: lat, lng: lng };
-
   // Create a google maps map, and place it in the div with id 'individualMap'
   // Zoom in and center the map at Zeal Burgers
   const individualMap = new google.maps.Map(document.getElementById("individualMap"), {
