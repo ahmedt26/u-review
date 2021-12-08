@@ -3,6 +3,11 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
+
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
 
@@ -32,10 +37,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </head>
-
-<?php
-session_start();
-?>
 
 <!-- The entire webpage must fill the entire viewport,
   and columns will stretch to fit-->
@@ -84,7 +85,7 @@ session_start();
                 $_SESSION['firstName'] = $userResult['first_name'];
                 echo '<br> <h3> Login Success </h3>';
                 echo '<br> You are now logged in as: ' . $userResult['user_name'] . "," . $userResult['first_name'] . "!";
-                echo '<br> Your user ID is: ' . $_SESSION['user_id'] . "or" . $userResult['id'];
+                echo '<br> Your user ID is: ' . $_SESSION['user_id'] . " or " . $userResult['id'];
             } else {
                 echo '<br> <h3> Login Failure </h3>';
                 echo '<br> Invalid Username or Password <br>';

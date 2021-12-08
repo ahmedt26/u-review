@@ -1,6 +1,6 @@
 // Initialize and add the map
 function initMap() {
-  let currentLocation = {};
+  let currentLocation = { lat: 0, lng: 0 };
   if ('geolocation' in navigator) {
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition((position) => {

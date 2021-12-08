@@ -3,7 +3,6 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
-
 <?php
 // Get all $_SESSION variables
 session_start();
