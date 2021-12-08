@@ -282,10 +282,10 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 
         // Most headers will be replaced with the login header if the user is logged in.
         if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) { ?>
-            <form id="toWriteReviewPageForm" action="writereview.php" method="POST">
+            <form action="write_review.php" method="POST">
+                <input name="location_id" type="hidden" value="<?php echo $rowInfo['id']; ?>">
                 <div class="my-3 d-grid px-3 text-white">
-                    <input name="location_id" type="hidden" value="<?php echo $rowInfo['id']; ?>">
-                    <input type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Button to write a review" value="Write Review">
+                    <input type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Button to write a review" value="Write a Review">
                     </input>
                 </div>
             </form>
