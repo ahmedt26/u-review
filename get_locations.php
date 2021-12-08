@@ -13,7 +13,8 @@ if ($db['status'] == '0') {
 
 $search_term = "";
 if (isset($_GET['search']) && $_GET['search'] != '') {
-    $search_term = "%$_GET['search']%";
+    $search = $_GET['search'];
+    $search_term = "%$search";
 } else {
     $search_term = "%";
 }
