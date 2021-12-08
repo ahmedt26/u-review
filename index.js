@@ -1,13 +1,16 @@
 // Initialize and add the map
 function initMap() {
   let currentLocation = {};
-  if (navigator.geolocation) {
-    currentLocation.lat = position.coords.latitude;
-    currentLocation.lng = position.coords.longitude;
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
+  if ('geolocation' in navigator) {
+    // If it is supported, get the users location
+    navigator.geolocation.getCurrentPosition((position) => {
+      currentLocation.lat = position.coords.latitude;
+      currentLocation.lng = position.coords.longitude;
+      console.log(position.coords.latitude);
+      console.log(position.coords.longitude);
+    });
   } else {
-    currentLocation = { lat: 43.255203, lng: -79.843826 }
+    currentLocation = { lat: 43.255203, lng: -79.843826 };
   }
 
   // Create a google maps map, and place it in the div with id 'map'
