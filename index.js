@@ -1,7 +1,7 @@
 // Initialize and add the map
 function initMap() {
-  let currentLocation = { lat: 0.000, lng: 0.000 };
   if ('geolocation' in navigator) {
+    const currentLocation = { lat: 0, lng: 0 };
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition((position) => {
       currentLocation.lat = position.coords.latitude;
@@ -18,18 +18,17 @@ function initMap() {
 
   const locations = document.getElementById("locationInfo");
   const info = locations.getElementsByTagName("p");
-  console.log("locations: " + locations);
-  console.log("info: " + info);
+  const nameInfo = locations.getElementsByTagName("h5");
 
   for (let i = 0; i < info.length; i += 4) {
-    let name = locations.getElementsByTagName("h5").innerHTML.split(" ")[0];
+    let name = nameInfo.innerHTML;
     let locationID = info[i + 1].innerHTML.split(" ")[1]
     let lng = info[i + 2].innerHTML.split(" ")[1]
     let lat = info[i + 3].innerHTML.split(" ")[1]
-    lng = (lng);
-    lat = (lat);
-    console.log("lng: " + lng);
-    console.log("lat: " + lat);
+    lng = parseFloat(lng);
+    lat = parseFloat(lat);
+    console.log("locations: " + locations);
+    console.log("info: " + info);
     console.log("name: " + name);
     console.log("locationID: " + locationID);
     console.log("lng: " + lng);
