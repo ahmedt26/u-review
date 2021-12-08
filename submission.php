@@ -57,7 +57,7 @@ session_start();
   <div class="mt-auto">
     <!-- auto-adjust margins -->
     <div class="d-flex justify-content-center">
-      <form name="submissionForm" action="upload_submission.php">
+      <form name="submissionForm" action="upload_submission.php" method="POST">
         <div class="pt-auto card px-3 text-center px-4 bg-dark">
           <h4 class="py-2 text-white">Add a Location</h4>
           <!-- Link for write review page if user wants to write a review for an existing location-->
