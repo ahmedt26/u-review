@@ -105,17 +105,24 @@ session_start();
         // Establish connection using server
         $db = $dbconn->getConnection();
 
+        // If status is 0, conenction was not established
+        // If status is not 0, then connection was established and $connection is set
         if ($db['status'] == '0') {
           die("Connection failed while getting data: " . $db['message']);
         } else {
           $connection = $db['connection'];
         }
 
+        // SQL query which gets all the locations in the locations table.
+        // Result of the SQL query is stored in $result
         $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations";
         $result = $connection->query($sql);
 
+        // If the number of rows in $result, run the following script, since there are locations
         if ($result->num_rows > 0) {
+          // While there is a next row in associative array, display the info using the HTML/PHP
           while ($row = $result->fetch_assoc()) { ?>
+            <!-- Anchor updated to redirect to the specific individual page for that location-->
             <a href="individual_page.php?id=<?php echo $row['id'] ?>" class="text-decoration-none">
               <div class="card bg-dark text-white rounded-0">
                 <div class="row g-0">
@@ -126,12 +133,24 @@ session_start();
                   <div class="col-8">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
+                        <!-- 
+                          Display the locations name 
+                        
+                          The reason there are 3 useless hidden h5's is due to the way the markers were set.
+                          It was done in a somewhat odd way.
+                        -->
                         <h5 class="titleFont"><?php echo $row["name"] ?></h5>
                         <h5 class="titleFont" hidden></h5>
                         <h5 class="titleFont" hidden></h5>
                         <h5 class="titleFont" hidden></h5>
                       </div>
 
+                      <!-- 
+                          Display phone_number of the current row
+                          Display id of the current row
+                          Display longitude of the current row
+                          Display latitude of the current row
+                      -->
                       <p class="textFont">Phone-Number: <?php echo $row["phone_number"] ?></p>
                       <p class="textFont" hidden>Id: <?php echo $row["id"] ?></p>
                       <p class="textFont">Longitude: <?php echo $row["longitude"] ?></p>
@@ -144,10 +163,12 @@ session_start();
             </a>
 
         <?php }
+        // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
           echo "No results";
         }
 
+        // Close the database connection
         $connection->close();
         ?>
       </div>

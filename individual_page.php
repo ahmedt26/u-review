@@ -112,23 +112,35 @@ session_start();
     // Establish connection using server
     $db = $dbconn->getConnection();
 
+    // If status is 0, conenction was not established
+    // If status is not 0, then connection was established and $connection is set
     if ($db['status'] == '0') {
         die("Connection failed while getting data: " . $db['message']);
     } else {
         $connection = $db['connection'];
     }
 
+    // Check if id is set, and that it is not empty
     if (isset($_GET['id']) && $_GET['id'] != '') {
+        // Store the value of $_GET['id'] in $id
         $id = $_GET['id'];
+
+        // SQL query which gets a location based on id
+        // Result stored in $location
         $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $id";
         $location = $connection->query($getLocation);
 
+        // Store the first row from the result into $rowInfo
         $rowInfo = $location->fetch_assoc();
 
 
+        // SQL query which gets all the reviews for a specific location based on id
+        // Result stored in $reviewsList
         $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
         $reviewsList = $connection->query($getReviews);
 
+        // This code is basically just calculating the average ratings for the location
+        // We used int instead of float, so therefore there are no half stars.
         $sumRatings = 0;
         $numRatings = 0;
         $avgRatings = 0;
@@ -141,15 +153,19 @@ session_start();
 
         $avgRatings = $sumRatings / $numRatings;
         $avgRatings = (int) $avgRatings;
+
+        // SELECT AVG(rating) from reviews
     ?>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">
             <div class="d-flex justify-content-between">
 
+                <!-- Display the name of the location -->
                 <h1 class="titleFont fw-bold"> <?php echo $rowInfo['name']; ?> </h1>
 
                 <div class="mainStars">
                     <?php
+                    // Loop which displays the amount of stars the location has
                     $i = 0;
                     while ($i < $avgRatings) { ?>
                         <img src="./assets/images/Star1.svg" alt="Star">
@@ -166,6 +182,11 @@ session_start();
             </div>
 
             <div id="individualLocationInfo">
+                <!-- 
+                    Display the phone_number
+                    Display the latitude
+                    Display the longitude
+                -->
                 <h4 class="textFont"><span class="fw-bold">Phone Number:</span> <?php echo $rowInfo['phone_number']; ?></h4>
                 <h4 class="textFont"><span class="fw-bold">Latitude:</span> <?php echo $rowInfo['latitude']; ?></h4>
                 <h4 class="textFont"><span class="fw-bold">Longitude:</span> <?php echo $rowInfo['longitude']; ?></h4>
@@ -202,9 +223,14 @@ session_start();
   -->
         <div class="container px-5">
             <?php
+            // SQL query which gets all the reviews for a specific location based on id
+            // Result stored in $reviewsList
             $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
             $reviewsList = $connection->query($getReviews);
+
+            // Check if the number of reviews is greater than 0
             if ($reviewsList->num_rows > 0) {
+                // While there is a next row in associative array, display the info using the HTML/PHP
                 while ($row = $reviewsList->fetch_assoc()) { ?>
                     <div class="card bg-dark text-white my-3">
                         <div class="row">
@@ -212,8 +238,10 @@ session_start();
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
 
+                                        <!-- Display the title of the review -->
                                         <h5 class="titleFont"> <?php echo $row["review_title"]; ?> </h5>
 
+                                        <!-- Display the rating of the review -->
                                         <div class="commentStars">
                                             <?php
                                             $i = 0;
@@ -230,15 +258,18 @@ session_start();
                                         </div>
                                     </div>
 
+                                    <!-- Display the details of the review -->
                                     <p class="card-text textFont"> <?php echo $row["review_details"]; ?> </p>
 
                                     <p class="card-text textFont">
                                         <?php
                                         $id = $row['reviewer'];
+                                        // SQL query to get the name of the reviewer using the id
                                         $getReviewer = "SELECT first_name, last_name FROM users WHERE id = $id";
                                         $reviewerData = $connection->query($getReviewer);
                                         $reviewerName = $reviewerData->fetch_assoc();
 
+                                        // Display the name of the reviewer
                                         echo '-' . $reviewerName["first_name"] . " " . $reviewerName["last_name"];
 
                                         ?>
@@ -249,10 +280,12 @@ session_start();
                     </div>
         <?php }
             }
+        // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
             echo "No results";
         }
 
+        // Close the database connection
         $connection->close();
         ?>
 
