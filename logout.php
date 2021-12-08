@@ -39,6 +39,6 @@ session_unset();
 // Ensure destruction of session.
 session_destroy();
 
-echo '<br> <h3>You have been successfully logged out </h3> <br>';
+echo '<br> <h3> You have been successfully logged out </h3> <br>';
 
 include('footer.php');
