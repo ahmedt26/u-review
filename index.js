@@ -1,6 +1,7 @@
 // Initialize and add the map
 function initMap() {
   let currentLocation = { lat: 0, lng: 0 };
+  const map;
   if ('geolocation' in navigator) {
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition((position) => {
@@ -8,14 +9,14 @@ function initMap() {
       currentLocation.lng = position.coords.longitude;
       // Create a google maps map, and place it in the div with id 'map'
       // Zoom in and center the map at Current Location
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
         center: currentLocation,
       });
     });
   } else {
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
       center: { lat: 43.255203, lng: -79.843826 },
     });
   }

@@ -57,7 +57,7 @@ session_start();
   <div class="mt-auto">
     <!-- auto-adjust margins -->
     <div class="d-flex justify-content-center">
-      <form name="submissionForm" action="upload_submission.php" method="POST">
+      <form name="submissionForm" class="was-validated" action="upload_submission.php" method="POST">
         <div class="pt-auto card px-3 text-center px-4 bg-dark">
           <h4 class="py-2 text-white">Add a Location</h4>
           <!-- Link for write review page if user wants to write a review for an existing location-->
@@ -66,19 +66,22 @@ session_start();
           </div>
           <!-- Series of input forms, these inputs will be checked for correct type of input.-->
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="name" type="text" placeholder="Name" aria-label="Name of Location">
+            <input class="form-control" name="name" type="text" placeholder="Name" aria-label="Name of Location" required>
+            <div class="invalid-feedback"> Provide the name of the location. </div>
           </div>
           <div class="mt-3 px-3 text-white">
-            <input class="form-control" name="phone_number" type="tel" placeholder="Phone Number" aria-label="Phone Number">
+            <input class="form-control" name="phone_number" type="tel" placeholder="Phone Number" aria-label="Phone Number" required>
+            <div class="invalid-feedback"> Provide this location's phone number. </div>
           </div>
           <div class="mt-3 px-3 text-white">
-            <input id="latitude" class="form-control" name="latitude" type="text" placeholder="Latitude" aria-label="Latitude">
+            <input id="latitude" class="form-control" name="latitude" type="text" placeholder="Latitude" aria-label="Latitude" required>
+            <div class="invalid-feedback"> Provide this location's latitude. </div>
           </div>
           <div class="mt-3 px-3 text-white">
-            <input id="longitude" class="form-control" name="longitude" type="text" placeholder="Longitude" aria-label="Longitude">
+            <input id="longitude" class="form-control" name="longitude" type="text" placeholder="Longitude" aria-label="Longitude" required>
+            <div class="invalid-feedback"> Provide this location's longitude. </div>
           </div>
-          <button type="button" class="btn btn-warning mt-3 mx-auto" style="width: 50%" onclick="getUserLocation()">Get
-            My Location</button>
+          <button type="button" class="btn btn-warning mt-3 mx-auto" style="width: 50%" onclick="getUserLocation()">Get My Location</button>
 
           <hr>
           <!-- User will be able upload a reasonably sized image (~2MB) from their device.
