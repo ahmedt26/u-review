@@ -127,6 +127,9 @@ session_start();
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
                         <h5 class="titleFont"><?php echo $row["name"] ?></h5>
+                        <h5 class="titleFont" hidden></h5>
+                        <h5 class="titleFont" hidden></h5>
+                        <h5 class="titleFont" hidden></h5>
                       </div>
 
                       <p class="textFont">Phone-Number: <?php echo $row["phone_number"] ?></p>
