@@ -9,6 +9,8 @@ function initMap() {
       console.log(position.coords.latitude);
       console.log(position.coords.longitude);
     });
+  } else {
+    console.log("No geolocation")
   }
 
   // Create a google maps map, and place it in the div with id 'map'
