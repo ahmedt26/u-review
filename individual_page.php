@@ -276,8 +276,6 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
             echo "No results";
         }
 
-        // Close the database connection
-        $connection->close();
         ?>
 
         <?php
@@ -292,14 +290,19 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
                 </div>
             </form>
 
-        <?php } else {
-            // Do nothing, only logged in users should get the button to add a button.
-        } ?>
+        <?php } else { ?>
+            <h3> Log in to write a review !</h3>
+        <?php } ?>
 
 
         </div>
 
-        <?php include('footer.html'); ?>
+        <?php
+
+
+        // Close the database connection
+        $connection->close();
+        include('footer.html'); ?>
         <!--
     Script that allows hamburger navbar menu to work properly and the google map
   -->

@@ -6,6 +6,8 @@ function initMap() {
     navigator.geolocation.getCurrentPosition((position) => {
       currentLocation.lat = position.coords.latitude;
       currentLocation.lng = position.coords.longitude;
+      console.log(position.coords.latitude);
+      console.log(position.coords.longitude);
     });
   }
 
