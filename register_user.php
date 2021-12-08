@@ -72,7 +72,7 @@ if (isLegal($username)) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     $stmt->close(); // Close the statement
-                    if ($result != false) { // If the statement passed we can tell the user they have logged in
+                    if (gettype($result) == '\mysqli_result') { // If the statement passed we can tell the user they have logged in
                         echo "<br>" . "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
                     } else {
                         echo "<br> Server-side Registration Error: " . $sql . "<br>" . mysqli_error($connection);

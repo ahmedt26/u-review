@@ -62,7 +62,7 @@ $stmt->bind_param('isiis', $location_id, $review_title, $reviewer_id, $rating, $
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
-if ($result != false) {
+if (gettype($result) == '\mysqli_result') {
   // Notify the user of success
   echo '<br> <h3> Review Success ! </h3><br>';
   echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";

@@ -62,7 +62,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 
-if ($result != false) {
+if (gettype($result) == '\mysqli_result') {
   // Notify the user of success
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
