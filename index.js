@@ -10,7 +10,8 @@ function initMap() {
       console.log(position.coords.longitude);
     });
   } else {
-    currentLocation = { lat: 43.255203, lng: -79.843826 };
+    currentLocation.lat = 43.255203;
+    currentLocation.lng = -79.843826;
   }
 
   // Create a google maps map, and place it in the div with id 'map'
