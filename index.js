@@ -83,12 +83,14 @@ function initIndividualMap() {
   const location = document.getElementById("individualLocationInfo");
   const info = location.getElementsByTagName("h4");
 
-  let lat = info[1].innerHTML.split(" ")[3]
-  let lng = info[2].innerHTML.split(" ")[3]
-  lat = (lat);
-  lng = (lng);
-  console.log("lng: " + lng);
-  console.log("lat: " + lat);
+  const latitude = info[1].innerHTML.split(" ")[3]
+  const longitude = info[2].innerHTML.split(" ")[3]
+  latitude = parseFloat(latitude);
+  longitude = parseFloat(longitude);
+  console.log("lng: " + longitude);
+  console.log("lat: " + latitude);
+
+  const locationSpot = { lat: latitude, lng: longitude };
 
 
   const locationSpot = { lat: lat, lng: lng };
