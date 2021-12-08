@@ -280,12 +280,22 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
         $connection->close();
         ?>
 
-        <form name="writeAReview" action="writereview.php?location_id=<?php echo $rowInfo['id'] ?>" method="GET">
-            <div class="my-3 d-grid px-3 text-white">
-                <input name="writeReviewBtn" type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Button to write a review" value="Write Review">
-                </input>
-            </div>
-        </form>
+        <?php
+
+        // Most headers will be replaced with the login header if the user is logged in.
+        if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) { ?>
+            <form name="writeAReview" action="writereview.php?location_id=<?php echo $rowInfo['id'] ?>" method="GET">
+                <div class="my-3 d-grid px-3 text-white">
+                    <input name="writeReviewBtn" type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Button to write a review" value="Write Review">
+                    </input>
+                </div>
+            </form>
+
+        <?php } else {
+            // Do nothing, only logged in users should get the button to add a button.
+        } ?>
+
+
         </div>
 
         <?php include('footer.html'); ?>
