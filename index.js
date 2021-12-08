@@ -6,22 +6,19 @@ function initMap() {
     navigator.geolocation.getCurrentPosition((position) => {
       currentLocation.lat = position.coords.latitude;
       currentLocation.lng = position.coords.longitude;
-      console.log(currentLocation.lat);
-      console.log(currentLocation.lng);
+      // Create a google maps map, and place it in the div with id 'map'
+      // Zoom in and center the map at Current Location
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: currentLocation,
+      });
     });
   } else {
-    currentLocation.lat = 43.255203;
-    currentLocation.lng = -79.843826;
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: { lat: 43.255203, lng: -79.843826 },
+    });
   }
-  console.log(currentLocation.lat);
-  console.log(currentLocation.lng);
-
-  // Create a google maps map, and place it in the div with id 'map'
-  // Zoom in and center the map at Current Location
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 12,
-    center: { lat: currentLocation.lat, lng: currentLocation.lng },
-  });
 
   // This portion of the code is used to set the markers and labels
   // Get the all the locations by getting elements by id "locationInfo" into locations
