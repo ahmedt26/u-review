@@ -4,7 +4,7 @@
   Monday, October 4th, 2021
 -->
 <?php
-ob_start();
+
 session_start();
 ?>
 

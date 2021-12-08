@@ -1,11 +1,11 @@
 <?php
-ob_start();
 session_start();
 ?>
 
 
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
+
 <head>
     <!-- Metadata of Website 
       'viewport' is what screen this page is being accessed by, the scale is set to default size.
@@ -49,8 +49,8 @@ $firstName = filter_input(INPUT_POST, 'firstName');
 $lastName = filter_input(INPUT_POST, 'lastName');
 $email = filter_input(INPUT_POST, 'email');
 // Hash the passwords for the database
-$userPassword = hash('sha256' ,filter_input(INPUT_POST, 'userPassword'));
-$userPasswordConfirm = hash('sha256' ,filter_input(INPUT_POST, 'passwordConfirm'));
+$userPassword = hash('sha256', filter_input(INPUT_POST, 'userPassword'));
+$userPasswordConfirm = hash('sha256', filter_input(INPUT_POST, 'passwordConfirm'));
 // Check if each input is valid
 
 // Checks if each form input is valid, and notifies th user

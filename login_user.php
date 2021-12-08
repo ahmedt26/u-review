@@ -34,7 +34,6 @@
 </head>
 
 <?php
-ob_start();
 session_start();
 ?>
 
@@ -64,9 +63,8 @@ session_start();
         $username   = $_POST["loginUsername"];
         $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
 
-        $sql = "SELECT user_name, first_name FROM users WHERE username = $username AND password = $password";
+        $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
         $result = $connection->query($sql, MYSQLI_STORE_RESULT);
-        $numUsers = mysqli_num_rows($result);
         $msg = 'Attempting Login...';
         echo '<br>' . $result . '<br>';
         echo '<br> Attempting Login... <br>';
@@ -78,11 +76,12 @@ session_start();
             echo '<br> Given Password (hashed): ' . $password . '<br>';
             echo '<br> numUsers: ' . $numUsers . '<br>';
 
-            if (true) {
+            if (mysqli_num_rows($result) > 0) {
+                $userResult = mysqli_fetch_row($result);
                 $_SESSION["logged_in"] = true;
-                $_SESSION["username"] = $name;
-                // Get the user's first name from the fetched row.
-                $_SESSION['firstName'] = mysqli_fetch_row($result)[2];
+                $_SESSION['user_id'] = $userResult[0];
+                $_SESSION["username"] = $username; // $userResult[1];
+                $_SESSION['firstName'] = $userResult[2];
                 $msg = 'You are now logged in as ' . $username;
                 echo 'You are now logged in as: ' . $username;
             } else {

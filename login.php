@@ -5,7 +5,7 @@
 -->
 
 <?php
-ob_start();
+
 session_start();
 ?>
 
@@ -50,7 +50,7 @@ session_start();
 
   <?php
   // Most headers will be replaced with the login header if the user is logged in.
-  if ($_SESSION['logged_in']) {
+  if ($_SESSION['logged_in'] == true) {
     include('login_header.html');
   } else {
     include('header.html');
