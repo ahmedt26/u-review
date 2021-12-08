@@ -49,7 +49,7 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-self-end">
           <li class="nav-item px-3">
-            Logged in as:  <?php $_SESSION['username'] ?>
+            <a class="nav-link text-white"> Logged in as: <?php $_SESSION['username'] ?> </a>
           </li>
           <li class="nav-item px-3">
             <a href="./index.php" class="nav-link text-white">Home</a>
@@ -58,14 +58,12 @@
           <li class="nav-item px-3">
             <a href="./results_sample.php" class="nav-link text-white">Sample Results</a>
           </li>
-          <!-- <li class="nav-item px-3">
-              <a href="./submission.php" class="nav-link text-white">Add a Location</a>
-            </li>
-            <li class="nav-item px-3">
+          <li class="nav-item px-3">
+            <a href="./submission.php" class="nav-link text-white">Add a Location</a>
+          </li>
+          <!-- Writing a Review is done through the individual_page.php of a location. -->
+          <!-- <li class="nav-item px-3"> 
               <a href="./writereview.php" class="nav-link text-white">Write a Review</a>
-            </li>
-            <li class="nav-item px-3">
-              <a href="./login.php" class="nav-link text-white">Log In</a>
             </li> -->
           <li class="nav-item px-3">
             <a href="./logout.php" class="btn btn-warning">Log Out</a>

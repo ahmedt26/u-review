@@ -79,8 +79,10 @@ session_start();
   <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
     <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
       <form id="mainSearchForm" action="get_locations.php" method="GET">
-        <input id="search" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
-        <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
+        <div>
+          <input id="search" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
+          <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
+        </div>
       </form>
     </div>
   </div>

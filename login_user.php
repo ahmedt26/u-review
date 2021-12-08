@@ -51,7 +51,7 @@ session_start();
         include('login_header.php');
     } else {
         include('header.html');
-    } 
+    }
     ?>
 
     <?php
@@ -78,18 +78,23 @@ session_start();
             // echo '<br> numUsers: ' . $numUsers . '<br>';
 
             if (mysqli_num_rows($result) > 0) {
-                $userResult = mysqli_fetch_row($result);
+                // Get the first (and only) row of the result.
+                $userResult = $result->fetch_assoc();
                 $_SESSION["logged_in"] = true;
-                $_SESSION['user_id'] = $userResult[0];
-                $_SESSION["username"] = $username; // $userResult[1];
-                $_SESSION['firstName'] = $userResult[2];
+                $_SESSION['user_id'] = $userResult['id'];
+                $_SESSION["username"] = $username; // $userResult['username'];
+                $_SESSION['firstName'] = $userResult['first_name'];
                 $msg = 'You are now logged in as ' . $username;
-                echo 'You are now logged in as: ' . $username;
+
+                echo '<br> <h3> Login Success </h3>';
+                echo '<br> You are now logged in as: ' . $userResult['username'] . "," . $userResult['first_name'] . "!";
             } else {
+                echo '<br> <h3> Login Failure </h3>';
                 $msg = 'Invalid Username or Password';
                 echo '<br> Invalid Username or Password <br>';
             }
         } else {
+            echo '<br> <h3> Login Failure </h3>';
             echo ' <br> Username And/Or Password is not Set! <br>';
         }
     }

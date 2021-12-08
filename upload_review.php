@@ -48,16 +48,17 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 
 <?php
 // POST the form inputs into variables to inserted
-$locationName  = filter_input(INPUT_POST, 'locationName');
-$reviewTitle   = filter_input(INPUT_POST, 'reviewTitle');
-$reviewer      = filter_input(INPUT_POST, 'reviewer');
+$location_name  = filter_input(INPUT_POST, 'location_name');
+$location_id  = filter_input(INPUT_POST, 'location_id');
+$reviewer_id    = filter_input(INPUT_POST, 'reviewer_id');
+$review_title   = filter_input(INPUT_POST, 'reviewTitle');
 $rating        = filter_input(INPUT_POST, 'rating');
-$reviewDetails = filter_input(INPUT_POST, "reviewDetails");
+$review_details = filter_input(INPUT_POST, "reviewDetails");
 
 // Query to INSERT into database.
-$sql = "INSERT INTO reviews (location_name, review_title, reviewer, rating, review_details) VALUES ('$locationName', '$reviewTitle', '$reviewer', '$rating', '$reviewDetails')";
+$sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', '$review_title', '$reviewer_id', '$rating', '$review_details')";
 if (mysqli_query($connection, $sql)) {
-  echo "You have successfully uploaded a review of " . $locationName . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
+  echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
 } else {
   echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }

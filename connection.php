@@ -6,9 +6,9 @@ $dbconn = new Database();
 $db = $dbconn->getConnection();
 
 // Check if the database is successfully established
-if ($db['status'] == '0') {
+if ($db['status'] == '0') { // 0 means failure of connection
     die("Error - Connection Failure: " . $db['message']);
 } else {
-    $connection = $db['connection'];
+    $connection = $db['connection']; // Otherwise we have successfully connected to DB.
 }
 ?>
