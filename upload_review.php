@@ -55,17 +55,22 @@ $review_title   = (filter_input(INPUT_POST, 'reviewTitle'));
 $rating         = filter_input(INPUT_POST, 'rating');
 $review_details = (filter_input(INPUT_POST, "reviewDetails"));
 
-// Query to INSERT into database.
-$sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', '$review_title', '$reviewer_id', '$rating', '$review_details')";
-if (mysqli_query($connection, $sql)) {
-  // Notify the user of success
-  echo '<br> <h3> Review Success ! </h3><br>';
-  echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
+if (isLegal($review_title) && isLegal($review_details)) {
+  // Query to INSERT into database.
+  $sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', '$review_title', '$reviewer_id', '$rating', '$review_details')";
+  if (mysqli_query($connection, $sql)) {
+    // Notify the user of success
+    echo '<br> <h3> Review Success ! </h3><br>';
+    echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
+  } else {
+    // Notify the user of failure
+    echo '<br> <h3> Review Failure ! </h3><br>';
+    // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
+  }
+  mysqli_close($conn);
 } else {
-  // Notify the user of failure
-  echo '<br> <h3> Review Failure ! </h3><br>';
-  // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
+  echo 'Illegal input for Review Title/Details! Remove whitespace, slashes and special characters!';
 }
-mysqli_close($conn);
+
 
 include('footer.php');

@@ -54,6 +54,7 @@ $phone_number = filter_input(INPUT_POST, 'phone_number');
 $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');
 
+if (isLegal($name)) {
 // Query to INSERT into database.
 $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES ('$name', '$phone_number', '$latitude', '$longitude')";
 if (mysqli_query($connection, $sql)) {
@@ -66,5 +67,9 @@ if (mysqli_query($connection, $sql)) {
   // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
+} else {
+  echo "Name is not of legal input! Remove whitespace, slashes and special characters!";
+}
+
 
 include('footer.php');

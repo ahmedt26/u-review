@@ -49,7 +49,7 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 
 <?php
 // POST the form inputs into variables to inserted
-// Filters input for POSTing
+// Filters input for POSTing. Checking for harmful input is Line 63.
 $username  = (filter_input(INPUT_POST, 'username'));
 $firstName = (filter_input(INPUT_POST, 'firstName'));
 $lastName  = (filter_input(INPUT_POST, 'lastName'));
@@ -59,7 +59,7 @@ $userPassword = hash('sha256', filter_input(INPUT_POST, 'userPassword'));
 $userPasswordConfirm = hash('sha256', filter_input(INPUT_POST, 'passwordConfirm'));
 // Check if each input is valid
 
-// Checks if each form input is valid, and notifies th user
+// Checks if each form input is valid and legal.
 if (isLegal($username)) {
     if (isLegal($firstName)) {
         if (isLegal($lastName)) {

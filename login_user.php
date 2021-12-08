@@ -61,40 +61,44 @@ session_start();
         // echo '<br> POST METHOD RECEIVED <br>';
 
         // We only POST and pull from DB if there's actually stuff in the login form.
-        // Render username harmless.
-        $username   = ($_POST["loginUsername"]);
-        // Since the password is hashed right away it doesn't matter to legalize its input.
-        $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
-
-        $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
-        $result = $connection->query($sql);
-
-        if (
-            isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
-            && !empty($_POST['loginPassword'])
-        ) {
-            // Debug Code
-            // echo '<br> Given Username: ' . $username . '<br>';
-            // echo '<br> Given Password (hashed): ' . $password . '<br>';
-            // echo '<br> numUsers: ' . $numUsers . '<br>';
-
-            if (mysqli_num_rows($result) > 0) {
-                // Get the first (and only) row of the result.
-                $userResult = $result->fetch_assoc();
-                $_SESSION["logged_in"] = true;
-                $_SESSION['user_id'] = $userResult['id'];
-                $_SESSION["username"] = $username; // $userResult['user_name'];
-                $_SESSION['firstName'] = $userResult['first_name'];
-                echo '<br> <h3> Login Success </h3>';
-                echo '<br> You are now logged in as: ' . $userResult['user_name'] . "," . $userResult['first_name'] . "!";
-                echo '<br> Your user ID is: ' . $_SESSION['user_id'] . " or " . $userResult['id'];
+        /// Check if username entry is harmful
+        if (isLegal($_POST["loginUsername"])) {
+            $username   = ($_POST["loginUsername"]);
+            // Since the password is hashed right away it doesn't matter to legalize its input.
+            $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
+    
+            $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
+            $result = $connection->query($sql);
+    
+            if (
+                isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
+                && !empty($_POST['loginPassword'])
+            ) {
+                // Debug Code
+                // echo '<br> Given Username: ' . $username . '<br>';
+                // echo '<br> Given Password (hashed): ' . $password . '<br>';
+                // echo '<br> numUsers: ' . $numUsers . '<br>';
+    
+                if (mysqli_num_rows($result) > 0) {
+                    // Get the first (and only) row of the result.
+                    $userResult = $result->fetch_assoc();
+                    $_SESSION["logged_in"] = true;
+                    $_SESSION['user_id'] = $userResult['id'];
+                    $_SESSION["username"] = $username; // $userResult['user_name'];
+                    $_SESSION['firstName'] = $userResult['first_name'];
+                    echo '<br> <h3> Login Success </h3>';
+                    echo '<br> You are now logged in as: ' . $userResult['user_name'] . "," . $userResult['first_name'] . "!";
+                    echo '<br> Your user ID is: ' . $_SESSION['user_id'] . " or " . $userResult['id'];
+                } else {
+                    echo '<br> <h3> Login Failure </h3>';
+                    echo '<br> Invalid Username or Password <br>';
+                }
             } else {
                 echo '<br> <h3> Login Failure </h3>';
-                echo '<br> Invalid Username or Password <br>';
+                echo ' <br> Username And/Or Password is not Set! <br>';
             }
-        } else {
-            echo '<br> <h3> Login Failure </h3>';
-            echo ' <br> Username And/Or Password is not Set! <br>';
+        } else{
+            echo 'User input harmful data! Try again. Remove spaces, slashes and other special characters.';
         }
     }
 
