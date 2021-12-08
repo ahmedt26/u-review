@@ -65,10 +65,14 @@ if (isLegal($username)) {
         if (isLegal($lastName)) {
             if (isLegal($email)) {
                 if (isLegal($userPassword)) {
-
-                    // Query to INSERT into database.
-                    $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES ('$username', '$firstName', '$lastName', '$email', '$userPassword')";
-                    if (mysqli_query($connection, $sql)) {
+                    // Prepare Query to INSERT into database.
+                    $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES (?, ? ,? ,?, ?)";
+                    $stmt = $connection->prepare($sql);
+                    $stmt->bind_param('s', $username, $firstName, $lastName, $email, $userPassword);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $stmt->close(); // Close the statement
+                    if ($result) { // If the statement passed we can tell the user they have logged in
                         echo "<br>" . "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
                     } else {
                         echo "<br> Server-side Registration Error: " . $sql . "<br>" . mysqli_error($connection);

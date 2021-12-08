@@ -54,22 +54,23 @@ $phone_number = filter_input(INPUT_POST, 'phone_number');
 $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');
 
-if (isLegal($name)) {
-  // Query to INSERT into database.
-  $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES ('$name', '$phone_number', '$latitude', '$longitude')";
-  if (mysqli_query($connection, $sql)) {
-    // Notify the user of success
-    echo '<br> <h3> Location Upload Success ! </h3><br>';
-    echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
-  } else {
-    // Notify the user of failure
-    echo '<br> <h3> Location Upload Failure ! </h3><br>';
-    // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
-  }
-  mysqli_close($conn);
-} else {
-  echo "Name is not of legal input! Remove whitespace, slashes and special characters!";
-}
+// Query to INSERT into database.
+$sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (?, ?, ?, ?)";
+$stmt = $connection->prepare($sql);
+$stmt->bind_param('s', $name, $phone_number, $latitude, $longitude);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
 
+if ($result) {
+  // Notify the user of success
+  echo '<br> <h3> Location Upload Success ! </h3><br>';
+  echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
+} else {
+  // Notify the user of failure
+  echo '<br> <h3> Location Upload Failure ! </h3><br>';
+  // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
+}
+mysqli_close($conn);
 
 include('footer.php');

@@ -1,5 +1,5 @@
 <!--
-  UReview Sample Results of Zeal Hamburgers
+  UReview Dynamic Results Page
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
@@ -127,8 +127,12 @@ session_start();
 
         // SQL query which gets a location based on id
         // Result stored in $location
-        $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $id";
-        $location = $connection->query($getLocation);
+        $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = ?";
+        $stmt = $connection->prepare($getLocation);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $location = $stmt->get_result();
+        $stmt->close();
 
         // Store the first row from the result into $rowInfo
         $rowInfo = $location->fetch_assoc();
@@ -136,15 +140,16 @@ session_start();
 
         // SQL query which gets all the reviews for a specific location based on id
         // Result stored in $reviewsList
-        $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
-        $reviewsList = $connection->query($getReviews);
+        $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = ?";
+        $stmt = $connection->prepare($getReviews);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $reviewList = $stmt->get_result();
+        $stmt->close();
 
-        $getAverage = "SELECT AVG(rating) FROM reviews WHERE location_id = $id";
-        $average = $connection->query($getReviews);
-        $averageRow = $average->fetch_assoc();
         // This code is basically just calculating the average ratings for the location
         // We used int instead of float, so therefore there are no half stars.
-        /*$sumRatings = 0;
+        $sumRatings = 0;
         $numRatings = 0;
         $avgRatings = 0;
         if ($reviewsList->num_rows > 0) {
@@ -155,7 +160,7 @@ session_start();
         }
 
         $avgRatings = $sumRatings / $numRatings;
-        $avgRatings = (int) $avgRatings; */
+        $avgRatings = (int) $avgRatings;
 
         // SELECT AVG(rating) from reviews
     ?>
@@ -170,13 +175,13 @@ session_start();
                     <?php
                     // Loop which displays the amount of stars the location has
                     $i = 0;
-                    while ($i < (int) $averageRow) { ?>
+                    while ($i < $avgRatings) { ?>
                         <img src="./assets/images/Star1.svg" alt="Star">
                     <?php $i++;
                     } ?>
                     <?php
                     $i = 0;
-                    while ($i < 5 - (int) $averageRow) { ?>
+                    while ($i < 5 - $avgRatings) { ?>
                         <img src="./assets/images/Star2.svg" alt="No Star">
                     <?php $i++;
                     } ?>
@@ -228,8 +233,15 @@ session_start();
             <?php
             // SQL query which gets all the reviews for a specific location based on id
             // Result stored in $reviewsList
-            $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
-            $reviewsList = $connection->query($getReviews);
+            //$getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
+            //$reviewsList = $connection->query($getReviews);
+
+            $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = ?";
+            $stmt = $connection->prepare($getReviews);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $reviewList = $stmt->get_result();
+            $stmt->close();
 
             // Check if the number of reviews is greater than 0
             if ($reviewsList->num_rows > 0) {
@@ -283,7 +295,7 @@ session_start();
                     </div>
         <?php }
             }
-            // If there are no locations in the result after the SQL query, then it just displays "No Results"
+        // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
             echo "No results";
         }
