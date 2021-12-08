@@ -86,30 +86,27 @@ if (isset($_POST['location_id']) && $_POST['location_id'] != '') {
           <div class="mt-3 px-3 text-white">
             <input class="form-control" id="locationID" name="location_id" type="hidden" value="<?php echo $locationData['id']; ?>" placeholder="Location ID" aria-label="Hidden Value for Location ID">
           </div>
-          <!-- Hidden Data - User ID (Reviewer) -->
+          <!-- Hidden Data - User ID -->
           <div class="mt-3 px-3 text-white">
             <input class="form-control" id="reviewerID" name="reviewer_id" type="hidden" value="<?php $_SESSION['user_id'] ?>" placeholder="Reviewer ID" aria-label="Hidden Value for Reviewer ID">
           </div>
           <!-- The title for the review-->
           <div class="mt-3 px-3 text-white">
             <input class="form-control" id="reviewTitle" name="reviewTitle" type="text" placeholder="Review Title" aria-label="Title of Review">
-            <div class="valid-feedback"> Good Title!</div>
             <div class="invalid-feedback"> Provide a Review Title!</div>
           </div>
           <!-- The Rating out of five-->
           <div class="mt-3 px-3 text-white">
             <input class="form-control" id="rating" name="rating" type="number" min="0" max="5" placeholder="Star Rating (out of five)" aria-label="Select a star rating">
-            <div class="valid-feedback"> Thank you for your rating. </div>
             <div class="invalid-feedback"> Provide a Star Rating</div>
           </div>
           <!-- The review details -->
           <div class="mt-3 px-3 text-white">
             <input class="form-control" id="reviewDetails" name="reviewDetails" type="text" placeholder="Review Details" aria-label="Details of Review">
-            <div class="valid-feedback"> Thank you for your input!</div>
             <div class="invalid-feedback"> Please provide details of the review!</div>
           </div>
           <div class="my-3 d-grid px-3 text-white">
-            <input name="uploadButton" type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Button to Upload Review" value="Write Review">
+            <input type="submit" class="btn btn-warning btn-block btn-signup text-uppercase" aria-label="Button to Upload Review" value="Write Review">
             </input>
           </div>
         </form>

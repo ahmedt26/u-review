@@ -285,13 +285,13 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
             <form id="toWriteReviewPageForm" action="writereview.php" method="POST">
                 <div class="my-3 d-grid px-3 text-white">
                     <input name="location_id" type="hidden" value="<?php echo $rowInfo['id']; ?>">
-                    <input name="writeReviewBtn" type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Button to write a review" value="Write Review">
+                    <input type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Button to write a review" value="Write Review">
                     </input>
                 </div>
             </form>
 
         <?php } else { ?>
-            <h3> Log in to write a review !</h3>
+            You must be logged in to write a review.
         <?php } ?>
 
 
