@@ -56,25 +56,25 @@ session_start();
     <?php
     // When the form iS POSTed, we perform the login checks.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $msg = 'POST METHOD RECEIVED';
-        echo '<br> POST METHOD RECEIVED <br>';
+        // echo '<br> POST METHOD RECEIVED <br>';
 
         // We only POST and pull from DB if there's actually stuff in the login form.
         $username   = $_POST["loginUsername"];
         $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
 
         $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
-        $result = $connection->query($sql, MYSQLI_STORE_RESULT);
-        $msg = 'Attempting Login...';
-        echo '<br>' . $result . '<br>';
-        echo '<br> Attempting Login... <br>';
+        $result = $connection->query($sql);
+        // echo '<br>' . $result . '<br>';
+        // echo '<br> Attempting Login... <br>';
+
         if (
             isset($_POST['loginUsername']) && !empty($_POST['loginUsername'])
             && !empty($_POST['loginPassword'])
         ) {
-            echo '<br> Given Username: ' . $username . '<br>';
-            echo '<br> Given Password (hashed): ' . $password . '<br>';
-            echo '<br> numUsers: ' . $numUsers . '<br>';
+            // Debug Code
+            // echo '<br> Given Username: ' . $username . '<br>';
+            // echo '<br> Given Password (hashed): ' . $password . '<br>';
+            // echo '<br> numUsers: ' . $numUsers . '<br>';
 
             if (mysqli_num_rows($result) > 0) {
                 $userResult = mysqli_fetch_row($result);
@@ -89,7 +89,7 @@ session_start();
                 echo '<br> Invalid Username or Password <br>';
             }
         } else {
-            echo ' <br> USERNAME AND PASSWORD IS NOT SET <br>';
+            echo ' <br> Username And/Or Password is not Set! <br>';
         }
     }
 
