@@ -62,7 +62,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 
-if ($result) {
+if ($result != false) {
   // Notify the user of success
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";

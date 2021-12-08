@@ -92,8 +92,8 @@ session_start();
                 $_SESSION["username"] = $username; // $userResult['user_name'];
                 $_SESSION['firstName'] = $userResult['first_name'];
                 echo '<br> <h3> Login Success </h3>';
-                echo '<br> You are now logged in as: ' . $userResult['user_name'] . "," . $userResult['first_name'] . "!";
-                echo '<br> Your user ID is: ' . $_SESSION['user_id'] . " or " . $userResult['id'];
+                echo '<br> You are now logged in as: ' . $userResult['user_name'] . ", " . $userResult['first_name'] . "!";
+                //  echo '<br> Your user ID is: ' . $_SESSION['user_id'] . " or " . $userResult['id'];
             } else {
                 echo '<br> <h3> Login Failure </h3>';
                 echo '<br> Invalid Username or Password <br>';

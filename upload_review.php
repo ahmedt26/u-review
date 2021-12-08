@@ -62,14 +62,14 @@ $stmt->bind_param('isiis', $location_id, $review_title, $reviewer_id, $rating, $
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
-if ($result) {
+if ($result != false) {
   // Notify the user of success
   echo '<br> <h3> Review Success ! </h3><br>';
   echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
 } else {
   // Notify the user of failure
   echo '<br> <h3> Review Failure ! </h3><br>';
-  // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
+  echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
 
