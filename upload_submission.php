@@ -37,6 +37,7 @@ session_start();
 //  A function which registers the user into the database.
 include('database.php');
 include('connection.php');
+include('validate_data.php');
 // Most headers will be replaced with the login header if the user is logged in.
 // This should always result to header.php because only users can upload reviews.
 if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
@@ -48,7 +49,8 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 
 <?php
 // POST the form inputs into variables to inserted
-$name         = filter_input(INPUT_POST, 'name');
+$name         = legalizeInput(filter_input(INPUT_POST, 'name'));
+// Since the bottom 3 attributes are decimals/integers, they can't really harm the server.
 $phone_number = filter_input(INPUT_POST, 'phone_number');
 $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');
@@ -56,12 +58,14 @@ $longitude    = filter_input(INPUT_POST, 'longitude');
 // Query to INSERT into database.
 $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES ('$name', '$phone_number', '$latitude', '$longitude')";
 if (mysqli_query($connection, $sql)) {
+  // Notify the user of success
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
 } else {
+  // Notify the user of failure
   echo '<br> <h3> Location Upload Failure ! </h3><br>';
-  echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
+  // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
 
-include('footer.html');
+include('footer.php');

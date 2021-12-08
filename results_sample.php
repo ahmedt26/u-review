@@ -3,9 +3,11 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
+
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
 
@@ -121,8 +123,10 @@ session_start();
           $search_term = "%";
         }
 
-        $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE name LIKE '$search_term'";
-        $result = $connection->query($sql);
+        $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE name LIKE ?";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(["$search_term"]);
+        $result = $stmt->get_result();
 
         // If the number of rows in $result, run the following script, since there are locations
         if ($result->num_rows > 0) {
@@ -185,7 +189,7 @@ session_start();
 
   </div>
 
-  <?php include('footer.php'); ?>
+  <?php include('footer.html'); ?>
 
   <!--
     Script that allows hamburger navbar menu to work properly

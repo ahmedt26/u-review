@@ -61,7 +61,9 @@ session_start();
         // echo '<br> POST METHOD RECEIVED <br>';
 
         // We only POST and pull from DB if there's actually stuff in the login form.
-        $username   = $_POST["loginUsername"];
+        // Render username harmless.
+        $username   = legalizeInput($_POST["loginUsername"]);
+        // Since the password is hashed right away it doesn't matter to legalize its input.
         $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
 
         $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
