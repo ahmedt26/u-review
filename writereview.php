@@ -8,11 +8,9 @@
 // Get all $_SESSION variables
 session_start();
 
-// Grab the location_id from the URL using GET
-if (isset($_GET['location_id']) && $_GET['location_id'] != '') {
-  // Store the value of $_GET['id'] in $id
-  $location_id = $_GET['location_id'];
-
+// Grab the location_id from the previous form using POST
+$location_id = $_POST['location_id'];
+if (isset($_POST['location_id']) && $_POST['location_id'] != '') {
   // SQL query which gets a location based on id
   // Result stored in $location
   $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $location_id";

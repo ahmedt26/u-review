@@ -78,7 +78,7 @@ session_start();
   <!-- A simple button that retrieves the users location when clicked and displays it in the search bar-->
   <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
     <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
-      <form id="mainSearchForm" action="get_locations.php" method="GET">
+      <form id="mainSearchForm" action="results_sample.php" method="GET">
         <div>
           <input id="search" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
           <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>

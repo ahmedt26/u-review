@@ -49,7 +49,7 @@
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-self-end">
           <li class="nav-item px-3">
-            <a class="nav-link text-white"> Logged in as: <?php $_SESSION['username'] ?> </a>
+            <a class="nav-link text-white"> Logged in as: <?php echo $_SESSION['username']; ?> </a>
           </li>
           <li class="nav-item px-3">
             <a href="./index.php" class="nav-link text-white">Home</a>

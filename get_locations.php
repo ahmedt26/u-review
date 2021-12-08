@@ -2,10 +2,11 @@
 // Establish DB Connection
 include('database.php');
 include('connection.php');
+include('validate_data.php');
 
 $search_term = "";
 if (isset($_GET['search']) && $_GET['search'] != '') {
-    $search = $_GET['search'];
+    $search = legalizeInput($_GET['search']);
     $search_term = "%$search%";
 } else {
     $search_term = "%";

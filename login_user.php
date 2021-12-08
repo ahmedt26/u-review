@@ -60,7 +60,7 @@ session_start();
         // echo '<br> POST METHOD RECEIVED <br>';
 
         // We only POST and pull from DB if there's actually stuff in the login form.
-        $username   = $_POST["loginUsername"];
+        $username   = legalizeInput($_POST["loginUsername"]);
         $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
 
         $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
@@ -87,10 +87,9 @@ session_start();
                 $msg = 'You are now logged in as ' . $username;
 
                 echo '<br> <h3> Login Success </h3>';
-                echo '<br> You are now logged in as: ' . $userResult['username'] . "," . $userResult['first_name'] . "!";
+                echo '<br> You are now logged in as: ' . $userResult['user_name'] . "," . $userResult['first_name'] . "!";
             } else {
                 echo '<br> <h3> Login Failure </h3>';
-                $msg = 'Invalid Username or Password';
                 echo '<br> Invalid Username or Password <br>';
             }
         } else {

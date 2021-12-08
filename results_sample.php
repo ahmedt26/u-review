@@ -5,7 +5,6 @@
 -->
 
 <?php
-// Grab all session variables.
 session_start();
 ?>
 
@@ -101,11 +100,30 @@ session_start();
       <div id="locationInfo">
         <?php
         include('database.php');
-        include('connection.php');
 
-        // SQL query which gets all the locations in the locations table.
+        $dbconn = new Database();
+        // Establish connection using server
+        $db = $dbconn->getConnection();
+
+        // If status is 0, conenction was not established
+        // If status is not 0, then connection was established and $connection is set
+        if ($db['status'] == '0') {
+          die("Connection failed while getting data: " . $db['message']);
+        } else {
+          $connection = $db['connection'];
+        }
+
+        // SQL query which gets all the locations in the locations table, based on the search query.
         // Result of the SQL query is stored in $result
-        $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations";
+        $search_term = "";
+        if (isset($_GET['search']) && $_GET['search'] != '') {
+          $search = $_GET['search'];
+          $search_term = "%$search%";
+        } else {
+          $search_term = "%";
+        }
+
+        $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE name LIKE '$search_term'";
         $result = $connection->query($sql);
 
         // If the number of rows in $result, run the following script, since there are locations
