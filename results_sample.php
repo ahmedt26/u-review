@@ -128,6 +128,7 @@ session_start();
         $stmt->bind_param('s', $search_term);
         $stmt->execute();
         $result = $stmt->get_result();
+        $stmt->close();
 
         // If the number of rows in $result, run the following script, since there are locations
         if ($result->num_rows > 0) {
