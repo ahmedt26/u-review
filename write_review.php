@@ -116,7 +116,7 @@ if (isset($_POST['location_id']) && $_POST['location_id'] != '') {
         </div>
     </div>
 
-    <?php include('footer.html'); ?>
+    <?php include('footer.php'); ?>
 </body>
 
 </html>

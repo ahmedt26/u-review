@@ -5,8 +5,7 @@ function initMap() {
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition(onFinish);
   } else {
-    console.log("No geolocation")
-
+    onFinish({ coords: { latitude: 43.255203, longitude: -79.843826 } })
   }
 }
 
