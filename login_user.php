@@ -50,7 +50,7 @@ session_start();
     if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
         include('login_header.php');
     } else {
-        include('header.html');
+        include('header.php');
     }
     ?>
 
@@ -60,7 +60,7 @@ session_start();
         // echo '<br> POST METHOD RECEIVED <br>';
 
         // We only POST and pull from DB if there's actually stuff in the login form.
-        $username   = legalizeInput($_POST["loginUsername"]);
+        $username   = $_POST["loginUsername"];
         $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
 
         $sql = "SELECT id, user_name, first_name FROM users WHERE user_name = '$username' AND pass_word = '$password'";
@@ -84,8 +84,6 @@ session_start();
                 $_SESSION['user_id'] = $userResult['id'];
                 $_SESSION["username"] = $username; // $userResult['username'];
                 $_SESSION['firstName'] = $userResult['first_name'];
-                $msg = 'You are now logged in as ' . $username;
-
                 echo '<br> <h3> Login Success </h3>';
                 echo '<br> You are now logged in as: ' . $userResult['user_name'] . "," . $userResult['first_name'] . "!";
             } else {
