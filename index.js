@@ -21,7 +21,7 @@ function initMap() {
   const nameInfo = locations.getElementsByTagName("h5");
 
   for (let i = 0; i < info.length; i += 4) {
-    let name = nameInfo[0].innerHTML;
+    let name = nameInfo[i].innerHTML;
     let locationID = info[i + 1].innerHTML.split(" ")[1]
     let lng = info[i + 2].innerHTML.split(" ")[1]
     let lat = info[i + 3].innerHTML.split(" ")[1]
