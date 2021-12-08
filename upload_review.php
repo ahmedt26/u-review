@@ -47,10 +47,11 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 ?>
 
 <?php
+echo '<br> USER ID IS: ' . $_SESSION['user_id'];
 // POST the form inputs into variables to inserted
 $location_name  = filter_input(INPUT_POST, 'location_name');
 $location_id  = (int) filter_input(INPUT_POST, 'location_id');
-$reviewer_id    = (int) filter_input(INPUT_POST, 'reviewer_id');
+$reviewer_id    = $_SESSION['user_id'];
 $review_title   = filter_input(INPUT_POST, 'reviewTitle');
 $rating        = filter_input(INPUT_POST, 'rating');
 $review_details = filter_input(INPUT_POST, "reviewDetails");
