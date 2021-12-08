@@ -38,11 +38,14 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-  <?php if ($_SESSION['logged_in']) {
-    include('login_header.html');
+  <?php
+  // Most headers will be replaced with the login header if the user is logged in.
+  // Only users can access this page, so login_header.php should be the active header.
+  if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
+    include('login_header.php');
   } else {
     include('header.html');
-  } ?>
+  }  ?>
 
   <!-- Add Location Card -->
   <div class="mt-auto">

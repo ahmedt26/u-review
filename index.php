@@ -55,9 +55,12 @@ session_start();
 
   <!-- the php include() function takes template HTML code from another .html file and puts it in the .php file. Allows for code reuse -->
   <?php
-
   // Most headers will be replaced with the login header if the user is logged in.
-  include('header.html');
+  if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
+    include('login_header.php');
+  } else {
+    include('header.html');
+  }
   ?>
 
   <!-- h-100 means the div will be fully expanded

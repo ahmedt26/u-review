@@ -48,10 +48,11 @@ session_start();
 
     // Most headers will be replaced with the login header if the user is logged in.
     if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
-        include('login_header.html');
+        include('login_header.php');
     } else {
         include('header.html');
-    } ?>
+    } 
+    ?>
 
     <?php
     // When the form iS POSTed, we perform the login checks.
