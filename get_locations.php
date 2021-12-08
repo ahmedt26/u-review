@@ -11,7 +11,14 @@ if ($db['status'] == '0') {
     $connection = $db['connection'];
 }
 
-$sql = "SELECT id, name, phone_number, longitude, latitude FROM locations";
+$search_term = "";
+if (isset($_GET['search']) && $_GET['search'] != '') {
+    $search_term = "%$_GET['search']%";
+} else {
+    $search_term = "%";
+}
+
+$sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE name LIKE $search_term";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
