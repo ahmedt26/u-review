@@ -5,7 +5,7 @@
 -->
 
 <?php
-
+// Get all $_SESSION variables
 session_start();
 ?>
 
@@ -53,7 +53,7 @@ session_start();
   if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
     include('login_header.php');
   } else {
-    include('header.html');
+    include('header.php');
   }
   ?>
 

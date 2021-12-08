@@ -3,6 +3,12 @@
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
+
+<?php
+// Get all $_SESSION variables
+session_start();
+?>
+
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
 
@@ -45,7 +51,7 @@
   if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
     include('login_header.php');
   } else {
-    include('header.html');
+    include('header.php');
   } ?>
 
   <!-- Write a Review Card -->

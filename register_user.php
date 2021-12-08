@@ -1,7 +1,7 @@
 <?php
+// Get all $_SESSION variables
 session_start();
 ?>
-
 
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#" lang="en">
@@ -43,7 +43,7 @@ include('connection.php');
 if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
     include('login_header.php');
 } else {
-    include('header.html');
+    include('header.php');
 }
 ?>
 
