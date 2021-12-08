@@ -1,5 +1,5 @@
 // Initialize and add the map
-function initMap() {
+window.initMap = function () {
   let currentLocation = { lat: 0, lng: 0 };
   if ('geolocation' in navigator) {
     // If it is supported, get the users location

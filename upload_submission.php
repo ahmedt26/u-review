@@ -14,7 +14,7 @@ session_start();
       We load up custom fonts and icons we need using links and Bootstrap, as well as a script
       to create a working hamburger for responsiveness.
     -->
-  <title>UReview - Review Upload Confirmation </title>
+  <title>UReview - Location Upload Confirmation </title>
   <meta property="og:title" content="UReview - Review Upload Confirmation ">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,18 +48,20 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 
 <?php
 // POST the form inputs into variables to inserted
-$name         = filter_input(INPUT_POST, 'name');
-$phone_number = filter_input(INPUT_POST, 'phone_number');
-$latitude     = filter_input(INPUT_POST, 'latitude');
-$longitude    = filter_input(INPUT_POST, 'longitude');
+$location_name  = filter_input(INPUT_POST, 'location_name');
+$location_id  = (int) filter_input(INPUT_POST, 'location_id');
+$reviewer_id    = $_SESSION['user_id'];
+$review_title   = filter_input(INPUT_POST, 'reviewTitle');
+$rating        = filter_input(INPUT_POST, 'rating');
+$review_details = filter_input(INPUT_POST, "reviewDetails");
 
 // Query to INSERT into database.
-$sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES ('$name', '$phone_number', '$latitude', '$longitude')";
+$sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', '$review_title', '$reviewer_id', '$rating', '$review_details')";
 if (mysqli_query($connection, $sql)) {
-  echo '<br> <h3> Location Upload Success ! </h3><br>';
-  echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
+  echo '<br> <h3> Review Success ! </h3><br>';
+  echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
 } else {
-  echo '<br> <h3> Location Upload Failure ! </h3><br>';
+  echo '<br> <h3> Review Failure ! </h3><br>';
   echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
 mysqli_close($conn);
