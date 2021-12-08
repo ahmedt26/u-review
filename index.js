@@ -20,7 +20,7 @@ function initMap() {
   // Zoom in and center the map at Current Location
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
-    center: currentLocation,
+    center: { lat: currentLocation.lat, lng: currentLocation.lng },
   });
 
   // This portion of the code is used to set the markers and labels

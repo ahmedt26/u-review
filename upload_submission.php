@@ -54,7 +54,7 @@ $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');
 
 // Query to INSERT into database.
-$sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES ('$name', '$phone_number', '$latitude', '$longitude')";
+$sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (`$name`, `$phone_number`, `$latitude`, `$longitude`)";
 if (mysqli_query($connection, $sql)) {
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";

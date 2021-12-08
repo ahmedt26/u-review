@@ -56,7 +56,7 @@ $rating        = filter_input(INPUT_POST, 'rating');
 $review_details = filter_input(INPUT_POST, "reviewDetails");
 
 // Query to INSERT into database.
-$sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', '$review_title', '$reviewer_id', '$rating', '$review_details')";
+$sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', `$review_title`, '$reviewer_id', '$rating', `$review_details`)";
 if (mysqli_query($connection, $sql)) {
   echo '<br> <h3> Review Success ! </h3><br>';
   echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";
