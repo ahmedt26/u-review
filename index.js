@@ -1,6 +1,6 @@
 // Initialize and add the map
 function initMap() {
-  const currentLocation = { lat: 0, lng: 0};
+  const currentLocation = { lat: 43.255203, lng: -79.843826 };
   if ('geolocation' in navigator) {
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition((position) => {
@@ -20,11 +20,11 @@ function initMap() {
   const info = locations.getElementsByTagName("p");
   const nameInfo = locations.getElementsByTagName("h5");
 
-  for(let i = 0; i < info.length; i += 4){
-    let name = nameInfo.innerHTML;
-    let locationID = info[i+1].innerHTML.split(" ")[1]
-    let lng = info[i+2].innerHTML.split(" ")[1]
-    let lat = info[i+3].innerHTML.split(" ")[1]
+  for (let i = 0; i < info.length; i += 4) {
+    let name = nameInfo[0].innerHTML;
+    let locationID = info[i + 1].innerHTML.split(" ")[1]
+    let lng = info[i + 2].innerHTML.split(" ")[1]
+    let lat = info[i + 3].innerHTML.split(" ")[1]
     lng = parseFloat(lng);
     lat = parseFloat(lat);
     console.log("locations: " + locations);
@@ -41,15 +41,15 @@ function initMap() {
       '</div>' +
       '<div id="contentBody">' +
       `<p>Latitude: ${lat} <br> Longitude: ${lng} </p>` +
-      `<a href="individual_page.php?id=${locationID}">Go to Zeal Burgers</a>` +
+      `<a href="individual_page.php?id=${locationID}">Go to ${name}</a>` +
       '</div>' +
       '</div>';
 
-    addMarker({coords:{lat,lng}, content: contentString, map:map})
+    addMarker({ coords: { lat, lng }, content: contentString, map: map })
   }
 }
 
-function addMarker(param){
+function addMarker(param) {
   // Create a google maps marker
   // Place it on the map at the location of entered coordinates.
   const marker = new google.maps.Marker({
@@ -57,13 +57,13 @@ function addMarker(param){
     map: param.map,
   });
 
-  if(param.content){
+  if (param.content) {
     // Create a google maps info window
     // Set the content to what we stored in 'contentString'
     const infoWindow = new google.maps.InfoWindow({
       content: param.content,
     });
-  
+
     // Add a listener to the marker
     // If the marker is clicked, open up the info window
     marker.addListener("click", () => {
