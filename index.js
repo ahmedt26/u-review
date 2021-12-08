@@ -1,18 +1,20 @@
 // Initialize and add the map
-window.initMap = function () {
+function initMap() {
   let currentLocation = { lat: 0, lng: 0 };
   if ('geolocation' in navigator) {
     // If it is supported, get the users location
     navigator.geolocation.getCurrentPosition((position) => {
       currentLocation.lat = position.coords.latitude;
       currentLocation.lng = position.coords.longitude;
-      console.log(position.coords.latitude);
-      console.log(position.coords.longitude);
+      console.log(currentLocation.lat);
+      console.log(currentLocation.lng);
     });
   } else {
     currentLocation.lat = 43.255203;
     currentLocation.lng = -79.843826;
   }
+  console.log(currentLocation.lat);
+  console.log(currentLocation.lng);
 
   // Create a google maps map, and place it in the div with id 'map'
   // Zoom in and center the map at Current Location
