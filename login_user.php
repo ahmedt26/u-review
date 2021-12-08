@@ -62,7 +62,7 @@ session_start();
 
         // We only POST and pull from DB if there's actually stuff in the login form.
         // Render username harmless.
-        $username   = legalizeInput($_POST["loginUsername"]);
+        $username   = ($_POST["loginUsername"]);
         // Since the password is hashed right away it doesn't matter to legalize its input.
         $password   = hash('sha256', filter_input(INPUT_POST, 'loginPassword'));
 

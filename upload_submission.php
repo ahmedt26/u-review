@@ -49,8 +49,7 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 
 <?php
 // POST the form inputs into variables to inserted
-$name         = legalizeInput(filter_input(INPUT_POST, 'name'));
-// Since the bottom 3 attributes are decimals/integers, they can't really harm the server.
+$name         = filter_input(INPUT_POST, 'name');
 $phone_number = filter_input(INPUT_POST, 'phone_number');
 $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');

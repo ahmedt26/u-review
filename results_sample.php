@@ -125,7 +125,8 @@ session_start();
 
         $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE name LIKE ?";
         $stmt = $connection->prepare($sql);
-        $stmt->execute(["$search_term"]);
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
         $result = $stmt->get_result();
 
         // If the number of rows in $result, run the following script, since there are locations

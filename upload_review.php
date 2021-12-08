@@ -51,10 +51,9 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 $location_name  = filter_input(INPUT_POST, 'location_name');
 $location_id    = (int) filter_input(INPUT_POST, 'location_id');
 $reviewer_id    = $_SESSION['user_id'];
-// Only Title/Details could have SQL injections or other harmful code to the server.
-$review_title   = legalizeInput(filter_input(INPUT_POST, 'reviewTitle'));
+$review_title   = (filter_input(INPUT_POST, 'reviewTitle'));
 $rating         = filter_input(INPUT_POST, 'rating');
-$review_details = legalizeInput(filter_input(INPUT_POST, "reviewDetails"));
+$review_details = (filter_input(INPUT_POST, "reviewDetails"));
 
 // Query to INSERT into database.
 $sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES ('$location_id', '$review_title', '$reviewer_id', '$rating', '$review_details')";

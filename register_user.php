@@ -49,11 +49,11 @@ if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
 
 <?php
 // POST the form inputs into variables to inserted
-// Filters input for POSTing, further legalizes input.
-$username  = legalizeInput(filter_input(INPUT_POST, 'username'));
-$firstName = legalizeInput(filter_input(INPUT_POST, 'firstName'));
-$lastName  = legalizeInput(filter_input(INPUT_POST, 'lastName'));
-$email     = legalizeInput(filter_input(INPUT_POST, 'email'));
+// Filters input for POSTing
+$username  = (filter_input(INPUT_POST, 'username'));
+$firstName = (filter_input(INPUT_POST, 'firstName'));
+$lastName  = (filter_input(INPUT_POST, 'lastName'));
+$email     = (filter_input(INPUT_POST, 'email'));
 // Hash the passwords for the database
 $userPassword = hash('sha256', filter_input(INPUT_POST, 'userPassword'));
 $userPasswordConfirm = hash('sha256', filter_input(INPUT_POST, 'passwordConfirm'));
