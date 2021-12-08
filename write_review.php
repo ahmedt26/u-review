@@ -16,8 +16,14 @@ $location_id = $_POST['location_id'];
 if (isset($_POST['location_id']) && $_POST['location_id'] != '') {
     // SQL query which gets a location based on id
     // Result stored in $location
-    $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = $location_id";
-    $location = $connection->query($getLocation);
+    $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = ?";
+    $stmt = $connection->prepare($getLocation);
+    $stmt->bind_param('s', $location_id);
+    // Execute the statement
+    $stmt->execute();
+    $location = $stmt->get_result();
+    $stmt->close();
+
 
     // Store the first row from the result into $locationData
     $locationData = $location->fetch_assoc();
