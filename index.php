@@ -76,11 +76,11 @@ session_start();
   <!-- The Main Search Bar. It is centered and so are the contents in this div-->
   <!-- Searches will send the user to the results page (with full backend, it will show actual results)-->
   <!-- A simple button that retrieves the users location when clicked and displays it in the search bar-->
-  <div class="d-flex flex-column h-100 container d-flex justify-content-center align-items-center">
+  <div class="d-flex flex-column h-100 container justify-content-center align-items-center">
     <div class="input-group col-sm-7 input-group-lg justify-content-center align-items-center">
       <form id="mainSearchForm" action="results_sample.php" method="GET">
-        <div>
-          <input id="search" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
+        <div class="d-flex">
+          <input id="search" style="width: 200%;" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
           <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
         </div>
       </form>

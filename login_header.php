@@ -27,11 +27,11 @@
                   'form-inline' places the search bar inline horizontally.
                   'd-xl-flex' means the search will expand to the xl size and 'd-none' means it disappear 
                   when it cannot be this size-->
-      <form class="form-inline d-xl-flex d-none">
-        <!-- A type of form, the search bar.
-                    The 'btn' indicate button-like styling and the outline will be of the 'warning' color (our site's accent)-->
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit" aria-label="Navbar Search Button"><i class="bi bi-search"></i></button>
+      <form id="headerSearchLog" class="form-inline d-xl-flex d-none" action="results_sample.php" method="GET">
+        <div>
+          <input id="searchHeaderLog" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
+          <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
+        </div>
       </form>
 
       <!-- These buttons take you to various core features of the website
@@ -80,9 +80,11 @@
 <div>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
     <div class="container d-flex justify-content-center align-items-center">
-      <form class="form-inline d-flex">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
+      <form id="headerSearchLog" class="form-inline d-flex" action="results_sample.php" method="GET">
+        <div>
+          <input id="searchLogSmallHeader" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
+          <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
+        </div>
       </form>
     </div>
   </nav>
