@@ -95,7 +95,7 @@ session_start();
 
         // SQL query which gets a location based on id
         // Result stored in $location
-        $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = ?";
+        $getLocation = "SELECT id, name, phone_number, longitude, latitude, image_url FROM locations WHERE id = ?";
         $stmt = $connection->prepare($getLocation);
         $stmt->bind_param('i', $id);
         $stmt->execute();
