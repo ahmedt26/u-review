@@ -87,6 +87,7 @@ if (isset($_POST['location_id']) && $_POST['location_id'] != '') {
                         <a href="./submission.php" class="text-decoration-none text-warning">Add a Location</a>
                     </div>
                     <!-- Hidden Data - Location Name -->
+                    <!-- The first few inputs are POSTed from the previous individual_page.php; The user does not have to enter these inputs. -->
                     <div class="mt-3 px-3 text-white">
                         <input class="form-control" id="locationName" name="location_name" type="hidden" value="<?php echo $locationData['name']; ?>" placeholder="Location Name" aria-label="Hidden Value for Location Name">
                     </div>
