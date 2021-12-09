@@ -13,8 +13,8 @@ session_start();
 
 <head>
     <!-- Metadata of Website -->
-    <title> UReview </title>
-    <meta property="og:title" content="UReview">
+    <title>UReview of Zeal Hamburgers</title>
+    <meta property="og:title" content="UReview of Zeal Hamburgers">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,7 +134,6 @@ session_start();
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $reviewList = $stmt->get_result();
-        $stmt->close();
 
         // This code is basically just calculating the average ratings for the location
         // We used int instead of float, so therefore there are no half stars.
@@ -150,6 +149,7 @@ session_start();
 
         $avgRatings = $sumRatings / $numRatings;
         $avgRatings = (int) $avgRatings;
+        $stmt->close();
     ?>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">
@@ -287,12 +287,6 @@ session_start();
             // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
             echo "No results";
-        }
-
-        if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
-            include('review_btn.php');
-        } else {
-            echo ' <br> You must be logged in to write a review.';
         }
 
         // Close the database connection
