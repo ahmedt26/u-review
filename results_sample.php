@@ -140,7 +140,7 @@ session_start();
                 <div class="row g-0">
                   <div class="col-4">
                     <!-- Get the image from the database. -->
-                    <img src="<? echo $row['image_url'] ?>" class="img-fluid" alt="Image for <? echo $row['name'] ?>">
+                    <img src="<? echo $row['image_url']; ?>" class="img-fluid" alt="Image for <? echo $row['name']; ?>">
                   </div>
 
                   <div class="col-8">
