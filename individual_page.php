@@ -142,7 +142,7 @@ session_start();
     'width: 300px;' makes the width of the images 300px
   -->
         <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
-            <img src="<?php echo $rowInfo['image_url']; ?>" class="img-fluid" alt="Image">
+            <img src="<?php echo $rowInfo['image_url']; ?>" class="img-fluid" alt="Image of <?php echo $rowInfo['name']; ?>">
         </div>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">

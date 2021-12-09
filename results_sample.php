@@ -139,8 +139,8 @@ session_start();
               <div class="card bg-dark text-white rounded-0">
                 <div class="row g-0">
                   <div class="col-4">
-                    <!-- Get the image from the database. -->
-                    <img src="<? echo $row['image_url']; ?>" class="img-fluid" alt="Image for <? echo $row['name']; ?>">
+                    <!-- Get the image from the database. WIP -->
+                    <!-- <img src="" class="img-fluid" alt="Image for"> -->
                   </div>
 
                   <div class="col-8">
