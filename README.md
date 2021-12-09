@@ -31,3 +31,22 @@ Use Geolocation API to get user location: https://developer.mozilla.org/en-US/do
 
 JavaScript Form Validation Tutorial:
 https://www.w3schools.com/js/js_validation.asp#:~:text=JavaScript%20Forms%201%20JavaScript%20Form%20Validation.%20HTML%20form,...%207%20Constraint%20Validation%20CSS%20Pseudo%20Selectors.%20
+
+## A3
+### A3 Notes
+
+The Live Website is here: https://abdullahnafees.me/
+
+### Resources Used - A3
+
+The images we used are from Google Maps, usually the first image of the example location (they are real locations).
+
+We mainly used the tutorials to develop this website, but we also used some other external sources:
+
+https://www.tutorialspoint.com/php/php_sessions.htm#:~:text=%20PHP%20-%20Sessions%20%201%20Starting%20a,on%20their%20machine.%20So%20there%20is...%20More%20
+
+https://www.w3schools.com/php/php_form_validation.asp#:~:text=%20PHP%20Form%20Validation%20%201%20PHP%20Form,If%20PHP_SELF%20is%20used%20in%20your...%20More%20
+
+https://devcenter.heroku.com/articles/s3-upload-php#:~:text=%20Uploading%20Files%20to%20S3%20in%20PHP%20,upload%20in%20the%20browser%2C%20and%20stores...%20More%20
+
+https://medium.com/@kentaguilar/simplest-way-to-upload-a-file-to-aws-s3-via-php-e83a9f54ba77
