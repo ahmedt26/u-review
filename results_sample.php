@@ -192,7 +192,7 @@ session_start();
 
   </div>
 
-  <?php include('footer.html'); ?>
+  <?php include('footer.php'); ?>
 
   <!--
     Script that allows hamburger navbar menu to work properly
