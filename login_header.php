@@ -28,7 +28,7 @@
                   'd-xl-flex' means the search will expand to the xl size and 'd-none' means it disappear 
                   when it cannot be this size-->
       <form id="headerSearchLog" class="form-inline d-xl-flex d-none" action="results_sample.php" method="GET">
-        <div>
+        <div class="d-flex">
           <input id="searchHeaderLog" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
           <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
         </div>
@@ -81,7 +81,7 @@
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-xl-none">
     <div class="container d-flex justify-content-center align-items-center">
       <form id="headerSearchLog" class="form-inline d-flex" action="results_sample.php" method="GET">
-        <div>
+        <div class="d-flex">
           <input id="searchLogSmallHeader" type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search for something...">
           <button class="btn btn-outline-warning" type="submit" aria-label="Main Search Button"><i class="bi bi-search"></i></button>
         </div>
