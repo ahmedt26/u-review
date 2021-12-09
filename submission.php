@@ -84,7 +84,7 @@ session_start();
           <button type="button" class="btn btn-warning mt-3 mx-auto" style="width: 50%" onclick="getUserLocation()">Get My Location</button>
 
           <hr>
-          <!-- User will be able upload a reasonably sized image (~2MB) from their device.
+          <!-- User will be able upload a reasonably sized image (~8MB) from their device.
               the input type=file means this button will open up the explorer so the user can find the image to upload from their device-->
           <div class="mt-3 px-3 text-white justify-content-center">
             <input class="btn-dark text-white" type="file" id="addLocationFile" name="image" placeholder="Choose a file to upload" aria-label="Choose file to upload">
