@@ -50,27 +50,6 @@ session_start();
         include('header.php');
     }  ?>
 
-    <!-- Main Images -->
-    <!--
-    'd-flex' makes it a flexbox layout
-    'justify-content-center' makes the image centered horizontally
-    'overflow: auto;' makes it so that when the images go off screen, a scrollbar is added
-
-    then hardcoded images are linked
-    'img-fluid' makes it so that the height is adjusted relative to the width, and the ratio is kept the same as original
-    'width: 300px;' makes the width of the images 300px
-  -->
-    <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-    </div>
-
     <!-- Main Map -->
     <!--
     container' creates a container, and the content is put inside the container
@@ -151,6 +130,20 @@ session_start();
         $avgRatings = $sumRatings / $numRatings;
         $avgRatings = (int) $avgRatings;
     ?>
+
+        <!-- Main Images -->
+        <!--
+    'd-flex' makes it a flexbox layout
+    'justify-content-center' makes the image centered horizontally
+    'overflow: auto;' makes it so that when the images go off screen, a scrollbar is added
+
+    then hardcoded images are linked
+    'img-fluid' makes it so that the height is adjusted relative to the width, and the ratio is kept the same as original
+    'width: 300px;' makes the width of the images 300px
+  -->
+        <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
+            <img src="<? echo $rowInfo['image_url']; ?>" class="img-fluid" alt="Image">
+        </div>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">
             <div class="d-flex justify-content-between">
@@ -270,7 +263,6 @@ session_start();
                                         $stmt2->bind_param('i', $reviewerId);
                                         $stmt2->execute();
                                         $reviewerData = $stmt2->get_result(); ?>
-                                        Hello?
                                         <?php
                                         $reviewerName = $reviewerData->fetch_assoc();
 

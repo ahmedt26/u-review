@@ -1,6 +1,8 @@
 <?php
 // Get all $_SESSION variables
 session_start();
+include('vendor/autoload.php');
+include('config.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,15 +55,34 @@ $name         = filter_input(INPUT_POST, 'name');
 $phone_number = filter_input(INPUT_POST, 'phone_number');
 $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');
+$image        = filter_input(INPUT_POST, 'locationImage');
+
+// Upload an image under 2 MB
+$s3 = new Aws\S3\S3Client([
+  'region'  => 'us-east-2',
+  'version' => 'latest',
+  'credentials' => [
+    'key'    => "AKIA3YW7SGU5SB2COE5A",
+    'secret' => $configs['secretKey'],
+  ]
+]);
+$upload = $s3->putObject([
+  'Bucket' => 'ureview-bucket',
+  'Key'    => $_FILES['image']['name'],
+  'SourceFile' => $_FILES['image']['tmp_name']
+]);
 
 // Query to INSERT into database.
-$sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (?, ?, ?, ?)";
+$sql = "INSERT INTO locations (name, phone_number, latitude, longitude, image_url) VALUES (?, ?, ?, ?, ?)";
 $stmt = $connection->prepare($sql);
 // Binding parameters based on what data type they should be.
-$stmt->bind_param('ssdd', $name, $phone_number, $latitude, $longitude);
+$stmt->bind_param('ssdds', $name, $phone_number, $latitude, $longitude, $upload['ObjectURL']);
 // We notify the user of success or failure depending on what happens when we execute the statement.
 if ($stmt->execute()) {
   $result = $stmt->get_result();
+
+
+
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
 } else {
