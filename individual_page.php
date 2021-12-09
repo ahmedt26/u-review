@@ -1,68 +1,38 @@
 <!--
-  UReview Dynamic Results Page
+  UReview Sample Results of Zeal Hamburgers
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
 <?php
 // Get all $_SESSION variables
 session_start();
-
-include('database.php');
-include('connection.php');
-
-// Check if id is set, and that it is not empty
-if (isset($_GET['id']) && $_GET['id'] != '') {
-    // Store the value of $_GET['id'] in $id
-    $id = $_GET['id'];
-
-    // SQL query which gets a location based on id
-    // Result stored in $location
-    $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = ?";
-    $stmt = $connection->prepare($getLocation);
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $location = $stmt->get_result();
-    $stmt->close();
-
-    // Store the first row from the result into $rowInfo
-    $rowInfo = $location->fetch_assoc();
-
-
-    // SQL query which gets all the reviews for a specific location based on id
-    // Result stored in $reviewsList
-    $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = ?";
-    $stmt = $connection->prepare($getReviews);
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $reviewList = $stmt->get_result();
-    $stmt->close();
 ?>
 
-    <!DOCTYPE html>
-    <html prefix="og: https://ogp.me/ns#" lang="en">
+<!DOCTYPE html>
+<html prefix="og: https://ogp.me/ns#" lang="en">
 
-    <head>
-        <!-- Metadata of Website -->
-        <title>UReview of <?php echo $rowInfo['name'] ?></title>
-        <meta property="og:title" content="UReview of <?php echo $rowInfo['name'] ?>">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="UReview - Things Reviewed by U!">
-        <meta name="author" content="Tahseen Ahmed and Abdullah Nafees">
+<head>
+    <!-- Metadata of Website -->
+    <title> UReview </title>
+    <meta property="og:title" content="UReview">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UReview - Things Reviewed by U!">
+    <meta name="author" content="Tahseen Ahmed and Abdullah Nafees">
 
-        <!-- Links to External CSS, Logo, Icons, Fonts etc -->
-        <link rel="icon" href="./assets/images/logo.svg">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        <script src="index.js"></script>
-    </head>
+    <!-- Links to External CSS, Logo, Icons, Fonts etc -->
+    <link rel="icon" href="./assets/images/logo.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
 
-    <!--
+<!--
   'd-flex' makes it a flexbox layout
   'flex-column' makes it a column
   'min-vh-100' makes the minimum height of the body 100vh
@@ -70,18 +40,18 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
   the main purpose of this is to properly allow the footer to sit at the bottom of the page
 -->
 
-    <body class="d-flex flex-column min-vh-100">
-        <?php
+<body class="d-flex flex-column min-vh-100">
+    <?php
 
-        // Most headers will be replaced with the login header if the user is logged in.
-        if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
-            include('login_header.php');
-        } else {
-            include('header.php');
-        }  ?>
+    // Most headers will be replaced with the login header if the user is logged in.
+    if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
+        include('login_header.php');
+    } else {
+        include('header.php');
+    }  ?>
 
-        <!-- Main Images -->
-        <!--
+    <!-- Main Images -->
+    <!--
     'd-flex' makes it a flexbox layout
     'justify-content-center' makes the image centered horizontally
     'overflow: auto;' makes it so that when the images go off screen, a scrollbar is added
@@ -90,19 +60,19 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     'img-fluid' makes it so that the height is adjusted relative to the width, and the ratio is kept the same as original
     'width: 300px;' makes the width of the images 300px
   -->
-        <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-            <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
-        </div>
+    <div class="d-flex justify-content-center imageWidth" style="overflow: auto;">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+        <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+    </div>
 
-        <!-- Main Map -->
-        <!--
+    <!-- Main Map -->
+    <!--
     container' creates a container, and the content is put inside the container
 
     'individualMap' id is used to place the map there
@@ -114,12 +84,12 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     then hardcoded map image is linked, for this part we just used a map of Hamilton, same as we did in the results page.
     it will be changed to be accurate in the next part of the project
   -->
-        <div class="container">
-            <div id="individualMap" class="d-flex justify-content-center mapHeight"></div>
-        </div>
+    <div class="container">
+        <div id="individualMap" class="d-flex justify-content-center mapHeight"></div>
+    </div>
 
-        <!-- Main Content -->
-        <!--
+    <!-- Main Content -->
+    <!--
     'container' creates a container, and the content is put inside the container
     'p-5' creates padding around the whole container
     'pb-0' makes the padding at the bottom of the container 0, so now all sides have padding except the bottom
@@ -135,7 +105,37 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     'textFont' is custom css that changes the size of the font based on the width of the screen
     'fw-bold' in the span makes it so just the content wrapped inside of it becomes bold
   -->
-        <?php
+    <?php
+    include('database.php');
+    include('connection.php');
+
+    // Check if id is set, and that it is not empty
+    if (isset($_GET['id']) && $_GET['id'] != '') {
+        // Store the value of $_GET['id'] in $id
+        $id = $_GET['id'];
+
+        // SQL query which gets a location based on id
+        // Result stored in $location
+        $getLocation = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE id = ?";
+        $stmt = $connection->prepare($getLocation);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $location = $stmt->get_result();
+        $stmt->close();
+
+        // Store the first row from the result into $rowInfo
+        $rowInfo = $location->fetch_assoc();
+
+
+        // SQL query which gets all the reviews for a specific location based on id
+        // Result stored in $reviewsList
+        $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = ?";
+        $stmt = $connection->prepare($getReviews);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $reviewList = $stmt->get_result();
+        $stmt->close();
+
         // This code is basically just calculating the average ratings for the location
         // We used int instead of float, so therefore there are no half stars.
         $sumRatings = 0;
@@ -150,9 +150,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
 
         $avgRatings = $sumRatings / $numRatings;
         $avgRatings = (int) $avgRatings;
-
-        // SELECT AVG(rating) from reviews
-        ?>
+    ?>
 
         <div class="container p-5 pt-3 pb-0 justify-content-center">
             <div class="d-flex justify-content-between">
@@ -222,9 +220,6 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
             <?php
             // SQL query which gets all the reviews for a specific location based on id
             // Result stored in $reviewsList
-            //$getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = $id";
-            //$reviewsList = $connection->query($getReviews);
-
             $getReviews = "SELECT id, review_title, reviewer, rating, review_details FROM reviews WHERE location_id = ?";
             $stmt = $connection->prepare($getReviews);
             $stmt->bind_param('i', $id);
@@ -269,8 +264,13 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
                                         <?php
                                         $id = $row['reviewer'];
                                         // SQL query to get the name of the reviewer using the id
-                                        $getReviewer = "SELECT first_name, last_name FROM users WHERE id = $id";
-                                        $reviewerData = $connection->query($getReviewer);
+                                        $getReviewer = "SELECT first_name, last_name FROM users WHERE id = ?";
+                                        $stmt = $connection->prepare($getReviewer);
+                                        $stmt->bind_param('i', $id);
+                                        $stmt->execute();
+                                        $reviewData = $stmt->get_result();
+                                        $stmt->close();
+
                                         $reviewerName = $reviewerData->fetch_assoc();
 
                                         // Display the name of the reviewer
@@ -287,38 +287,27 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
             // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
             echo "No results";
-        } ?>
+        }
 
-        <?php // Most headers will be replaced with the login header if the user is logged in.
-        if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) { ?>
+        if (isset($_SESSION['logged_in']) && ($_SESSION['logged_in'])) {
+            include('review_btn.php');
+        } else {
+            echo ' <br> You must be logged in to write a review.';
+        }
 
-            <form name="writeReviewForm" action="write_review.php" method="POST">
-                <!--  Log in Button -->
-                <div class="my-3 d-grid px-3 text-white">
-                    <input type="hidden" name="location_name" value="<?php echo $rowInfo['name'] ?>">
-                    <input type="hidden" name="location_id" value="<?php echo $rowInfo['id'] ?>">
-                    <input type="submit" class="btn btn-warning btn-block btn-signup" aria-label="Write a Review Button" value="Write a Review">
-                    </input>
-                </div>
-            </form>
-
-        <?php } else {
-            echo 'You must be logged in order to write a review.';
-        } ?>
-
-        <?php // Close the database connection
+        // Close the database connection
         $connection->close();
         ?>
 
         </div>
 
-        <?php include('footer.html'); ?>
+        <?php include('footer.php'); ?>
         <!--
     Script that allows hamburger navbar menu to work properly and the google map
   -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZhT3Ey8CBRDwExjeA0AiN0UQSxzSzGA0&callback=initIndividualMap&libraries=&v=weekly" async>
         </script>
-    </body>
+</body>
 
-    </html>
+</html>
