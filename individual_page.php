@@ -134,7 +134,6 @@ session_start();
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $reviewsList = $stmt->get_result();
-        $stmt->close();
 
         // This code is basically just calculating the average ratings for the location
         // We used int instead of float, so therefore there are no half stars.
@@ -147,6 +146,8 @@ session_start();
                 $numRatings += 1;
             }
         }
+
+        $stmt->close();
 
         $avgRatings = $sumRatings / $numRatings;
         $avgRatings = (int) $avgRatings;
@@ -225,7 +226,6 @@ session_start();
             $stmt->bind_param('i', $id);
             $stmt->execute();
             $reviewsList = $stmt->get_result();
-            $stmt->close();
 
             // Check if the number of reviews is greater than 0
             if ($reviewsList->num_rows > 0) {
@@ -265,16 +265,17 @@ session_start();
                                         $id = $row['reviewer'];
                                         // SQL query to get the name of the reviewer using the id
                                         $getReviewer = "SELECT first_name, last_name FROM users WHERE id = ?";
-                                        $stmt = $connection->prepare($getReviewer);
-                                        $stmt->bind_param('i', $id);
-                                        $stmt->execute();
-                                        $reviewData = $stmt->get_result();
-                                        $stmt->close();
+                                        $stmt2 = $connection->prepare($getReviewer);
+                                        $stmt2->bind_param('i', $id);
+                                        $stmt2->execute();
+                                        $reviewData = $stmt2->get_result();
 
                                         $reviewerName = $reviewerData->fetch_assoc();
 
                                         // Display the name of the reviewer
                                         echo '-' . $reviewerName["first_name"] . " " . $reviewerName["last_name"];
+
+                                        $stmt2->close();
 
                                         ?>
                                     </p>
@@ -283,6 +284,7 @@ session_start();
                         </div>
                     </div>
         <?php }
+                $stmt->close();
             }
             // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {
