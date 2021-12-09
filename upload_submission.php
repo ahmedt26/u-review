@@ -58,6 +58,7 @@ $longitude    = filter_input(INPUT_POST, 'longitude');
 $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (?, ?, ?, ?)";
 $stmt = $connection->prepare($sql);
 $stmt->bind_param('ssdd', $name, $phone_number, $latitude, $longitude);
+// If the statement is valid, we can execute it.
 if ($stmt->execute()) {
   // Notify the user of success
   $stmt->execute();
