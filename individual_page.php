@@ -263,7 +263,7 @@ session_start();
 
                                     <p class="card-text textFont">
                                         <?php
-                                        /*
+
                                         $id = $row['reviewer'];
                                         // SQL query to get the name of the reviewer using the id
                                         $getReviewer = "SELECT first_name, last_name FROM users WHERE id = ?";
@@ -277,7 +277,7 @@ session_start();
                                         // Display the name of the reviewer
                                         echo '-' . $reviewerName["first_name"] . " " . $reviewerName["last_name"];
 
-                                        $stmt2->close();*/
+                                        $stmt2->close();
 
                                         ?>
                                     </p>
