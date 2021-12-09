@@ -1,5 +1,5 @@
 <!--
-  UReview Dynamic Result Generation Page
+  UReview Results Page
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
@@ -269,8 +269,9 @@ session_start();
                                         $stmt2 = $connection->prepare($getReviewer);
                                         $stmt2->bind_param('i', $reviewerId);
                                         $stmt2->execute();
-                                        $reviewData = $stmt2->get_result();
-
+                                        $reviewData = $stmt2->get_result(); ?>
+                                        Hello?
+                                        <?php
                                         $reviewerName = $reviewerData->fetch_assoc();
 
                                         // Display the name of the reviewer
