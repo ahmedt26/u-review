@@ -96,7 +96,7 @@ session_start();
     'height:89.65vh' makes the height of the right container 89.65vh
   -->
   <div class="row row-cols-2 g-0">
-    <div class="col-md-4 col-12" style="height:89.65vh; overflow: auto;">
+    <div class="col-md-2 col-12" style="height:89.65vh; overflow: auto;">
       <div id="locationInfo">
         <?php
         include('database.php');
@@ -138,12 +138,12 @@ session_start();
             <a href="individual_page.php?id=<?php echo $row['id'] ?>" class="text-decoration-none">
               <div class="card bg-dark text-white rounded-0">
                 <div class="row g-0">
-                  <div class="col-4">
+                  <div class="col-2">
                     <!-- Get the image from the database. WIP -->
                     <!-- <img src="" class="img-fluid" alt="Image for"> -->
                   </div>
 
-                  <div class="col-8">
+                  <div class="col-10">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
                         <!-- 
@@ -187,7 +187,7 @@ session_start();
       </div>
     </div>
 
-    <div id="map" class="col-md-8 d-md-flex d-none" style="height: auto;"></div>
+    <div id="map" class="col-md-10 d-md-flex d-none" style="height: auto;"></div>
     <!--<img id= map class="col-md-8 d-md-flex d-none" style="height: 92.5vh;" src="./assets/images/map.png" alt="Map of Hamilton">-->
 
   </div>
