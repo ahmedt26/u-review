@@ -269,7 +269,7 @@ session_start();
                                         $stmt2 = $connection->prepare($getReviewer);
                                         $stmt2->bind_param('i', $reviewerId);
                                         $stmt2->execute();
-                                        $reviewData = $stmt2->get_result(); ?>
+                                        $reviewerData = $stmt2->get_result(); ?>
                                         Hello?
                                         <?php
                                         $reviewerName = $reviewerData->fetch_assoc();
