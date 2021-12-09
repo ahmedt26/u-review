@@ -60,8 +60,6 @@ $stmt = $connection->prepare($sql);
 $stmt->bind_param('ssdd', $name, $phone_number, $latitude, $longitude);
 // If the statement is valid, we can execute it.
 if ($stmt->execute()) {
-  // Notify the user of success
-  $stmt->execute();
   $result = $stmt->get_result();
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";

@@ -61,7 +61,6 @@ $stmt = $connection->prepare($sql);
 $stmt->bind_param('isiis', $location_id, $review_title, $reviewer_id, $rating, $review_details);
 // If the statement is valid, we can execute it.
 if ($stmt->execute()) {
-  $stmt->execute();
   // Notify the user of success
   echo '<br> <h3> Review Success ! </h3><br>';
   echo "You have successfully uploaded a review of " . $location_name . "! You have given a rating of: " . $rating . "<br>" . "Thank you for your review :)";

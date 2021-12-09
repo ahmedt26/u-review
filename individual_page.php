@@ -226,6 +226,7 @@ session_start();
             $stmt->bind_param('i', $id);
             $stmt->execute();
             $reviewsList = $stmt->get_result();
+            $stmt->close();
 
             // Check if the number of reviews is greater than 0
             if ($reviewsList->num_rows > 0) {
@@ -285,7 +286,6 @@ session_start();
                         </div>
                     </div>
         <?php }
-                $stmt->close();
             }
             // If there are no locations in the result after the SQL query, then it just displays "No Results"
         } else {

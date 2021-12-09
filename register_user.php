@@ -71,7 +71,6 @@ if (isLegal($username)) {
                     $stmt->bind_param('sssss', $username, $firstName, $lastName, $email, $userPassword);
                     // If the statement is valid we can execute it.
                     if ($stmt->execute()) {
-                        $stmt->execute();
                         $result = $stmt->get_result();
                         echo "<br>" . "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
                     } else {
