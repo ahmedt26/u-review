@@ -58,12 +58,10 @@ $longitude    = filter_input(INPUT_POST, 'longitude');
 $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (?, ?, ?, ?)";
 $stmt = $connection->prepare($sql);
 $stmt->bind_param('ssdd', $name, $phone_number, $latitude, $longitude);
-$stmt->execute();
-$result = $stmt->get_result();
-$stmt->close();
-
-if (mysqli_num_rows($result) > 0) {
+if ($stmt->execute()) {
   // Notify the user of success
+  $stmt->execute();
+  $result = $stmt->get_result();
   echo '<br> <h3> Location Upload Success ! </h3><br>';
   echo "You have successfully uploaded " . $name . " to our database! Thank you for your submission. :)";
 } else {
@@ -71,6 +69,7 @@ if (mysqli_num_rows($result) > 0) {
   echo '<br> <h3> Location Upload Failure ! </h3><br>';
   // echo "Server-Side Review Error: " . $sql . "<br>" . mysqli_error($connection);
 }
+$stmt->close();
 mysqli_close($conn);
 
 include('footer.php');

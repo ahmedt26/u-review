@@ -69,14 +69,14 @@ if (isLegal($username)) {
                     $sql = "INSERT INTO users (user_name, first_name, last_name, email_address, pass_word) VALUES (?, ? ,? ,?, ?)";
                     $stmt = $connection->prepare($sql);
                     $stmt->bind_param('sssss', $username, $firstName, $lastName, $email, $userPassword);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    $stmt->close(); // Close the statement
-                    if (mysqli_num_rows($result) > 0) { // If the statement passed we can tell the user they have logged in
+                    if ($stmt->execute()) { // If the statement passed we can tell the user they have logged in
+                        $stmt->execute();
+                        $result = $stmt->get_result();
                         echo "<br>" . "You have successfully registered as a member of UReview, " . $username . "! <br>" . " You can now give reviews and add locations.";
                     } else {
                         echo "<br> Server-side Registration Error: " . $sql . "<br>" . mysqli_error($connection);
                     }
+                    $stmt->close(); // Close the statement
                     mysqli_close($conn);
                 } else {
                     echo "<br> Passwords are not valid! ";
