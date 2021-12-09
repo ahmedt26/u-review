@@ -123,7 +123,7 @@ session_start();
           $search_term = "%";
         }
 
-        $sql = "SELECT id, name, phone_number, longitude, latitude, img_url FROM locations WHERE name LIKE ?";
+        $sql = "SELECT id, name, phone_number, longitude, latitude, image_url FROM locations WHERE name LIKE ?";
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('s', $search_term);
         $stmt->execute();
@@ -140,7 +140,7 @@ session_start();
                 <div class="row g-0">
                   <div class="col-4">
                     <!-- Get the image from the database. -->
-                    <!-- <img src="" class="img-fluid" alt="Image for"> -->
+                    <img src="<? echo $row['image_url'] ?>" class="img-fluid" alt="Image for <? echo $row['name'] ?>">
                   </div>
 
                   <div class="col-8">
