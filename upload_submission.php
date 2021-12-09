@@ -2,7 +2,7 @@
 // Get all $_SESSION variables
 session_start();
 include('vendor/autoload.php');
-include('config.php');
+$configs = include('config.php');
 ?>
 
 <!DOCTYPE html>
