@@ -57,8 +57,9 @@ $longitude    = filter_input(INPUT_POST, 'longitude');
 // Query to INSERT into database.
 $sql = "INSERT INTO locations (name, phone_number, latitude, longitude) VALUES (?, ?, ?, ?)";
 $stmt = $connection->prepare($sql);
+// Binding parameters based on what data type they should be.
 $stmt->bind_param('ssdd', $name, $phone_number, $latitude, $longitude);
-// If the statement is valid, we can execute it.
+// We notify the user of success or failure depending on what happens when we execute the statement.
 if ($stmt->execute()) {
   $result = $stmt->get_result();
   echo '<br> <h3> Location Upload Success ! </h3><br>';

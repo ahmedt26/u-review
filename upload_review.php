@@ -59,7 +59,7 @@ $review_details = (filter_input(INPUT_POST, "reviewDetails"));
 $sql = "INSERT INTO reviews (location_id, review_title, reviewer, rating, review_details) VALUES (?, ? ,? ,? ,?)";
 $stmt = $connection->prepare($sql);
 $stmt->bind_param('isiis', $location_id, $review_title, $reviewer_id, $rating, $review_details);
-// If the statement is valid, we can execute it.
+// We notify the user of success or failure depending on what happens when we execute the statement.
 if ($stmt->execute()) {
   // Notify the user of success
   echo '<br> <h3> Review Success ! </h3><br>';

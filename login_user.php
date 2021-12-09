@@ -87,6 +87,7 @@ session_start();
             if (mysqli_num_rows($result) > 0) {
                 // Get the first (and only) row of the result.
                 $userResult = $result->fetch_assoc();
+                // Create and store user details in SESSION variables.
                 $_SESSION["logged_in"] = true;
                 $_SESSION['user_id'] = $userResult['id'];
                 $_SESSION["username"] = $username; // $userResult['user_name'];

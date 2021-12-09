@@ -1,5 +1,5 @@
 <!--
-  UReview Dynamic Results
+  UReview Dynamic Result Generation Page
   Abdullah Nafees and Tahseen Ahmed
   Monday, October 4th, 2021
 -->
@@ -134,7 +134,7 @@ session_start();
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $reviewsList = $stmt->get_result();
-        $stmt->close();     
+        $stmt->close();
 
         // This code is basically just calculating the average ratings for the location
         // We used int instead of float, so therefore there are no half stars.
@@ -230,17 +230,7 @@ session_start();
             // Check if the number of reviews is greater than 0
             if ($reviewsList->num_rows > 0) {
                 // While there is a next row in associative array, display the info using the HTML/PHP
-                while ($row = $reviewsList->fetch_assoc()) { 
-                    $id = $row['reviewer'];
-                    // SQL query to get the name of the reviewer using the id
-                    $getReviewer = "SELECT first_name, last_name FROM users WHERE id = ?";
-                    $stmt2 = $connection->prepare($getReviewer);
-                    $stmt2->bind_param('i', $id);
-                    $stmt2->execute();
-                    $reviewData = $stmt2->get_result();
-                    $stmt2->close();
-
-                    $reviewerName = $reviewerData->fetch_assoc(); ?>
+                while ($row = $reviewsList->fetch_assoc()) { ?>
                     <div class="card bg-dark text-white my-3">
                         <div class="row">
                             <div class="col-12">
@@ -272,8 +262,22 @@ session_start();
 
                                     <p class="card-text textFont">
                                         <?php
+
+                                        $reviewerId = $row['reviewer'];
+                                        // SQL query to get the name of the reviewer using the id
+                                        $getReviewer = "SELECT first_name, last_name FROM users WHERE id = ?";
+                                        $stmt2 = $connection->prepare($getReviewer);
+                                        $stmt2->bind_param('i', $reviewerId);
+                                        $stmt2->execute();
+                                        $reviewData = $stmt2->get_result();
+
+                                        $reviewerName = $reviewerData->fetch_assoc();
+
                                         // Display the name of the reviewer
                                         echo '-' . $reviewerName["first_name"] . " " . $reviewerName["last_name"];
+
+                                        $stmt2->close();
+
                                         ?>
                                     </p>
                                 </div>
