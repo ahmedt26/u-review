@@ -98,6 +98,7 @@ to push the footer to the bottom of the page.*/
   border-width: 6px !important;
 }
 
+
 @media (max-width: 767px) {
   .searchWidth {
     width: 50%;

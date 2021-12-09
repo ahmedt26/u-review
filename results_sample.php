@@ -123,7 +123,7 @@ session_start();
           $search_term = "%";
         }
 
-        $sql = "SELECT id, name, phone_number, longitude, latitude FROM locations WHERE name LIKE ?";
+        $sql = "SELECT id, name, phone_number, longitude, latitude, img_url FROM locations WHERE name LIKE ?";
         $stmt = $connection->prepare($sql);
         $stmt->bind_param('s', $search_term);
         $stmt->execute();
@@ -139,7 +139,8 @@ session_start();
               <div class="card bg-dark text-white rounded-0">
                 <div class="row g-0">
                   <div class="col-4">
-                    <img src="./assets/images/burger.jpg" class="img-fluid" alt="Burger from Zeal Burgers">
+                    <!-- Get the image from the database. -->
+                    <img src="<?php echo $row["img_url"]; ?>" class="img-fluid" alt="Image for <?php echo $row["name"]; ?>">
                   </div>
 
                   <div class="col-8">
