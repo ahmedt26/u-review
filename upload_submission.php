@@ -55,7 +55,6 @@ $name         = filter_input(INPUT_POST, 'name');
 $phone_number = filter_input(INPUT_POST, 'phone_number');
 $latitude     = filter_input(INPUT_POST, 'latitude');
 $longitude    = filter_input(INPUT_POST, 'longitude');
-$image        = filter_input(INPUT_POST, 'locationImage');
 
 // Upload an image under 2 MB
 $s3 = new Aws\S3\S3Client([
